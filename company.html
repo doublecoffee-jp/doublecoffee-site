@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>企業概要 | DOUBLE COFFEE</title>
+  {FaviconTag}
+  {GoogleAnalyticsTag}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Shippori+Mincho:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: 'Shippori Mincho', sans-serif; font-weight: 300; color: #1C2438; background: #F7FBFD; line-height: 1.8; }
+    body.menu-open { overflow: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; object-fit: cover; }
+    :root {
+      --cream: #F4F0E8; --ivory: #F7FBFD; --mocha: #1C2438; --coffee: #3C4858;
+      --caramel: #B87830; --gold: #BFA040; --sage: #7A9EA4; --pale-green: #E6F0F5; --border: #D4E0E8;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 130;
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      padding: 0 24px; height: 64px;
+      background: rgb(250, 250, 247);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-left { grid-column: 1; display: flex; align-items: center; }
+    .nav-right { grid-column: 3; display: flex; align-items: center; justify-content: flex-end; }
+    .nav-cart { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; color: var(--mocha); }
+    .nav-cart svg { width: 22px; height: 22px; fill: currentColor; stroke: none; }
+    .nav-logo { grid-column: 2; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .nav-logo-img { height: 28px; width: auto; display: block; object-fit: contain; mix-blend-mode: multiply; }
+    .nav-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.65rem; color: var(--caramel); letter-spacing: 0.3em; }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; position: relative; z-index: 140; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--mocha); transition: transform 0.25s ease, opacity 0.25s ease; }
+    .hamburger.is-active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.is-active span:nth-child(2) { opacity: 0; }
+    .hamburger.is-active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ===== DRAWER MENU ===== */
+    .drawer-overlay {
+      position: fixed; inset: 0; background: rgba(28,36,56,0.32);
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 110;
+    }
+    .drawer-overlay.is-open {
+      opacity: 1; visibility: visible; pointer-events: auto;
+    }
+    .drawer-menu {
+      position: fixed; top: 0; left: 0; bottom: 0; width: min(82vw, 340px);
+      background: rgba(247,251,253,0.98); backdrop-filter: blur(14px);
+      border-right: 1px solid var(--border);
+      transform: translateX(-100%); transition: transform 0.32s ease;
+      z-index: 120; padding: 92px 28px 32px;
+      box-shadow: 12px 0 36px rgba(28,36,56,0.08);
+    }
+    .drawer-menu.is-open { transform: translateX(0); }
+    .drawer-title {
+      font-size: 0.68rem; letter-spacing: 0.35em; color: var(--caramel);
+      margin-bottom: 18px;
+    }
+    .drawer-nav { list-style: none; }
+    .drawer-nav li { border-bottom: 1px solid var(--border); }
+    .drawer-nav a {
+      display: block; padding: 18px 0; color: var(--mocha);
+      font-size: 0.96rem; letter-spacing: 0.08em;
+      transition: color 0.2s ease, padding-left 0.2s ease;
+    }
+    .drawer-nav a:hover { color: var(--caramel); padding-left: 6px; }
+
+    /* ===== PAGE HERO ===== */
+    .page-hero {
+      padding: 120px 40px 72px;
+      text-align: center;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: 'COMPANY';
+      position: absolute;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(60px, 12vw, 140px);
+      font-weight: 700;
+      color: rgba(28,36,56,0.04);
+      letter-spacing: 0.1em;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .page-eyebrow { font-size: 0.65rem; letter-spacing: 0.4em; color: var(--caramel); font-weight: 400; margin-bottom: 16px; text-transform: uppercase; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400; color: var(--mocha); letter-spacing: 0.05em; margin-bottom: 24px; }
+    .divider { width: 40px; height: 1px; background: var(--gold); margin: 0 auto 28px; }
+    .page-hero-sub { font-size: 0.875rem; color: var(--coffee); line-height: 2; }
+
+    /* ===== BREADCRUMB ===== */
+    .breadcrumb {
+      padding: 14px 40px; background: var(--ivory);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.68rem; letter-spacing: 0.1em; color: #B0BEC8;
+    }
+    .breadcrumb a { color: var(--caramel); }
+    .breadcrumb span { margin: 0 8px; }
+
+    /* ===== COMPANY SECTION ===== */
+    .company-section { background: var(--ivory); padding: 96px 40px; }
+    .company-inner { max-width: 720px; margin: 0 auto; }
+    .section-eyebrow { font-size: 0.62rem; letter-spacing: 0.5em; color: var(--caramel); font-weight: 400; text-transform: uppercase; margin-bottom: 16px; }
+    .section-divider { width: 32px; height: 1px; background: var(--gold); margin-bottom: 0; }
+    .company-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 0.88rem; color: var(--coffee); line-height: 2;
+      margin-top: 48px;
+    }
+    .company-table tr { border-bottom: 1px solid var(--border); }
+    .company-table tr:first-child { border-top: 1px solid var(--border); }
+    .company-table th {
+      font-weight: 400; font-size: 0.72rem; letter-spacing: 0.2em;
+      color: var(--caramel); text-align: left;
+      padding: 20px 24px 20px 0; white-space: nowrap; vertical-align: top; width: 160px;
+    }
+    .company-table td { padding: 20px 0; vertical-align: top; }
+    .company-philosophy {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 1rem; color: var(--mocha); line-height: 2;
+    }
+
+    /* ===== FOOTER ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+    footer { background: var(--mocha); padding: 72px 0 24px; }
+    .footer-logo-img { filter: brightness(0) invert(1); opacity: 0.85; height: 24px; }
+    .footer-inner {
+      display: grid; grid-template-columns: 260px 1fr 1fr;
+      gap: 64px; padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 32px;
+    }
+    .footer-brand .nav-logo { margin-bottom: 20px; display: flex; }
+    .footer-brand .nav-logo span { color: var(--gold); }
+    .footer-tagline { font-family: 'Shippori Mincho', serif; font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 2.2; margin-bottom: 28px; }
+    .footer-sns { display: flex; gap: 16px; }
+    .footer-sns a { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; transition: border-color 0.2s; }
+    .footer-sns a:hover { border-color: var(--gold); }
+    .footer-sns svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.6); fill: none; }
+    .footer-nav-title { font-size: 0.65rem; letter-spacing: 0.3em; color: var(--gold); font-weight: 400; margin-bottom: 20px; }
+    .footer-nav-list { list-style: none; }
+    .footer-nav-list li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .footer-nav-list a { display: block; font-size: 0.78rem; color: rgba(255,255,255,0.5); padding: 10px 0; letter-spacing: 0.1em; transition: color 0.2s; }
+    .footer-nav-list a:hover { color: white; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; }
+    .footer-required-links {
+      margin-top: 18px; padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex; flex-wrap: wrap; gap: 8px 14px;
+      justify-content: flex-end;
+    }
+    .footer-required-links a {
+      font-size: 0.62rem; color: rgba(255,255,255,0.35); letter-spacing: 0.08em;
+    }
+    .footer-required-links a:hover { color: rgba(255,255,255,0.65); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 860px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-required-links { justify-content: flex-start; }
+    }
+    @media (max-width: 640px) {
+      header { padding: 0 20px; height: 60px; }
+      .page-hero { padding: 80px 24px 48px; }
+      .breadcrumb { padding: 10px 16px; }
+      .company-section { padding: 56px 20px; }
+      .company-table th { width: 100px; font-size: 0.65rem; padding-right: 12px; }
+      .company-table td { font-size: 0.82rem; }
+      .container { padding: 0 20px; }
+      footer { padding-top: 56px; }
+      .drawer-menu { width: min(88vw, 320px); padding: 84px 24px 28px; }
+    }
+  </style>
+</head>
+<body {BackgroundTag}>
+
+<header>
+  <div class="nav-left">
+    <button class="hamburger" id="hamburgerBtn" aria-label="メニュー" aria-expanded="false" aria-controls="drawerMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <a class="nav-logo" href="./index.html">
+    <img src="https://baseec-img-mng.akamaized.net/images/user/logo/deee620bfeed32bd8f8d4b5663a56e0f.jpg" alt="DOUBLE COFFEE" class="nav-logo-img">
+    <span>香りで旅するコーヒー</span>
+  </a>
+  <div class="nav-right">
+    <a class="nav-cart" href="{CartPageURL}" aria-label="カート">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.1 17 7 17h11v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H18c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0022.46 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+    </a>
+  </div>
+</header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer-menu" id="drawerMenu" aria-hidden="true">
+  <p class="drawer-title">MENU</p>
+  <ul class="drawer-nav">
+    <li><a href="./index.html">Home</a></li>
+    <li><a href="./about-first.html">はじめての方へ</a></li>
+    <li><a href="./choose-coffee.html">コーヒーを選ぶ</a></li>
+    <li><a href="./subscription.html">定期便</a></li>
+    <li><a href="./about.html">About us</a></li>
+  </ul>
+</aside>
+
+<div style="display:none;">{BASEMenuTag}{LogoTag}{ItemAttentionTag}</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <p class="page-eyebrow">COMPANY</p>
+  <h1>企業概要</h1>
+  <div class="divider"></div>
+  <p class="page-hero-sub">ドゥーブル・アッシュ株式会社</p>
+</section>
+
+<div class="breadcrumb">
+  <a href="./index.html">HOME</a>
+  <span>›</span>
+  <a href="./about.html">ABOUT US</a>
+  <span>›</span>
+  企業概要
+</div>
+
+<!-- COMPANY INFO -->
+<section class="company-section">
+  <div class="company-inner">
+    <p class="section-eyebrow">COMPANY INFO</p>
+    <div class="section-divider"></div>
+    <table class="company-table">
+      <tr>
+        <th>社名</th>
+        <td>
+          ドゥーブル・アッシュ株式会社<br>
+          <span style="font-size:0.8em; color: var(--mocha);">（Double H, Inc.）</span>
+        </td>
+      </tr>
+      <tr>
+        <th>役員</th>
+        <td>代表取締役　細野彩良</td>
+      </tr>
+      <tr>
+        <th>本社所在地</th>
+        <td>〒810-0022 福岡市中央区薬院4-13-61-804</td>
+      </tr>
+      <tr>
+        <th>店屋町オフィス</th>
+        <td>〒812-0025 福岡市博多区店屋町6-6-301</td>
+      </tr>
+      <tr>
+        <th>事業内容</th>
+        <td>
+          コーヒー豆の販売（含：通信販売）<br>
+          コーヒー豆の卸売<br>
+          その他、食料品、日用雑貨品等の企画、販売、輸入、及びOEM
+        </td>
+      </tr>
+      <tr>
+        <th>経営理念</th>
+        <td class="company-philosophy">
+          一杯で、心に余白を。
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<div id="base-pages-wrapper" style="display:none;">
+  {ContactContentsTag}{PrivacyContentsTag}{LawContentsTag}
+</div>
+<div style="display:none;">
+  <a href="{ContactPageURL}">お問い合わせ</a>
+  <a href="{PrivacyPageURL}">プライバシーポリシー</a>
+  <a href="{LawPageURL}">特定商取引法に基づく表記</a>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="nav-logo">
+          <img src="https://baseec-img-mng.akamaized.net/images/user/logo/deee620bfeed32bd8f8d4b5663a56e0f.jpg" alt="DOUBLE COFFEE" class="nav-logo-img footer-logo-img">
+          <span>香りで旅するコーヒー</span>
+        </span>
+        <p class="footer-tagline">
+          一杯で、日常が旅になる。<br>
+          香りで気持ちを整える、<br>
+          フレーバーコーヒーブランド。
+        </p>
+        <div class="footer-sns">
+          <a href="https://www.instagram.com/doublecoffee_online/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="rgba(255,255,255,0.6)" stroke="none"/></svg>
+          </a>
+          <a href="https://line.me/R/ti/p/@395houqz" target="_blank" rel="noopener" aria-label="LINE">
+            <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 3C7 3 3 6.6 3 11c0 2.5 1.3 4.8 3.3 6.3v2.7l2.8-1.5c.9.2 1.9.3 2.9.3 5 0 9-3.6 9-8S17 3 12 3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <p class="footer-nav-title">SHOP</p>
+        <ul class="footer-nav-list">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./about-first.html">はじめての方へ</a></li>
+          <li><a href="./choose-coffee.html">コーヒーを選ぶ</a></li>
+          <li><a href="./subscription.html">定期便</a></li>
+          <li><a href="./about.html">About us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-nav-title">INFO</p>
+        <ul class="footer-nav-list">
+          <li><a href="https://doublecoffee.official.ec/p/00003">OEMと卸販売</a></li>
+          <li><a href="https://thebase.com/inquiry/doublecoffee-official-ec?_gl=1*1d286ao*_gcl_au*MjE3MTY3ODA4LjE3NzcxODUwNjg.*_ga*MTQyNDQ3Mjc2Ny4xNzc3MTg1MDY4*_ga_574HL6KGKQ*czE3NzgzMTkxMTMkbzM0JGcxJHQxNzc4MzIxMzUzJGoxNiRsMCRoMA..">お問い合わせ</a></li>
+          <li><a href="./company.html">会社概要</a></li>
+          <li><a href="https://doublecoffee.official.ec/p/00005">ご利用規約</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 DOUBLE COFFEE All Rights Reserved.</p>
+      <p class="footer-copy">{IllegalReportTag} | Powered by BASE</p>
+    </div>
+
+    <div class="footer-required-links">
+      <a href="{PrivacyPageURL}">プライバシーポリシー</a>
+      <a href="{LawPageURL}">特定商取引法に基づく表記</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const drawerMenu = document.getElementById('drawerMenu');
+  const drawerOverlay = document.getElementById('drawerOverlay');
+  const drawerLinks = drawerMenu.querySelectorAll('a');
+
+  function openMenu() {
+    drawerMenu.classList.add('is-open');
+    drawerOverlay.classList.add('is-open');
+    hamburgerBtn.classList.add('is-active');
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
+    hamburgerBtn.setAttribute('aria-label', 'メニューを閉じる');
+    drawerMenu.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('menu-open');
+  }
+
+  function closeMenu() {
+    drawerMenu.classList.remove('is-open');
+    drawerOverlay.classList.remove('is-open');
+    hamburgerBtn.classList.remove('is-active');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    hamburgerBtn.setAttribute('aria-label', 'メニュー');
+    drawerMenu.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('menu-open');
+  }
+
+  hamburgerBtn.addEventListener('click', function () {
+    if (drawerMenu.classList.contains('is-open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  drawerOverlay.addEventListener('click', closeMenu);
+  drawerLinks.forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && drawerMenu.classList.contains('is-open')) {
+      closeMenu();
+    }
+  });
+</script>
+
+</body>
+</html>

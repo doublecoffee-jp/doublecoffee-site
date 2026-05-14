@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>コーヒーを選ぶ | DOUBLE COFFEE</title>
+  {FaviconTag}
+  {GoogleAnalyticsTag}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Shippori+Mincho:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: 'Shippori Mincho', sans-serif; font-weight: 300; color: #1C2438; background: #F7FBFD; line-height: 1.8; }
+    body.menu-open { overflow: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; object-fit: cover; }
+
+    :root {
+      --cream:      #F4F0E8;
+      --ivory:      #F7FBFD;
+      --mocha:      #1C2438;
+      --coffee:     #3C4858;
+      --caramel:    #B87830;
+      --gold:       #BFA040;
+      --sage:       #7A9EA4;
+      --khaki:      #B0BEC8;
+      --pale-green: #E6F0F5;
+      --border:     #D4E0E8;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 130;
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      padding: 0 24px; height: 64px;
+      background: rgb(250, 250, 247);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-left { grid-column: 1; display: flex; align-items: center; }
+    .nav-right { grid-column: 3; display: flex; align-items: center; justify-content: flex-end; }
+    .nav-cart { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; color: var(--mocha); }
+    .nav-cart svg { width: 22px; height: 22px; fill: currentColor; stroke: none; }
+    .nav-logo { grid-column: 2; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .nav-logo-img { height: 28px; width: auto; display: block; object-fit: contain; mix-blend-mode: multiply; }
+    .nav-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.65rem; color: var(--caramel); letter-spacing: 0.3em; }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; position: relative; z-index: 140; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--mocha); transition: transform 0.25s ease, opacity 0.25s ease; }
+    .hamburger.is-active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.is-active span:nth-child(2) { opacity: 0; }
+    .hamburger.is-active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ===== DRAWER MENU ===== */
+    .drawer-overlay {
+      position: fixed; inset: 0; background: rgba(28,36,56,0.32);
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 110;
+    }
+    .drawer-overlay.is-open {
+      opacity: 1; visibility: visible; pointer-events: auto;
+    }
+    .drawer-menu {
+      position: fixed; top: 0; left: 0; bottom: 0; width: min(82vw, 340px);
+      background: rgba(247,251,253,0.98); backdrop-filter: blur(14px);
+      border-right: 1px solid var(--border);
+      transform: translateX(-100%); transition: transform 0.32s ease;
+      z-index: 120; padding: 92px 28px 32px;
+      box-shadow: 12px 0 36px rgba(28,36,56,0.08);
+    }
+    .drawer-menu.is-open { transform: translateX(0); }
+    .drawer-title {
+      font-size: 0.68rem; letter-spacing: 0.35em; color: var(--caramel);
+      margin-bottom: 18px;
+    }
+    .drawer-nav { list-style: none; }
+    .drawer-nav li { border-bottom: 1px solid var(--border); }
+    .drawer-nav a {
+      display: block; padding: 18px 0; color: var(--mocha);
+      font-size: 0.96rem; letter-spacing: 0.08em;
+      transition: color 0.2s ease, padding-left 0.2s ease;
+    }
+    .drawer-nav a:hover { color: var(--caramel); padding-left: 6px; }
+
+    /* ===== COMMON ===== */
+    .section-label { font-size: 0.65rem; letter-spacing: 0.4em; color: var(--caramel); font-weight: 400; margin-bottom: 16px; text-transform: uppercase; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: var(--mocha); line-height: 1.2; margin-bottom: 20px; }
+    .divider { width: 40px; height: 1px; background: var(--gold); margin-bottom: 24px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+    /* ===== PAGE HERO ===== */
+    .page-hero {
+      padding: 120px 40px 56px;
+      background: var(--cream);
+      text-align: center;
+    }
+    .page-hero .divider { margin: 0 auto 24px; }
+    .page-hero .section-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 12px; }
+    .page-hero p { font-size: 0.875rem; color: var(--coffee); line-height: 2; }
+
+    /* ===== BREADCRUMB ===== */
+    .breadcrumb {
+      padding: 14px 40px; background: var(--ivory);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.68rem; letter-spacing: 0.1em; color: var(--khaki);
+    }
+    .breadcrumb a { color: var(--caramel); }
+    .breadcrumb span { margin: 0 8px; }
+
+    /* ===== MOOD FILTER ===== */
+    .mood-filter-bar {
+      position: sticky; top: 64px; z-index: 50;
+      background: rgba(247,251,253,0.96); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+    }
+    .mood-filter-inner {
+      display: flex; align-items: center; gap: 0;
+      overflow-x: auto; scrollbar-width: none;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .mood-filter-inner::-webkit-scrollbar { display: none; }
+    .filter-btn {
+      flex-shrink: 0;
+      padding: 16px 20px;
+      font-size: 0.68rem; letter-spacing: 0.22em;
+      color: var(--khaki); font-weight: 400;
+      background: none; border: none; cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    .filter-btn:hover { color: var(--caramel); }
+    .filter-btn.active { color: var(--mocha); border-bottom-color: var(--gold); }
+    .filter-sep { width: 1px; height: 16px; background: var(--border); flex-shrink: 0; margin: 0 4px; }
+
+    /* ===== PRODUCT GRID SECTION ===== */
+    .products-section {
+      padding: 56px 0 96px;
+      background: var(--ivory);
+    }
+    .section-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 300;
+      letter-spacing: 0.2em; color: var(--coffee);
+    }
+    .product-count { font-size: 0.7rem; color: var(--khaki); letter-spacing: 0.1em; }
+
+    /* Flavor group heading */
+    .flavor-group { margin-bottom: 56px; }
+    .flavor-group-title {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .flavor-group-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-style: italic; font-weight: 300;
+      color: var(--mocha);
+    }
+    .flavor-group-jp { font-size: 0.78rem; color: var(--caramel); letter-spacing: 0.15em; }
+    .flavor-mood-tag {
+      font-size: 0.58rem; letter-spacing: 0.25em;
+      color: white; background: var(--mocha);
+      padding: 4px 10px; font-weight: 400;
+    }
+    .flavor-group-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    /* Product card */
+    .product-card {
+      background: white;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .product-card:hover { box-shadow: 0 8px 32px rgba(28,36,56,0.1); transform: translateY(-3px); }
+    .product-card-img {
+      aspect-ratio: 4/3;
+      overflow: hidden; background: #C0D4E0;
+    }
+    .product-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .product-card:hover .product-card-img img { transform: scale(1.04); }
+    .product-card-body { padding: 20px 20px 24px; }
+    .product-type-badge {
+      display: inline-block;
+      font-size: 0.58rem; letter-spacing: 0.2em;
+      color: var(--caramel); border: 1px solid var(--caramel);
+      padding: 3px 10px; margin-bottom: 12px;
+    }
+    .product-type-badge.dip { color: var(--sage); border-color: var(--sage); }
+    .product-type-badge.assort { color: var(--gold); border-color: var(--gold); }
+    .product-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 300;
+      color: var(--mocha); margin-bottom: 4px;
+    }
+    .product-card-name-jp { font-size: 0.75rem; color: var(--coffee); margin-bottom: 10px; }
+    .product-card-desc {
+      font-size: 0.78rem; color: var(--coffee);
+      line-height: 1.75; margin-bottom: 16px;
+    }
+    .product-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 16px; border-top: 1px solid var(--border);
+    }
+    .product-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: var(--mocha);
+    }
+    .product-price span { font-size: 0.68rem; font-family: 'Shippori Mincho', sans-serif; color: var(--khaki); }
+    .product-link {
+      font-size: 0.68rem; letter-spacing: 0.18em;
+      color: var(--caramel); border-bottom: 1px solid var(--caramel);
+      padding-bottom: 1px; transition: opacity 0.2s;
+    }
+    .product-link:hover { opacity: 0.65; }
+
+    /* Assort card */
+    .assort-section { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); }
+    .assort-card {
+      display: grid; grid-template-columns: 320px 1fr;
+      background: white; border: 1px solid var(--border);
+      overflow: hidden; transition: box-shadow 0.3s;
+    }
+    .assort-card:hover { box-shadow: 0 8px 32px rgba(28,36,56,0.1); }
+    .assort-card-img { overflow: hidden; background: #C0D4E0; }
+    .assort-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+    .assort-card-body { padding: 48px; display: flex; flex-direction: column; justify-content: center; }
+    .assort-card-body .section-label { margin-bottom: 8px; }
+    .assort-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 300;
+      color: var(--mocha); margin-bottom: 4px;
+    }
+    .assort-card-jp { font-size: 0.85rem; color: var(--caramel); letter-spacing: 0.12em; margin-bottom: 20px; }
+    .assort-card-desc { font-size: 0.875rem; color: var(--coffee); line-height: 2; margin-bottom: 28px; }
+    .assort-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; color: var(--mocha); margin-bottom: 24px;
+    }
+    .assort-price span { font-size: 0.7rem; font-family: 'Shippori Mincho', sans-serif; color: var(--khaki); }
+    .btn-primary {
+      display: inline-block; padding: 14px 40px;
+      background: var(--mocha); color: white;
+      font-size: 0.72rem; letter-spacing: 0.25em; font-weight: 400;
+      transition: background 0.25s; align-self: flex-start;
+    }
+    .btn-primary:hover { background: var(--coffee); }
+
+    /* hidden by filter */
+    .flavor-group.hidden { display: none; }
+
+    /* ===== FOOTER ===== */
+    footer { background: var(--mocha); padding: 72px 0 24px; }
+    .footer-logo-img { filter: brightness(0) invert(1); opacity: 0.85; height: 24px; }
+    .footer-inner {
+      display: grid; grid-template-columns: 260px 1fr 1fr;
+      gap: 64px; padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 32px;
+    }
+    .footer-brand .nav-logo { margin-bottom: 20px; display: flex; }
+    .footer-brand .nav-logo span { color: var(--gold); }
+    .footer-tagline { font-family: 'Shippori Mincho', serif; font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 2.2; margin-bottom: 28px; }
+    .footer-sns { display: flex; gap: 16px; }
+    .footer-sns a { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; transition: border-color 0.2s; }
+    .footer-sns a:hover { border-color: var(--gold); }
+    .footer-sns svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.6); fill: none; }
+    .footer-nav-title { font-size: 0.65rem; letter-spacing: 0.3em; color: var(--gold); font-weight: 400; margin-bottom: 20px; }
+    .footer-nav-list { list-style: none; }
+    .footer-nav-list li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .footer-nav-list a { display: block; font-size: 0.78rem; color: rgba(255,255,255,0.5); padding: 10px 0; letter-spacing: 0.1em; transition: color 0.2s; }
+    .footer-nav-list a:hover { color: white; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; }
+    .footer-required-links {
+      margin-top: 18px; padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex; flex-wrap: wrap; gap: 8px 14px;
+      justify-content: flex-end;
+    }
+    .footer-required-links a {
+      font-size: 0.62rem; color: rgba(255,255,255,0.35); letter-spacing: 0.08em;
+    }
+    .footer-required-links a:hover { color: rgba(255,255,255,0.65); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .flavor-group-cards { grid-template-columns: repeat(2, 1fr); }
+      .assort-card { grid-template-columns: 240px 1fr; }
+      .assort-card-body { padding: 36px; }
+    }
+
+    @media (max-width: 860px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-required-links { justify-content: flex-start; }
+    }
+
+    @media (max-width: 640px) {
+      body { line-height: 1.6; }
+      header { padding: 0 20px; height: 60px; }
+      .mood-filter-bar { top: 60px; padding: 0 12px; }
+      .filter-btn { padding: 12px 14px; font-size: 0.64rem; }
+      .page-hero { padding: 68px 20px 24px; }
+      .page-hero p { font-size: clamp(0.72rem, 3.5vw, 0.875rem); line-height: 1.6; white-space: nowrap; }
+      .breadcrumb { padding: 10px 16px; }
+      .container { padding: 0 16px; }
+      .products-section { padding: 28px 0 48px; }
+      .section-header { flex-direction: column; gap: 2px; margin-bottom: 20px; }
+      .flavor-group { margin-bottom: 36px; }
+      .flavor-group-title { margin-bottom: 14px; padding-bottom: 12px; }
+      .flavor-group-cards { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .product-card-body { padding: 10px 10px 12px; }
+      .product-card-name { font-size: 0.88rem; }
+      .product-card-name-jp { font-size: 0.6rem; margin-bottom: 4px; }
+      .product-type-badge { margin-bottom: 8px; }
+      .product-card-desc { font-size: 0.65rem; line-height: 1.5; margin-bottom: 8px; }
+      .product-card-footer { padding-top: 8px; }
+      .product-price { font-size: 0.95rem; }
+      .product-link { font-size: 0.58rem; }
+      .assort-section { margin-top: 36px; padding-top: 28px; }
+      .assort-card { grid-template-columns: 1fr; }
+      .assort-card-img { aspect-ratio: 16/9; }
+      .assort-card-body { padding: 20px 16px; }
+      .assort-card-desc { line-height: 1.7; margin-bottom: 16px; }
+      footer { padding-top: 56px; }
+      .drawer-menu { width: min(88vw, 320px); padding: 84px 24px 28px; }
+    }
+  </style>
+</head>
+<body {BackgroundTag}>
+
+<!-- HEADER -->
+<header>
+  <div class="nav-left">
+    <button class="hamburger" id="hamburgerBtn" aria-label="メニュー" aria-expanded="false" aria-controls="drawerMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <a class="nav-logo" href="./index.html">
+    <img src="https://baseec-img-mng.akamaized.net/images/user/logo/deee620bfeed32bd8f8d4b5663a56e0f.jpg" alt="DOUBLE COFFEE" class="nav-logo-img">
+    <span>香りで旅するコーヒー</span>
+  </a>
+  <div class="nav-right">
+    <a class="nav-cart" href="{CartPageURL}" aria-label="カート">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.1 17 7 17h11v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H18c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0022.46 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+    </a>
+  </div>
+</header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer-menu" id="drawerMenu" aria-hidden="true">
+  <p class="drawer-title">MENU</p>
+  <ul class="drawer-nav">
+    <li><a href="./index.html">Home</a></li>
+    <li><a href="./about-first.html">はじめての方へ</a></li>
+    <li><a href="./choose-coffee.html">コーヒーを選ぶ</a></li>
+    <li><a href="./subscription.html">定期便</a></li>
+    <li><a href="./about.html">About us</a></li>
+  </ul>
+</aside>
+
+<div style="display:none;">{BASEMenuTag}{LogoTag}{ItemAttentionTag}</div>
+
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <p class="section-label">SELECT COFFEE</p>
+  <div class="divider"></div>
+  <h1 class="section-title">コーヒーを選ぶ</h1>
+  <p>気分、フレーバー、スタイルから、あなたの一杯を。</p>
+</section>
+
+<div class="breadcrumb">
+  <a href="./index.html">HOME</a>
+  <span>›</span>
+  コーヒーを選ぶ
+</div>
+
+
+<!-- MOOD FILTER -->
+<div class="mood-filter-bar">
+  <div class="mood-filter-inner">
+    <button class="filter-btn active" data-filter="all">すべて</button>
+    <div class="filter-sep"></div>
+    <button class="filter-btn" data-filter="nonflavor">Pure</button>
+    <div class="filter-sep"></div>
+    <button class="filter-btn" data-filter="vanilla">Comfort</button>
+    <div class="filter-sep"></div>
+    <button class="filter-btn" data-filter="coconut">Refresh</button>
+    <div class="filter-sep"></div>
+    <button class="filter-btn" data-filter="hazelnut">Relax</button>
+    <div class="filter-sep"></div>
+    <button class="filter-btn" data-filter="butter">Rich</button>
+    <div class="filter-sep"></div>
+    <button class="filter-btn" data-filter="chili">Inner Heat</button>
+    <div class="filter-sep"></div>
+    <button class="filter-btn" data-filter="gift">ギフトセット</button>
+    <div class="filter-sep"></div>
+    <button class="filter-btn" data-filter="tools">Coffee Lifestyle</button>
+    <div class="filter-sep"></div>
+    <button class="filter-btn" data-filter="bulk">まとめ買い</button>
+  </div>
+</div>
+
+
+<!-- PRODUCTS -->
+<section class="products-section">
+  <div class="container">
+
+    <div class="section-header">
+      <h2>全商品ラインナップ</h2>
+      <span class="product-count" id="countLabel">16点</span>
+    </div>
+
+    <!-- Non Flavor -->
+    <div class="flavor-group" data-flavor="nonflavor" id="nonflavor">
+      <div class="flavor-group-title">
+        <span class="flavor-group-name">Non Flavor</span>
+        <span class="flavor-group-jp">ノンフレーバー</span>
+        <span class="flavor-mood-tag">PURE</span>
+      </div>
+      <div class="flavor-group-cards">
+        <a class="product-card" href="https://doublecoffee.official.ec/items/114822849" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://baseec-img-mng.akamaized.net/images/item/origin/370dbdbd52c6d06ab4f789370bc3c712.png" alt="ノンフレーバー ディップバッグ">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge dip">DIP BAG · 5袋入り</span>
+            <p class="product-card-name">Non Flavor</p>
+            <p class="product-card-name-jp">ノンフレーバー ディップバッグ</p>
+            <p class="product-card-desc">豆本来のクリーンな香りと澄んだ後味。コーヒーそのものを味わいたいときに。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥1,250<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+        <a class="product-card" href="https://doublecoffee.official.ec/items/114816835" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://basefile.akamaized.net/doublecoffee-official-ec/69ff15032498a/brend-coffee-gift-flavored-coffee-dripcoffee.png" alt="ノンフレーバー コーヒー豆">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge">コーヒー豆 · 粉</span>
+            <p class="product-card-name">Non Flavor</p>
+            <p class="product-card-name-jp">ノンフレーバー コーヒー豆/粉</p>
+            <p class="product-card-desc">お好みの器具で、豆の個性を丁寧に引き出す。余計な要素なし、ピュアな一杯を。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥1,880<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Vanilla -->
+    <div class="flavor-group" data-flavor="vanilla" id="vanilla">
+      <div class="flavor-group-title">
+        <span class="flavor-group-name">Vanilla</span>
+        <span class="flavor-group-jp">バニラ</span>
+        <span class="flavor-mood-tag">COMFORT</span>
+      </div>
+      <div class="flavor-group-cards">
+        <a class="product-card" href="https://doublecoffee.official.ec/items/114822123" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://basefile.akamaized.net/doublecoffee-official-ec/69fff22c90f96/vanilla-dip-style-coffee-bag-gift-set.png" alt="バニラ ディップバッグ">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge dip">DIP BAG · 5袋入り</span>
+            <p class="product-card-name">Vanilla</p>
+            <p class="product-card-name-jp">バニラ ディップバッグ</p>
+            <p class="product-card-desc">やわらかく甘い香りが気持ちをほぐしてくれる。疲れた日の夜に寄り添う一杯。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥1,250<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+        <a class="product-card" href="https://doublecoffee.official.ec/items/114816071" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://basefile.akamaized.net/doublecoffee-official-ec/69ff14f115242/vanilla-coffee-gift-flavored-coffee-dripcoffee.png" alt="バニラ コーヒー豆">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge">コーヒー豆 · 粉</span>
+            <p class="product-card-name">Vanilla</p>
+            <p class="product-card-name-jp">バニラ コーヒー豆/粉</p>
+            <p class="product-card-desc">お好みの器具で淹れる、豆・粉タイプ。バニラの香りをゆっくりと引き出して。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥1,880<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Coconut -->
+    <div class="flavor-group" data-flavor="coconut" id="coconut">
+      <div class="flavor-group-title">
+        <span class="flavor-group-name">Coconut</span>
+        <span class="flavor-group-jp">ココナッツ</span>
+        <span class="flavor-mood-tag">REFRESH</span>
+      </div>
+      <div class="flavor-group-cards">
+        <a class="product-card" href="https://doublecoffee.official.ec/items/114822519" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://basefile.akamaized.net/doublecoffee-official-ec/69fff2104e200/coconut-dip-style-coffee-bag-gift-set.png" alt="ココナッツ ディップバッグ">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge dip">DIP BAG · 5袋入り</span>
+            <p class="product-card-name">Coconut</p>
+            <p class="product-card-name-jp">ココナッツ ディップバッグ</p>
+            <p class="product-card-desc">南国を思わせる軽やかな抜け感。気分転換したいとき、旅に出たいとき。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥1,250<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+        <a class="product-card" href="https://doublecoffee.official.ec/items/114816486" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://basefile.akamaized.net/doublecoffee-official-ec/69ff0d5be8a53/coconut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ココナッツ コーヒー豆">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge">コーヒー豆 · 粉</span>
+            <p class="product-card-name">Coconut</p>
+            <p class="product-card-name-jp">ココナッツ コーヒー豆/粉</p>
+            <p class="product-card-desc">お好みの器具で淹れる、豆・粉タイプ。ひと口目から、南国の香りが広がります。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥1,880<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Hazelnut -->
+    <div class="flavor-group" data-flavor="hazelnut" id="hazelnut">
+      <div class="flavor-group-title">
+        <span class="flavor-group-name">Hazelnut</span>
+        <span class="flavor-group-jp">ヘーゼルナッツ</span>
+        <span class="flavor-mood-tag">RELAX</span>
+      </div>
+      <div class="flavor-group-cards">
+        <a class="product-card" href="https://doublecoffee.official.ec/items/114817871" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://baseec-img-mng.akamaized.net/images/item/origin/35e5dc5ba91ed7c90bf4885ee6480a66.png" alt="ヘーゼルナッツ ディップバッグ">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge dip">DIP BAG · 5袋入り</span>
+            <p class="product-card-name">Hazelnut</p>
+            <p class="product-card-name-jp">ヘーゼルナッツ ディップバッグ</p>
+            <p class="product-card-desc">器具不要。カップにセットしてお湯を注ぐだけ。香ばしさとコーヒーの苦味が溶け合う一杯。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥1,250<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+        <a class="product-card" href="https://doublecoffee.official.ec/items/114815099" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://basefile.akamaized.net/doublecoffee-official-ec/69ff1a7b80e2e/hazelnut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ヘーゼルナッツ コーヒー豆">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge">コーヒー豆 · 粉</span>
+            <p class="product-card-name">Hazelnut</p>
+            <p class="product-card-name-jp">ヘーゼルナッツ コーヒー豆/粉</p>
+            <p class="product-card-desc">お好みのコーヒー器具で楽しめる、豆・粉タイプ。フレーバーをじっくり引き出した一杯に。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥1,880<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Butter -->
+    <div class="flavor-group" data-flavor="butter" id="butter">
+      <div class="flavor-group-title">
+        <span class="flavor-group-name">Butter</span>
+        <span class="flavor-group-jp">バター</span>
+        <span class="flavor-mood-tag">RICH</span>
+      </div>
+      <div class="flavor-group-cards">
+        <a class="product-card" href="https://doublecoffee.official.ec/items/114821502" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://baseec-img-mng.akamaized.net/images/item/origin/05410b91e6067197640b8795e08adfad.png" alt="バター ディップバッグ">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge dip">DIP BAG · 5袋入り</span>
+            <p class="product-card-name">Butter</p>
+            <p class="product-card-name-jp">バター ディップバッグ</p>
+            <p class="product-card-desc">まろやかなコクと深い余韻。じんわりと気持ちを満たしてくれる贅沢な一杯。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥1,250<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+        <a class="product-card" href="https://doublecoffee.official.ec/items/114815647" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://basefile.akamaized.net/doublecoffee-official-ec/69ff1a8c09ff7/butter-coffee-gift-flavored-coffee-dripcoffee.jpg" alt="バター コーヒー豆">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge">コーヒー豆 · 粉</span>
+            <p class="product-card-name">Butter</p>
+            <p class="product-card-name-jp">バター コーヒー豆/粉</p>
+            <p class="product-card-desc">お好みの器具でじっくり淹れる、豆・粉タイプ。バターのコクを余すところなく楽しめます。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥1,880<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 唐辛子コーヒー -->
+    <div class="flavor-group" data-flavor="chili" id="chili">
+      <div class="flavor-group-title">
+        <span class="flavor-group-name">Inner Heat</span>
+        <span class="flavor-group-jp">唐辛子コーヒー</span>
+        <span class="flavor-mood-tag" style="background:var(--rose,#C07868);">NEW · SPICY</span>
+      </div>
+      <div class="flavor-group-cards">
+        <a class="product-card" href="https://doublecoffee.official.ec/items/117325783" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://basefile.akamaized.net/doublecoffee-official-ec/69fff04d690c7/hot-chilli-dip-style-coffee-bag-gift-set.jpeg" alt="唐辛子入りコーヒー">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge dip">NEW</span>
+            <p class="product-card-name">Chili Coffee</p>
+            <p class="product-card-name-jp">唐辛子入りコーヒー</p>
+            <p class="product-card-desc">ピリッとした刺激と深いコーヒーの香りが交差する、新感覚の一杯。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥1,250<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- ギフトセット -->
+    <div class="flavor-group" data-flavor="gift" id="gift">
+      <div class="flavor-group-title">
+        <span class="flavor-group-name">Gift Set</span>
+        <span class="flavor-group-jp">ギフトセット</span>
+        <span class="flavor-mood-tag" style="background:var(--gold);">GIFT</span>
+      </div>
+      <div class="flavor-group-cards">
+        <a class="product-card" href="https://doublecoffee.official.ec/items/126550760" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://basefile.akamaized.net/doublecoffee-official-ec/6a0449ebbd2b4/flavored-coffee-gift-package.png" alt="DoubleCoffeeギフトセット">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge assort">GIFT</span>
+            <p class="product-card-name">Gift Set</p>
+            <p class="product-card-name-jp">ギフトセット</p>
+            <p class="product-card-desc">大切な人へ贈る、DOUBLE COFFEEのギフトセット。香りで旅する体験をプレゼントに。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥5,940<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Coffee Lifestyle -->
+    <div class="flavor-group" data-flavor="tools" id="tools">
+      <div class="flavor-group-title">
+        <span class="flavor-group-name">Coffee Lifestyle</span>
+        <span class="flavor-group-jp">コーヒーのある暮らし</span>
+        <span class="flavor-mood-tag">TOOLS</span>
+      </div>
+      <div class="flavor-group-cards">
+        <a class="product-card" href="https://doublecoffee.official.ec/categories/7332550" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://basefile.akamaized.net/doublecoffee-official-ec/6a044a07f3c76/vietnamese-filter-and-cup-brown.png" alt="バッチャン焼きフィルター&カップ">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge">TOOLS</span>
+            <p class="product-card-name">コーヒーフィルター&カップ</p>
+            <p class="product-card-name-jp">コーヒーのある暮らし</p>
+            <p class="product-card-desc">DOUBLE COFFEEが厳選した、ベトナム名物バッチャン焼きによるフィルターとカップ。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥2,640<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- まとめ買い -->
+    <div class="flavor-group" data-flavor="bulk" id="bulk">
+      <div class="flavor-group-title">
+        <span class="flavor-group-name">Bulk Set</span>
+        <span class="flavor-group-jp">まとめ買い</span>
+        <span class="flavor-mood-tag" style="background:var(--coffee);">SAVE</span>
+      </div>
+      <div class="flavor-group-cards">
+        <a class="product-card" href="https://doublecoffee.official.ec/items/121703133" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://basefile.akamaized.net/doublecoffee-official-ec/6a044ad2406db/hazelnut-and-vanilla-flavored-coffee-200g.png" alt="ヘーゼルナッツ+バニラ 2種セット">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge">コーヒー豆 · 粉 · 2種セット</span>
+            <p class="product-card-name">2 Flavors Set</p>
+            <p class="product-card-name-jp">ヘーゼルナッツ + バニラ コーヒー豆/粉</p>
+            <p class="product-card-desc">2種の香りをまとめて。Hazelnut・Vanilla 各200g、豆または粉から選択。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥3,560<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+        <a class="product-card" href="https://doublecoffee.official.ec/items/114817357" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://basefile.akamaized.net/doublecoffee-official-ec/6a044a33e6c4b/hazelnut-flavored-coffee-4-packages.png" alt="ヘーゼルナッツ 4袋セット">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge">コーヒー豆 · 粉 · 4袋セット</span>
+            <p class="product-card-name">Hazelnut × 4</p>
+            <p class="product-card-name-jp">ヘーゼルナッツ コーヒー豆/粉 200g × 4袋</p>
+            <p class="product-card-desc">香ばしいヘーゼルナッツの香りをたっぷりと。切らさずに続けたい方のための4袋セット。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥6,720<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+        <a class="product-card" href="https://doublecoffee.official.ec/items/125901604" target="_blank" rel="noopener">
+          <div class="product-card-img">
+            <img src="https://basefile.akamaized.net/doublecoffee-official-ec/6a044a23f3c25/vanilla-flavored-coffee-4-packages.png" alt="バニラ 4袋セット">
+          </div>
+          <div class="product-card-body">
+            <span class="product-type-badge">コーヒー豆 · 粉 · 4袋セット</span>
+            <p class="product-card-name">Vanilla × 4</p>
+            <p class="product-card-name-jp">バニラ コーヒー豆/粉 200g × 4袋</p>
+            <p class="product-card-desc">やわらかい甘い香りを毎朝の習慣に。バニラフレーバー200gがたっぷり4袋入り。</p>
+            <div class="product-card-footer">
+              <p class="product-price">¥6,720<span>（税込）</span></p>
+              <span class="product-link">詳細を見る →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Assort Set -->
+    <div class="assort-section">
+      <div class="flavor-group-title" style="margin-bottom:24px;">
+        <span class="flavor-group-name" style="font-size:1.2rem;">はじめての方に</span>
+        <span class="flavor-mood-tag" style="background:var(--gold);">RECOMMEND</span>
+      </div>
+      <a class="assort-card" href="https://doublecoffee.official.ec/items/115376575" target="_blank" rel="noopener">
+        <div class="assort-card-img">
+          <img src="https://basefile.akamaized.net/doublecoffee-official-ec/69ff5eba4d221/flavored-coffee-assortment-set-dip-style-coffee.png" alt="5種アソートセット">
+        </div>
+        <div class="assort-card-body">
+          <p class="section-label">ASSORT SET</p>
+          <p class="assort-card-name">5 Flavors Assort</p>
+          <p class="assort-card-jp">5種フレーバーアソートセット</p>
+          <p class="assort-card-desc">
+            Hazelnut · Vanilla · Coconut · Butter · Non Flavor<br>
+            5種のフレーバーがすべて揃ったアソートセット。<br>
+            どれが「自分の一杯」か、試しながら見つけられます。
+          </p>
+          <p class="assort-price">¥1,250<span>（税込・送料別）</span></p>
+          <span class="btn-primary">アソートセットを見る</span>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- BASE必須コンテンツ -->
+<div id="base-pages-wrapper" style="display:none;">
+  {ContactContentsTag}{PrivacyContentsTag}{LawContentsTag}
+</div>
+<div style="display:none;">
+  <a href="{ContactPageURL}">お問い合わせ</a>
+  <a href="{PrivacyPageURL}">プライバシーポリシー</a>
+  <a href="{LawPageURL}">特定商取引法に基づく表記</a>
+</div>
+
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="nav-logo">
+          <img src="https://baseec-img-mng.akamaized.net/images/user/logo/deee620bfeed32bd8f8d4b5663a56e0f.jpg" alt="DOUBLE COFFEE" class="nav-logo-img footer-logo-img">
+          <span>香りで旅するコーヒー</span>
+        </span>
+        <p class="footer-tagline">
+          一杯で、日常が旅になる。<br>
+          香りで気持ちを整える、<br>
+          フレーバーコーヒーブランド。
+        </p>
+        <div class="footer-sns">
+          <a href="https://www.instagram.com/doublecoffee_online/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="rgba(255,255,255,0.6)" stroke="none"/></svg>
+          </a>
+          <a href="https://line.me/R/ti/p/@395houqz" target="_blank" rel="noopener" aria-label="LINE">
+            <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 3C7 3 3 6.6 3 11c0 2.5 1.3 4.8 3.3 6.3v2.7l2.8-1.5c.9.2 1.9.3 2.9.3 5 0 9-3.6 9-8S17 3 12 3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <p class="footer-nav-title">SHOP</p>
+        <ul class="footer-nav-list">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./about-first.html">はじめての方へ</a></li>
+          <li><a href="./choose-coffee.html">コーヒーを選ぶ</a></li>
+          <li><a href="./subscription.html">定期便</a></li>
+          <li><a href="./about.html">About us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-nav-title">INFO</p>
+        <ul class="footer-nav-list">
+          <li><a href="https://doublecoffee.official.ec/p/00003">OEMと卸販売</a></li>
+          <li><a href="https://thebase.com/inquiry/doublecoffee-official-ec?_gl=1*1d286ao*_gcl_au*MjE3MTY3ODA4LjE3NzcxODUwNjg.*_ga*MTQyNDQ3Mjc2Ny4xNzc3MTg1MDY4*_ga_574HL6KGKQ*czE3NzgzMTkxMTMkbzM0JGcxJHQxNzc4MzIxMzUzJGoxNiRsMCRoMA..">お問い合わせ</a></li>
+          <li><a href="./company.html">会社概要</a></li>
+          <li><a href="https://doublecoffee.official.ec/p/00005">ご利用規約</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 DOUBLE COFFEE All Rights Reserved.</p>
+      <p class="footer-copy">{IllegalReportTag} | Powered by BASE</p>
+    </div>
+
+    <div class="footer-required-links">
+      <a href="{PrivacyPageURL}">プライバシーポリシー</a>
+      <a href="{LawPageURL}">特定商取引法に基づく表記</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // drawer nav
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const drawerMenu = document.getElementById('drawerMenu');
+  const drawerOverlay = document.getElementById('drawerOverlay');
+  const drawerLinks = drawerMenu.querySelectorAll('a');
+
+  function openMenu() {
+    drawerMenu.classList.add('is-open');
+    drawerOverlay.classList.add('is-open');
+    hamburgerBtn.classList.add('is-active');
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
+    hamburgerBtn.setAttribute('aria-label', 'メニューを閉じる');
+    drawerMenu.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('menu-open');
+  }
+
+  function closeMenu() {
+    drawerMenu.classList.remove('is-open');
+    drawerOverlay.classList.remove('is-open');
+    hamburgerBtn.classList.remove('is-active');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    hamburgerBtn.setAttribute('aria-label', 'メニュー');
+    drawerMenu.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('menu-open');
+  }
+
+  hamburgerBtn.addEventListener('click', function () {
+    if (drawerMenu.classList.contains('is-open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  drawerOverlay.addEventListener('click', closeMenu);
+  drawerLinks.forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && drawerMenu.classList.contains('is-open')) {
+      closeMenu();
+    }
+  });
+
+  // flavor filter
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var groups = document.querySelectorAll('.flavor-group[data-flavor]');
+  var countLabel = document.getElementById('countLabel');
+
+  filterBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      filterBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var f = btn.dataset.filter;
+      var count = 0;
+      groups.forEach(function(g) {
+        if (f === 'all' || g.dataset.flavor === f) {
+          g.classList.remove('hidden');
+          count += g.querySelectorAll('.product-card').length;
+        } else {
+          g.classList.add('hidden');
+        }
+      });
+      countLabel.textContent = count + '点';
+    });
+  });
+</script>
+
+</body>
+</html>
