@@ -257,6 +257,84 @@
     .flavor-card-link:last-child { border-right: none; }
     .flavor-card-link:hover { background: var(--pale-green); }
 
+    /* ===== FLAVOR GUIDE TABLE ===== */
+    .flavor-guide-section { padding: 72px 0; background: var(--ivory); }
+    .flavor-guide-header { text-align: center; margin-bottom: 40px; }
+    .flavor-guide-header .divider { margin: 0 auto 20px; }
+    .flavor-table { width: 100%; }
+    .flavor-row {
+      display: grid;
+      grid-template-columns: 200px 1fr 1.6fr;
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+      gap: 20px;
+      align-items: center;
+    }
+    .flavor-row:first-child { border-top: 1px solid var(--border); }
+    .ft-flavor {
+      display: flex; flex-direction: row; align-items: center; gap: 14px;
+      text-decoration: none; color: inherit;
+      transition: opacity 0.2s;
+    }
+    .ft-flavor:hover { opacity: 0.72; }
+    .ft-img {
+      width: 68px; height: 68px; flex-shrink: 0;
+      background: var(--cream); overflow: hidden;
+    }
+    .ft-img img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+    .ft-flavor > div { display: flex; flex-direction: column; gap: 4px; }
+    .ft-mood {
+      font-size: 0.52rem; letter-spacing: 0.2em; color: white;
+      background: var(--mocha); padding: 2px 8px;
+      display: inline-block; align-self: flex-start;
+    }
+    .ft-name-en {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 0.95rem; font-weight: 300; color: var(--mocha);
+    }
+    .ft-name-jp { font-size: 0.65rem; color: var(--caramel); letter-spacing: 0.12em; }
+    .ft-main-desc {
+      font-size: 0.85rem; color: var(--mocha); line-height: 1.8;
+      border-left: 2px solid var(--gold); padding-left: 14px;
+    }
+    .ft-occasions-label {
+      font-size: 0.56rem; letter-spacing: 0.2em; color: var(--khaki);
+      margin-bottom: 8px;
+    }
+    .ft-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .ft-tag {
+      font-size: 0.65rem; color: var(--coffee); letter-spacing: 0.04em;
+      border: 1px solid var(--border); padding: 4px 10px;
+      line-height: 1.4; background: white;
+    }
+    @media (max-width: 640px) {
+      .flavor-guide-section { padding: 40px 0; }
+      .flavor-guide-header { margin-bottom: 24px; }
+      .flavor-row {
+        grid-template-columns: 96px 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+          "desc    desc"
+          "flavor  occasions";
+        padding: 20px 0;
+        gap: 10px 14px;
+        align-items: start;
+      }
+      .ft-desc-col { grid-area: desc; }
+      .ft-main-desc { font-size: 0.78rem; padding-left: 10px; }
+      .ft-flavor {
+        grid-area: flavor;
+        flex-direction: column; align-items: center; gap: 8px;
+      }
+      .ft-img { width: 68px; height: 68px; }
+      .ft-flavor > div { align-items: center; }
+      .ft-name-en { font-size: 0.82rem; text-align: center; }
+      .ft-name-jp { text-align: center; }
+      .ft-occasions { grid-area: occasions; }
+      .ft-tag { font-size: 0.62rem; padding: 4px 8px; }
+      .ft-tag:nth-child(n+4) { display: none; }
+    }
+
     /* ===== BREW SECTION ===== */
     .brew-section {
       padding: 96px 0;
@@ -493,12 +571,10 @@
 
 <!-- ====== PAGE HERO ====== -->
 <section class="page-hero">
-  <p class="section-label">FIRST TIME</p>
   <div class="divider"></div>
-  <h1 class="section-title">はじめての方へ</h1>
+  <h1 class="section-title">Welcome To DOUBLE COFFEE</h1>
   <p class="section-desc">
-    DOUBLE COFFEEの楽しみ方が、<br>
-    このページひとつで全部わかります。
+    はじめまして、ドゥーブルコーヒーです。
   </p>
 </section>
 
@@ -517,112 +593,210 @@
     <div class="brand-text-inner">
       <p class="section-label">WHAT IS DOUBLE COFFEE ?</p>
       <div class="divider"></div>
-      <h2 class="section-title">DOUBLE COFFEE<br>とは？</h2>
       <p class="section-desc">
-        ベトナム産の豆が持つ、独特で豊かな香り。<br>
-        5つのフレーバーで、気分に合う一杯を。
+        ベトナム産の豆が持つ、独特で豊かな香りを活かしたフレーバーコーヒーをお届けします。<br>5つのフレーバーで、気分に合う一杯を。
       </p>
       <ul class="brand-points">
-        <li>厳選したベトナム産コーヒー豆を使用。豆本来の個性ある香りと、フレーバーの重なりを楽しめます。</li>
         <li>5種のフレーバーはすべて「気分」から発想。<br>Pure · Comfort · Refresh · Relax · Rich <br>— 今日の自分に合う香りを。</li>
-        <li>器具不要のディップスタイルは、カップに入れてお湯を注ぐだけ。自宅でも、オフィスでも、旅先でも。</li>
-        <li>砂糖・甘味料は不使用。<br>香りを楽しむ、大人のためのブラックコーヒー。</li>
+        <li>ディップスタイルは、カップに入れてお湯を注ぐだけ。自宅でも、オフィスでも、旅先でも。</li>
+        <li>砂糖・甘味料不使用。<br>香りを楽しむ、大人のためのブラックコーヒー。</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ====== SECTION 2: 香りの選び方ガイド ====== -->
-<section class="flavor-section">
+<!-- ====== SECTION 4: 5種アソートCTA ====== -->
+<section class="cta-section">
+  <p class="section-label">START HERE</p>
+  <div class="divider"></div>
+  <h2 class="section-title">まず、5種を試してみる。</h2>
+  <p class="section-desc">
+    はじめての方には、全フレーバーが揃う<br>
+    5種アソートセットがおすすめ。<br>
+    どの香りが「自分の一杯」か、確かめてみてください。
+  </p>
+
+  <a class="cta-product" href="https://doublecoffee.official.ec/items/115376575" target="_blank" rel="noopener">
+    <div class="cta-product-img">
+      <img src="images/flavored-coffee-assortment-set-dip-style-coffee.png" alt="5種アソートセット">
+    </div>
+    <div class="cta-product-info">
+      <p class="cta-product-label">ASSORT SET · おすすめ</p>
+      <p class="cta-product-name">5 Flavors Assort</p>
+      <p class="cta-product-name-jp">5種フレーバーアソートセット</p>
+      <p class="cta-product-price">¥1,250<span>（税込・送料別）</span></p>
+    </div>
+  </a>
+  <div class="cta-btns">
+    <a class="btn-primary" href="https://doublecoffee.official.ec/items/115376575" target="_blank" rel="noopener">アソートセットを購入する</a>
+    <a class="btn-secondary" href="https://doublecoffee-jp.netlify.app/">トップページに戻る</a>
+  </div>
+</section>
+
+<!-- ====== SECTION 2: フレーバーガイド ====== -->
+<section class="flavor-guide-section">
   <div class="container">
-    <div class="flavor-section-header">
-      <p class="section-label">HOW TO CHOOSE</p>
+    <div class="flavor-guide-header">
       <div class="divider"></div>
-      <h2 class="section-title">気分で選ぶ、5つの香り</h2>
-      <p class="flavor-intro">
-        DOUBLE COFFEEのフレーバーは、<br>それぞれ「今日の気分」に対応しています。<br>
-        迷ったら、今の自分の状態から選んでみてください。
-      </p>
+      <h2 class="section-title">香りと気分で選ぶ</h2>
+      <p class="flavor-intro">それぞれのフレーバーが持つ空気感と、<br>合わせたい場面をまとめました。</p>
     </div>
 
-    <div class="flavor-grid">
+    <div class="flavor-table">
 
       <!-- Non Flavor -->
-      <div class="flavor-card">
-        <div class="flavor-card-img">
-          <img src="images/brend-coffee-gift-flavored-coffee-dripcoffee.png" alt="ノンフレーバーコーヒー">
+      <div class="flavor-row">
+        <a class="ft-flavor" href="./select-coffee.html?category=pure">
+          <div class="ft-img">
+            <img src="images/brend-coffee-gift-flavored-coffee-dripcoffee.png" alt="ノンフレーバー">
+          </div>
+          <div>
+            <span class="ft-mood">PURE</span>
+            <p class="ft-name-en">Non Flavor</p>
+            <p class="ft-name-jp">ノンフレーバー</p>
+          </div>
+        </a>
+        <div class="ft-desc-col">
+          <p class="ft-main-desc">まっさらな1日をはじめる香り</p>
         </div>
-        <div class="flavor-card-body">
-          <span class="flavor-mood">PURE</span>
-          <p class="flavor-name-en">Non Flavor</p>
-          <p class="flavor-name-jp">ノンフレーバー</p>
-          <p class="flavor-desc">まっさらな朝のはじまりの香り。豆本来のクリーンな香りと澄んだ後味。思考をクリアにしたい朝に。</p>
-          <p class="flavor-keyword">— そのままを楽しむとき</p>
+        <div class="ft-occasions">
+          <p class="ft-occasions-label">こんな場面に</p>
+          <div class="ft-tags">
+            <span class="ft-tag">朝の空気を整える香り</span>
+            <span class="ft-tag">思考をクリアにしたい朝の香り</span>
+            <span class="ft-tag">ベトナムコーヒーの豆本来の味わいを楽しむ香り</span>
+          </div>
         </div>
-        <div class="flavor-card-links"><a class="flavor-card-link" href="https://doublecoffee.official.ec/items/114816835" target="_blank" rel="noopener">コーヒー豆/粉 →</a><a class="flavor-card-link" href="https://doublecoffee.official.ec/items/114822849" target="_blank" rel="noopener">ディップバッグ →</a></div>
       </div>
 
       <!-- Vanilla -->
-      <div class="flavor-card">
-        <div class="flavor-card-img">
-          <img src="images/vanilla-coffee-gift-flavored-coffee-dripcoffee.png" alt="バニラコーヒー">
+      <div class="flavor-row">
+        <a class="ft-flavor" href="./select-coffee.html?category=comfort">
+          <div class="ft-img">
+            <img src="images/vanilla-coffee-gift-flavored-coffee-dripcoffee.png" alt="バニラ">
+          </div>
+          <div>
+            <span class="ft-mood">COMFORT</span>
+            <p class="ft-name-en">Vanilla</p>
+            <p class="ft-name-jp">バニラ</p>
+          </div>
+        </a>
+        <div class="ft-desc-col">
+          <p class="ft-main-desc">肩の力を抜きたいときの香り</p>
         </div>
-        <div class="flavor-card-body">
-          <span class="flavor-mood">COMFORT</span>
-          <p class="flavor-name-en">Vanilla</p>
-          <p class="flavor-name-jp">バニラ</p>
-          <p class="flavor-desc">肩の力を抜きたいときの香り。静かな安心感に包まれて一日を穏やかにはじめたい朝に。</p>
-          <p class="flavor-keyword">— 心をほぐしたいとき</p>
+        <div class="ft-occasions">
+          <p class="ft-occasions-label">こんな場面に</p>
+          <div class="ft-tags">
+            <span class="ft-tag">ゆっくりと朝をはじめる香り</span>
+            <span class="ft-tag">やさしい余韻に包まれる香り</span>
+            <span class="ft-tag">静かな安心感に包まれる香り</span>
+          </div>
         </div>
-        <div class="flavor-card-links"><a class="flavor-card-link" href="https://doublecoffee.official.ec/items/114816071" target="_blank" rel="noopener">コーヒー豆/粉 →</a><a class="flavor-card-link" href="https://doublecoffee.official.ec/items/114822123" target="_blank" rel="noopener">ディップバッグ →</a></div>
       </div>
 
       <!-- Coconut -->
-      <div class="flavor-card">
-        <div class="flavor-card-img">
-          <img src="images/coconut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ココナッツコーヒー">
+      <div class="flavor-row">
+        <a class="ft-flavor" href="./select-coffee.html?category=refresh">
+          <div class="ft-img">
+            <img src="images/coconut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ココナッツ">
+          </div>
+          <div>
+            <span class="ft-mood">REFRESH</span>
+            <p class="ft-name-en">Coconut</p>
+            <p class="ft-name-jp">ココナッツ</p>
+          </div>
+        </a>
+        <div class="ft-desc-col">
+          <p class="ft-main-desc">午後の空気を切り替える香り</p>
         </div>
-        <div class="flavor-card-body">
-          <span class="flavor-mood">REFRESH</span>
-          <p class="flavor-name-en">Coconut</p>
-          <p class="flavor-name-jp">ココナッツ</p>
-          <p class="flavor-desc">午後の空気を切り替える香り。日常を少し離れたいとき、いつもの午後を少し遠くへ連れていく香り。</p>
-          <p class="flavor-keyword">— 気分転換したいとき</p>
+        <div class="ft-occasions">
+          <p class="ft-occasions-label">こんな場面に</p>
+          <div class="ft-tags">
+            <span class="ft-tag">午後、気分を軽くほどく香り</span>
+            <span class="ft-tag">気持ちを南国へ運ぶ香り</span>
+            <span class="ft-tag">日常から少し遠くへ連れいていく香り</span>
+          </div>
         </div>
-        <div class="flavor-card-links"><a class="flavor-card-link" href="https://doublecoffee.official.ec/items/114816486" target="_blank" rel="noopener">コーヒー豆/粉 →</a><a class="flavor-card-link" href="https://doublecoffee.official.ec/items/114822519" target="_blank" rel="noopener">ディップバッグ →</a></div>
       </div>
 
       <!-- Hazelnut -->
-      <div class="flavor-card">
-        <div class="flavor-card-img">
-          <img src="images/hazelnut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ヘーゼルナッツコーヒー">
+      <div class="flavor-row">
+        <a class="ft-flavor" href="./select-coffee.html?category=relax">
+          <div class="ft-img">
+            <img src="images/hazelnut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ヘーゼルナッツ">
+          </div>
+          <div>
+            <span class="ft-mood">RELAX</span>
+            <p class="ft-name-en">Hazelnut</p>
+            <p class="ft-name-jp">ヘーゼルナッツ</p>
+          </div>
+        </a>
+        <div class="ft-desc-col">
+          <p class="ft-main-desc">ひとり時間に浸る午後の香り</p>
         </div>
-        <div class="flavor-card-body">
-          <span class="flavor-mood">RELAX</span>
-          <p class="flavor-name-en">Hazelnut</p>
-          <p class="flavor-name-jp">ヘーゼルナッツ</p>
-          <p class="flavor-desc">ひとり時間に浸る午後の香り。思考を整えたい午後や、ゆっくりと楽しみたいときに。</p>
-          <p class="flavor-keyword">— ほっとしたいとき</p>
+        <div class="ft-occasions">
+          <p class="ft-occasions-label">こんな場面に</p>
+          <div class="ft-tags">
+            <span class="ft-tag">深く落ち着きたい午後の香り</span>
+            <span class="ft-tag">午後、思考を整える香り</span>
+            <span class="ft-tag">静かな集中時間の香り</span>
+          </div>
         </div>
-        <div class="flavor-card-links"><a class="flavor-card-link" href="https://doublecoffee.official.ec/items/114815099" target="_blank" rel="noopener">コーヒー豆/粉 →</a><a class="flavor-card-link" href="https://doublecoffee.official.ec/items/114817871" target="_blank" rel="noopener">ディップバッグ →</a></div>
       </div>
 
       <!-- Butter -->
-      <div class="flavor-card">
-        <div class="flavor-card-img">
-          <img src="images/butter-coffee-gift-flavored-coffee-dripcoffee.jpg" alt="バターコーヒー">
+      <div class="flavor-row">
+        <a class="ft-flavor" href="./select-coffee.html?category=rich">
+          <div class="ft-img">
+            <img src="images/butter-coffee-gift-flavored-coffee-dripcoffee.jpg" alt="バター">
+          </div>
+          <div>
+            <span class="ft-mood">RICH</span>
+            <p class="ft-name-en">Butter</p>
+            <p class="ft-name-jp">バター</p>
+          </div>
+        </a>
+        <div class="ft-desc-col">
+          <p class="ft-main-desc">夜、深い余韻に浸るための香り</p>
         </div>
-        <div class="flavor-card-body">
-          <span class="flavor-mood">RICH</span>
-          <p class="flavor-name-en">Butter</p>
-          <p class="flavor-name-jp">バター</p>
-          <p class="flavor-desc">夜、深い余韻に浸るための香り。じんわりと気持ちを満たしてくれる、贅沢な一杯で夜を締めくくる。</p>
-          <p class="flavor-keyword">— 贅沢したいとき</p>
+        <div class="ft-occasions">
+          <p class="ft-occasions-label">こんな場面に</p>
+          <div class="ft-tags">
+            <span class="ft-tag">静かな夜に浸る香り</span>
+            <span class="ft-tag">夜、照明を落として飲みたい香り</span>
+            <span class="ft-tag">余韻を楽しむ夜の香り</span>
+          </div>
         </div>
-        <div class="flavor-card-links"><a class="flavor-card-link" href="https://doublecoffee.official.ec/items/114815647" target="_blank" rel="noopener">コーヒー豆/粉 →</a><a class="flavor-card-link" href="https://doublecoffee.official.ec/items/114821502" target="_blank" rel="noopener">ディップバッグ →</a></div>
       </div>
 
-    </div>
+      <!-- Chili -->
+      <div class="flavor-row">
+        <a class="ft-flavor" href="./select-coffee.html?category=inner-heat">
+          <div class="ft-img">
+            <img src="images/hot-chilli-dip-style-coffee-bag-gift-set.png" alt="唐辛子コーヒー">
+          </div>
+          <div>
+            <span class="ft-mood">INNER HEAT</span>
+            <p class="ft-name-en">Inner Heat</p>
+            <p class="ft-name-jp">唐辛子</p>
+          </div>
+        </a>
+        <div class="ft-desc-col">
+          <p class="ft-main-desc">静かな夜に刺激を添える香り</p>
+        </div>
+        <div class="ft-occasions">
+          <p class="ft-occasions-label">こんな場面に</p>
+          <div class="ft-tags">
+            <span class="ft-tag">感覚を少し刺激したい夜の香り</span>
+            <span class="ft-tag">余韻にスパイスを加える香り</span>
+            <span class="ft-tag">いつもの夜を少し変える香り</span>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="cta-btns">
+        <a class="btn-secondary" href="https://doublecoffee-jp.netlify.app/select-coffee.html">すべての商品を見る　→　</a>
+     </div>
   </div>
 </section>
 
@@ -683,35 +857,6 @@
       </div>
 
     </div>
-  </div>
-</section>
-
-<!-- ====== SECTION 4: 5種アソートCTA ====== -->
-<section class="cta-section">
-  <p class="section-label">START HERE</p>
-  <div class="divider"></div>
-  <h2 class="section-title">まず、5種を試してみる。</h2>
-  <p class="section-desc">
-    はじめての方には、全フレーバーが揃う<br>
-    5種アソートセットがおすすめ。<br>
-    どの香りが「自分の一杯」か、確かめてみてください。
-  </p>
-
-  <a class="cta-product" href="https://doublecoffee.official.ec/items/115376575" target="_blank" rel="noopener">
-    <div class="cta-product-img">
-      <img src="images/flavored-coffee-assortment-set-dip-style-coffee.png" alt="5種アソートセット">
-    </div>
-    <div class="cta-product-info">
-      <p class="cta-product-label">ASSORT SET · おすすめ</p>
-      <p class="cta-product-name">5 Flavors Assort</p>
-      <p class="cta-product-name-jp">5種フレーバーアソートセット</p>
-      <p class="cta-product-price">¥1,250<span>（税込・送料別）</span></p>
-    </div>
-  </a>
-
-  <div class="cta-btns">
-    <a class="btn-primary" href="https://doublecoffee.official.ec/items/115376575" target="_blank" rel="noopener">アソートセットを購入する</a>
-    <a class="btn-secondary" href="https://doublecoffee-jp.netlify.app/">トップページに戻る</a>
   </div>
 </section>
 
@@ -816,6 +961,7 @@
       closeMenu();
     }
   });
+
 </script>
 
 </body>

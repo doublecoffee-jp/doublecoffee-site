@@ -172,17 +172,16 @@
     /* ========== HERO ========== */
     .hero {
       position: relative;
-      height: 100vh;
-      min-height: 640px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      height: 504px;
       overflow: hidden;
     }
     .hero-image {
       position: relative;
       background: #1C2438;
       overflow: hidden;
+      height: 100%;
     }
+    .hero-slide picture { display: block; width: 100%; height: 100%; }
     .hero-slideshow {
       position: absolute;
       inset: 0;
@@ -1165,9 +1164,8 @@
       header { padding: 0 28px; }
       nav ul { gap: 20px; }
 
-      .hero { grid-template-columns: 1fr; height: auto; min-height: auto; }
-      .hero-image { height: 52vw; min-height: 300px; }
-      .hero-content { padding: 64px 48px; }
+      .hero { height: auto; min-height: auto; }
+      .hero-image { height: 60vw; min-height: 300px; }
 
       .concept-section,
       .story-section { grid-template-columns: 1fr; }
@@ -1218,7 +1216,7 @@
       .divider { margin-bottom: 14px; }
 
       /* --- Hero --- */
-      .hero { grid-template-columns: 1fr; height: auto; min-height: auto; }
+      .hero { height: auto; min-height: auto; }
       .hero-image { height: 64vw; min-height: 240px; }
       .hero-slide img { object-position: center bottom; }
       .hero-content { padding: 28px 20px 32px; }
@@ -1333,7 +1331,7 @@
 
 <div class="drawer-overlay" id="drawerOverlay"></div>
 <aside class="drawer-menu" id="drawerMenu" aria-hidden="true">
-  <p class="drawer-title">MENU</p>
+  <p class="drawer-title">メニュー</p>
   <ul class="drawer-nav">
     <li><a href="https://doublecoffee-jp.netlify.app/">Home</a></li>
     <li><a href="https://doublecoffee-jp.netlify.app/first-time.html">はじめての方へ</a></li>
@@ -1349,52 +1347,29 @@
   <div class="hero-image">
     <div class="hero-slideshow" id="heroSlideshow">
       <div class="hero-slide active">
-        <img src="images/double-coffee-coconut-aroma-specialty-coffee.png" alt="コーヒー農園の夜明け">
+        <picture>
+          <source media="(max-width: 640px)" srcset="images/mobile-index-header-vietnam-scenery.svg">
+          <img src="images/pc-index-header-vietnam-scenery.svg" alt="ベトナムの風景">
+        </picture>
       </div>
       <div class="hero-slide">
-        <img src="images/double-coffee-coconut-flavor-drip-coffee-lifestyle.png" alt="ヘーゼルナッツコーヒーのブリューシーン">
+        <picture>
+          <source media="(max-width: 640px)" srcset="images/mobile-header-fiveflavor-packages-coffee.svg">
+          <img src="images/pc-header-fiveflavor-packages-coffee.svg" alt="5種フレーバーコーヒー">
+        </picture>
       </div>
       <div class="hero-slide">
-        <img src="images/double-coffee-coconut-island-coffee-gift-package.png" alt="コーヒーチェリーの収穫">
-      </div>
-      <div class="hero-slide">
-        <img src="images/drip-coffee-flavored-gift-coconut-hazelnut.png" alt="ココナッツアイランドコーヒー">
+        <picture>
+          <source media="(max-width: 640px)" srcset="images/mobile-coffee-giftset-header.svg">
+          <img src="images/pc-coffee-giftset-header.svg" alt="コーヒーギフトセット">
+        </picture>
       </div>
       <div class="slideshow-dots">
         <button class="slideshow-dot active" onclick="goToSlide(0)"></button>
         <button class="slideshow-dot" onclick="goToSlide(1)"></button>
         <button class="slideshow-dot" onclick="goToSlide(2)"></button>
-        <button class="slideshow-dot" onclick="goToSlide(3)"></button>
       </div>
     </div>
-  </div>
-
-  <div class="hero-content">
-    <p class="hero-eyebrow">AROMA FLAVORED COFFEE</p>
-
-    <h1 class="hero-title serif-en">Double<br><span style="color:var(--caramel);">Coffee</span></h1>
-    <p class="hero-subtitle">
-      一杯で、日常が旅になる。<br>
-      その香りが、自分に戻してくれる。<br>
-      香りが運ぶ、5つの感情。
-    </p>
-
-    <a href="https://doublecoffee-jp.netlify.app/first-time.html" class="btn-secondary" style="display:inline-block;margin-bottom:16px;">はじめての方へ →</a>
-
-    <a href="https://doublecoffee-jp.netlify.app/select-coffee.html" class="btn-secondary" style="display:inline-block;margin-bottom:16px;">コーヒーを選ぶ →</a>
-    <div class="hero-flavor-scroll">
-      <a href="https://doublecoffee-jp.netlify.app/select-coffee.html" class="hero-flavor-chip">すべて</a>
-      <a href="https://doublecoffee-jp.netlify.app/select-coffee.html?category=pure" class="hero-flavor-chip">Non Flavor</a>
-      <a href="https://doublecoffee-jp.netlify.app/select-coffee.html?category=comfort" class="hero-flavor-chip">Vanilla</a>
-      <a href="https://doublecoffee-jp.netlify.app/select-coffee.html?category=refresh" class="hero-flavor-chip">Coconut</a>
-      <a href="https://doublecoffee-jp.netlify.app/select-coffee.html?category=relax" class="hero-flavor-chip">Hazelnut</a>
-      <a href="https://doublecoffee-jp.netlify.app/select-coffee.html?category=rich" class="hero-flavor-chip">Butter</a>
-      <a href="https://doublecoffee-jp.netlify.app/select-coffee.html?category=inner-heatt" class="hero-flavor-chip">唐辛子</a>
-      <a href="https://doublecoffee-jp.netlify.app/select-coffee.html?category=gift" class="hero-flavor-chip">ギフトセット</a>
-      <a href="https://doublecoffee-jp.netlify.app/select-coffee.html?category=tools" class="hero-flavor-chip">Coffee Lifestyle</a>
-      <a href="https://doublecoffee-jp.netlify.app/select-coffee.html?category=bulk" class="hero-flavor-chip">まとめ買い</a>
-    </div>
-
   </div>
 
   <div class="hero-scroll">SCROLL</div>
@@ -1440,104 +1415,6 @@
     <span>·</span>
   </div>
 </div>
-
-
-<!-- ====== MOOD SECTION ====== -->
-<section class="mood-section">
-  <div class="container">
-    <div class="mood-header">
-      <p class="section-label">CHOOSE BY MOOD</p>
-      <div class="divider" style="margin: 0 auto 20px;"></div>
-      <h2 class="section-title">今日の気分で、選ぶ。</h2>
-      <p class="section-desc">5つのフレーバーは、5つの感情。<br>あなたの今に合う一杯を。</p>
-    </div>
-
-    <div class="mood-grid">
-      <!-- Non Flavor -->
-      <a class="mood-card" href="https://doublecoffee.official.ec/items/114816835" target="_blank" rel="noopener">
-        <img src="images/brend-coffee-gift-flavored-coffee-dripcoffee.png" alt="ノンフレーバーコーヒー">
-        <div class="mood-card-overlay">
-          <span class="mood-card-num">Non Flavor</span>
-          <span class="mood-card-name">ノンフレーバー</span>
-          <span class="mood-card-jp">まっさらな朝のはじまりの香り</span>
-          <span class="mood-card-keyword">PURE — 豆本来の味わい</span>
-        </div>
-      </a>
-
-      <!-- Vanilla -->
-      <a class="mood-card" href="https://doublecoffee.official.ec/items/114816071" target="_blank" rel="noopener">
-        <img src="images/vanilla-coffee-gift-flavored-coffee-dripcoffee.png" alt="バニラコーヒー">
-        <div class="mood-card-overlay">
-          <span class="mood-card-num">Vanilla</span>
-          <span class="mood-card-name">バニラ</span>
-          <span class="mood-card-jp">肩の力を抜きたいときの香り</span>
-          <span class="mood-card-keyword">COMFORT — やわらかな甘い香り</span>
-        </div>
-      </a>
-
-      <!-- Coconut -->
-      <a class="mood-card" href="https://doublecoffee.official.ec/items/114816486" target="_blank" rel="noopener">
-        <img src="images/coconut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ココナッツアイランドコーヒー">
-        <div class="mood-card-overlay">
-          <span class="mood-card-num">Coconut</span>
-          <span class="mood-card-name">ココナッツ</span>
-          <span class="mood-card-jp">午後の空気を切り替える香り</span>
-          <span class="mood-card-keyword">REFRESH — 軽やかな抜け感</span>
-        </div>
-      </a>
-
-      <!-- Hazelnut -->
-      <a class="mood-card" href="https://doublecoffee.official.ec/items/114815099" target="_blank" rel="noopener">
-        <img src="images/hazelnut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ヘーゼルナッツコーヒー">
-        <div class="mood-card-overlay">
-          <span class="mood-card-num">Hazelnut</span>
-          <span class="mood-card-name">ヘーゼルナッツ</span>
-          <span class="mood-card-jp">ひとり時間に浸る午後の香り</span>
-          <span class="mood-card-keyword">RELAX — ほっとする香ばしさ</span>
-        </div>
-      </a>
-
-      <!-- Butter -->
-      <a class="mood-card" href="https://doublecoffee.official.ec/items/114815647" target="_blank" rel="noopener">
-        <img src="images/butter-coffee-gift-flavored-coffee-dripcoffee.jpg" alt="バターコーヒー">
-        <div class="mood-card-overlay">
-          <span class="mood-card-num">Butter</span>
-          <span class="mood-card-name">バター</span>
-          <span class="mood-card-jp">夜、深い余韻に浸るための香り</span>
-          <span class="mood-card-keyword">RICH — まろやかなコクと余韻</span>
-        </div>
-      </a>
-    </div>
-    <div style="text-align:center;margin-top:28px;">
-      <a href="https://doublecoffee.official.ec/items/115376575" target="_blank" rel="noopener" class="btn-secondary">はじめての方に。５種アソートセットを見る →</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ====== CONCEPT SECTION ====== -->
-<section class="concept-section">
-  <div class="concept-image-wrap">
-    <img src="images/drip-coffee-vietnam-gift-flavored-premium.jpg" alt="ドゥーブルコーヒー ドリップコーヒー" style="width:100%;height:100%;object-fit:cover;display:block;">
-  </div>
-  <div class="concept-text-wrap">
-    <div class="concept-text-inner">
-      <p class="section-label">OUR CONCEPT</p>
-      <div class="divider"></div>
-      <p class="concept-quote">
-        "コーヒーを飲む時間は、<br>
-        <strong>自分に還る時間。</strong>"
-      </p>
-      <p class="section-desc">
-        ベトナム産の豆が持つ、独特で豊かな香り。<br>
-        DOUBLE COFFEEは、その一杯に「旅」の余韻を込めています。<br><br>
-        特別な器具も、難しい知識もいりません。<br>
-        香りに包まれながら、ふっと自分に戻るための時間を。<br>
-      </p>
-    </div>
-  </div>
-</section>
-
 
 <!-- ====== PRODUCTS SECTION ====== -->
 <section class="products-section">
@@ -1607,20 +1484,74 @@
   </div>
 </section>
 
-
-<!-- ====== BREW SECTION ====== -->
-<section class="brew-section">
+<!-- ====== MOOD SECTION ====== -->
+<section class="mood-section">
   <div class="container">
-    <div style="max-width:500px;">
-      <p class="section-label">HOW TO BREW</p>
-      <div class="divider" style="background:var(--gold);"></div>
-      <h2 class="section-title">3ステップで旅に出る。</h2>
-      <p class="section-desc">ディップバッグだから、オフィスでも、自宅でも、旅先でも。特別な道具は何もいりません。</p>
+    <div class="mood-header">
+      <p class="section-label">CHOOSE BY MOOD</p>
+      <div class="divider" style="margin: 0 auto 20px;"></div>
+      <h2 class="section-title">今日の気分で、選ぶ。</h2>
+      <p class="section-desc">5つのフレーバーは、5つの感情。<br>あなたの今に合う一杯を。</p>
     </div>
 
-    <div class="brew-steps">
-      <p class="brew-step-desc brew-step-enjoy">香りを感じながら、一口目を。今日の旅がはじまります。</p>
-      <a class="btn-secondary" href="https://doublecoffee.official.ec/p/00009" target="_blank" rel="noopener" style="margin-top:24px;display:inline-block;color:var(--gold);border-color:var(--gold);">詳しく見る →</a>
+    <div class="mood-grid">
+      <!-- Non Flavor -->
+      <a class="mood-card" href="https://doublecoffee.official.ec/items/114816835" target="_blank" rel="noopener">
+        <img src="images/brend-coffee-gift-flavored-coffee-dripcoffee.png" alt="ノンフレーバーコーヒー">
+        <div class="mood-card-overlay">
+          <span class="mood-card-num">Non Flavor</span>
+          <span class="mood-card-name">ノンフレーバー</span>
+          <span class="mood-card-jp">まっさらな朝のはじまりの香り</span>
+          <span class="mood-card-keyword">PURE — 豆本来の味わい</span>
+        </div>
+      </a>
+
+      <!-- Vanilla -->
+      <a class="mood-card" href="https://doublecoffee.official.ec/items/114816071" target="_blank" rel="noopener">
+        <img src="images/vanilla-coffee-gift-flavored-coffee-dripcoffee.png" alt="バニラコーヒー">
+        <div class="mood-card-overlay">
+          <span class="mood-card-num">Vanilla</span>
+          <span class="mood-card-name">バニラ</span>
+          <span class="mood-card-jp">肩の力を抜きたいときの香り</span>
+          <span class="mood-card-keyword">COMFORT — やわらかな甘い香り</span>
+        </div>
+      </a>
+
+      <!-- Coconut -->
+      <a class="mood-card" href="https://doublecoffee.official.ec/items/114816486" target="_blank" rel="noopener">
+        <img src="images/coconut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ココナッツアイランドコーヒー">
+        <div class="mood-card-overlay">
+          <span class="mood-card-num">Coconut</span>
+          <span class="mood-card-name">ココナッツ</span>
+          <span class="mood-card-jp">午後の空気を切り替える香り</span>
+          <span class="mood-card-keyword">REFRESH — 軽やかな抜け感</span>
+        </div>
+      </a>
+
+      <!-- Hazelnut -->
+      <a class="mood-card" href="https://doublecoffee.official.ec/items/114815099" target="_blank" rel="noopener">
+        <img src="images/hazelnut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ヘーゼルナッツコーヒー">
+        <div class="mood-card-overlay">
+          <span class="mood-card-num">Hazelnut</span>
+          <span class="mood-card-name">ヘーゼルナッツ</span>
+          <span class="mood-card-jp">ひとり時間に浸る午後の香り</span>
+          <span class="mood-card-keyword">RELAX — ほっとする香ばしさ</span>
+        </div>
+      </a>
+
+      <!-- Butter -->
+      <a class="mood-card" href="https://doublecoffee.official.ec/items/114815647" target="_blank" rel="noopener">
+        <img src="images/butter-coffee-gift-flavored-coffee-dripcoffee.jpg" alt="バターコーヒー">
+        <div class="mood-card-overlay">
+          <span class="mood-card-num">Butter</span>
+          <span class="mood-card-name">バター</span>
+          <span class="mood-card-jp">夜、深い余韻に浸るための香り</span>
+          <span class="mood-card-keyword">RICH — まろやかなコクと余韻</span>
+        </div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:28px;">
+      <a href="https://doublecoffee-jp.netlify.app/select-coffee" target="_blank" rel="noopener" class="btn-secondary">香りを選ぶ →</a>
     </div>
   </div>
 </section>
@@ -1630,16 +1561,15 @@
 <section class="story-section">
   <div class="story-text-wrap">
     <div class="story-text-inner">
-      <p class="section-label">OUR STORY</p>
       <div class="divider" style="background:var(--sage);"></div>
-      <h2 class="section-title">ベトナムから、<br>香りを届ける。</h2>
+      <h2 class="section-title">香りで旅するコーヒー</h2>
       <p class="section-desc">
         DOUBLE COFFEEのコーヒー豆は、すべてベトナム産。<br>
+        砂糖・甘味料は使用していません。<br>
         その土地の空気、温度、農家の手仕事が<br>
         香りの中に宿っています。<br><br>
         「一杯のコーヒーで、どこかへ行ける気がした」<br>
-        そんな体験を、あなたにも届けたい。<br>
-        それが、DOUBLE COFFEEの始まりです。
+        そんな体験を、お届けします。<br>
       </p>
       <a class="btn-secondary" href="https://doublecoffee-jp.netlify.app/about.html" target="_blank" rel="noopener" style="margin-top:32px;display:inline-block;">ストーリーを読む →</a>
     </div>
@@ -1665,7 +1595,7 @@
         <p class="sub-price">¥3,980</p>
         <p class="sub-price-note">/ 月（税込・送料無料・ポスト投函）</p>
         <ul class="sub-features">
-          <li>5種のフレーバー × 各4袋</li>
+          <li>週5日飲むとちょうど1ヶ月分。<br>気軽に始めたい方に、</li>
         </ul>
         <a class="sub-btn dark" href="https://doublecoffee.official.ec/items/137320692" target="_blank" rel="noopener">このプランを見る</a>
       </div>
@@ -1677,7 +1607,7 @@
         <p class="sub-price">¥9,500</p>
         <p class="sub-price-note" style="color:rgba(255,255,255,0.4);">/ 月（税込・送料無料）</p>
         <ul class="sub-features">
-          <li>ディップスタイル 50袋おまかせ詰め合わせ</li>
+          <li>家族で飲む方や、職場にも置きたい方に。</li>
         </ul>
         <a class="sub-btn light" href="https://doublecoffee.official.ec/items/114789281" target="_blank" rel="noopener">このプランを見る</a>
       </div>

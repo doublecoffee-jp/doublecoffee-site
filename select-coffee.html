@@ -265,6 +265,35 @@
     }
     .btn-primary:hover { background: var(--coffee); }
 
+    /* ===== QUIZ PANEL ===== */
+    .quiz-panel { display: none; padding: 56px 0 96px; background: var(--ivory); }
+    .quiz-panel.active { display: block; }
+    .quiz-panel-header { text-align: center; margin-bottom: 48px; }
+    .quiz-container { max-width: 600px; margin: 0 auto; background: white; border: 1px solid var(--border); padding: 48px; }
+    .quiz-progress { display: flex; align-items: center; margin-bottom: 40px; }
+    .quiz-progress-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); flex-shrink: 0; transition: background 0.3s; }
+    .quiz-progress-dot.active { background: var(--gold); }
+    .quiz-progress-line { flex: 1; height: 1px; background: var(--border); }
+    .quiz-q-label { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.72rem; letter-spacing: 0.3em; color: var(--caramel); margin-bottom: 12px; }
+    .quiz-q-text { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 300; color: var(--mocha); margin-bottom: 28px; line-height: 1.5; }
+    .quiz-options { display: flex; flex-direction: column; gap: 10px; }
+    .quiz-option { display: flex; align-items: center; gap: 16px; padding: 15px 20px; background: none; border: 1px solid var(--border); cursor: pointer; text-align: left; width: 100%; font-family: 'Shippori Mincho', sans-serif; font-size: 0.875rem; color: var(--coffee); line-height: 1.6; transition: border-color 0.2s, background 0.2s, color 0.2s; }
+    .quiz-option:hover { border-color: var(--caramel); background: var(--cream); color: var(--mocha); }
+    .quiz-option-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: var(--gold); flex-shrink: 0; width: 18px; }
+    .quiz-question { display: none; }
+    .quiz-question.active { display: block; }
+    .quiz-result { display: none; }
+    .quiz-result.active { display: block; }
+    .quiz-result-tag { display: inline-block; font-size: 0.58rem; letter-spacing: 0.25em; color: white; background: var(--mocha); padding: 4px 12px; margin-bottom: 16px; }
+    .quiz-result-flavor { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 300; font-style: italic; color: var(--mocha); margin-bottom: 4px; }
+    .quiz-result-flavor-jp { font-size: 0.75rem; color: var(--caramel); letter-spacing: 0.15em; margin-bottom: 20px; }
+    .quiz-result-img { width: 100%; aspect-ratio: 4/2; overflow: hidden; background: var(--cream); margin-bottom: 20px; }
+    .quiz-result-img img { width: 100%; height: 100%; object-fit: contain; display: block; padding: 8px; }
+    .quiz-result-desc { font-size: 0.875rem; color: var(--coffee); line-height: 2; margin-bottom: 28px; border-left: 2px solid var(--gold); padding-left: 16px; }
+    .quiz-result-btns { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 20px; }
+    .quiz-retry { font-size: 0.68rem; letter-spacing: 0.15em; color: var(--khaki); background: none; border: none; cursor: pointer; padding: 0; font-family: 'Shippori Mincho', sans-serif; text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s; }
+    .quiz-retry:hover { color: var(--coffee); }
+
     /* Gift / recommend gift images — show full package without cropping */
     .flavor-group[data-flavor="gift"] .product-card-img,
     .gift-img {
@@ -421,6 +450,8 @@
 <div class="mood-filter-bar">
   <div class="mood-filter-inner">
     <button class="filter-btn active" data-filter="all">すべて</button>
+    <div class="filter-sep"></div>
+    <button class="filter-btn" data-filter="quiz">フレーバー診断</button>
     <div class="filter-sep"></div>
     <button class="filter-btn" data-filter="nonflavor">Pure</button>
     <div class="filter-sep"></div>
@@ -905,6 +936,150 @@
   </div>
 </section>
 
+<!-- QUIZ PANEL -->
+<section class="quiz-panel" id="quizPanel">
+  <div class="container">
+    <div class="quiz-panel-header">
+      <div class="divider" style="margin: 0 auto 20px;"></div>
+      <h2 style="font-family:'Playfair Display',serif; font-size:1rem; font-weight:300; letter-spacing:0.2em; color:var(--coffee); margin-bottom:12px;">フレーバー診断</h2>
+      <p style="font-size:0.8rem; color:var(--khaki); letter-spacing:0.1em;">2つの質問であなたにぴったりの香りを見つけます。</p>
+    </div>
+
+    <div class="quiz-container">
+
+      <!-- Progress -->
+      <div class="quiz-progress">
+        <span class="quiz-progress-dot active" id="sc-qdot1"></span>
+        <span class="quiz-progress-line"></span>
+        <span class="quiz-progress-dot" id="sc-qdot2"></span>
+        <span class="quiz-progress-line"></span>
+        <span class="quiz-progress-dot" id="sc-qdot3"></span>
+      </div>
+
+      <!-- Q1 -->
+      <div class="quiz-question active" id="sc-q1">
+        <p class="quiz-q-label">Q1</p>
+        <p class="quiz-q-text">今の気分に近いのは？</p>
+        <div class="quiz-options">
+          <button class="quiz-option" onclick="scQuizNext('sc-q2a')">
+            <span class="quiz-option-num">A</span>すっきり目覚めたい
+          </button>
+          <button class="quiz-option" onclick="scQuizNext('sc-q2b')">
+            <span class="quiz-option-num">B</span>ほっと一息つきたい
+          </button>
+          <button class="quiz-option" onclick="scQuizResult('sc-result-coconut')">
+            <span class="quiz-option-num">C</span>気分転換したい
+          </button>
+        </div>
+      </div>
+
+      <!-- Q2-A -->
+      <div class="quiz-question" id="sc-q2a">
+        <p class="quiz-q-label">Q2</p>
+        <p class="quiz-q-text">どんな香りが今の気分に合いますか？</p>
+        <div class="quiz-options">
+          <button class="quiz-option" onclick="scQuizResult('sc-result-nonflavor')">
+            <span class="quiz-option-num">A</span>コーヒー本来のシンプルな香り
+          </button>
+          <button class="quiz-option" onclick="scQuizResult('sc-result-hazelnut')">
+            <span class="quiz-option-num">B</span>香ばしく落ち着いた香り
+          </button>
+        </div>
+      </div>
+
+      <!-- Q2-B -->
+      <div class="quiz-question" id="sc-q2b">
+        <p class="quiz-q-label">Q2</p>
+        <p class="quiz-q-text">どんな香りが今の気分に合いますか？</p>
+        <div class="quiz-options">
+          <button class="quiz-option" onclick="scQuizResult('sc-result-vanilla')">
+            <span class="quiz-option-num">A</span>やわらかく甘い香り
+          </button>
+          <button class="quiz-option" onclick="scQuizResult('sc-result-butter')">
+            <span class="quiz-option-num">B</span>深くまろやかな香り
+          </button>
+        </div>
+      </div>
+
+      <!-- Result: Non Flavor -->
+      <div class="quiz-result" id="sc-result-nonflavor">
+        <span class="quiz-result-tag">PURE</span>
+        <p class="quiz-result-flavor">Non Flavor</p>
+        <p class="quiz-result-flavor-jp">ノンフレーバー</p>
+        <div class="quiz-result-img">
+          <img src="images/brend-coffee-gift-flavored-coffee-dripcoffee.png" alt="ノンフレーバーディップバッグ">
+        </div>
+        <p class="quiz-result-desc">まっさらな朝のはじまりの香り。豆本来のクリーンな香りと澄んだ後味。思考をクリアにしたい朝に。</p>
+        <div class="quiz-result-btns">
+          <a class="btn-primary" href="https://doublecoffee.official.ec/items/114822849" target="_blank" rel="noopener">ディップバッグを見る</a>
+        </div>
+        <button class="quiz-retry" onclick="scQuizReset()">もう一度診断する</button>
+      </div>
+
+      <!-- Result: Vanilla -->
+      <div class="quiz-result" id="sc-result-vanilla">
+        <span class="quiz-result-tag">COMFORT</span>
+        <p class="quiz-result-flavor">Vanilla</p>
+        <p class="quiz-result-flavor-jp">バニラ</p>
+        <div class="quiz-result-img">
+          <img src="images/vanilla-coffee-gift-flavored-coffee-dripcoffee.png" alt="バニラディップバッグ">
+        </div>
+        <p class="quiz-result-desc">肩の力を抜きたいときの香り。静かな安心感に包まれて一日を穏やかにはじめたい朝に。</p>
+        <div class="quiz-result-btns">
+          <a class="btn-primary" href="https://doublecoffee.official.ec/items/114822123" target="_blank" rel="noopener">ディップバッグを見る</a>
+        </div>
+        <button class="quiz-retry" onclick="scQuizReset()">もう一度診断する</button>
+      </div>
+
+      <!-- Result: Coconut -->
+      <div class="quiz-result" id="sc-result-coconut">
+        <span class="quiz-result-tag">REFRESH</span>
+        <p class="quiz-result-flavor">Coconut</p>
+        <p class="quiz-result-flavor-jp">ココナッツ</p>
+        <div class="quiz-result-img">
+          <img src="images/coconut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ココナッツディップバッグ">
+        </div>
+        <p class="quiz-result-desc">午後の空気を切り替える香り。日常を少し離れたいとき、いつもの午後を少し遠くへ連れていく香り。</p>
+        <div class="quiz-result-btns">
+          <a class="btn-primary" href="https://doublecoffee.official.ec/items/114822519" target="_blank" rel="noopener">ディップバッグを見る</a>
+        </div>
+        <button class="quiz-retry" onclick="scQuizReset()">もう一度診断する</button>
+      </div>
+
+      <!-- Result: Hazelnut -->
+      <div class="quiz-result" id="sc-result-hazelnut">
+        <span class="quiz-result-tag">RELAX</span>
+        <p class="quiz-result-flavor">Hazelnut</p>
+        <p class="quiz-result-flavor-jp">ヘーゼルナッツ</p>
+        <div class="quiz-result-img">
+          <img src="images/hazelnut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ヘーゼルナッツディップバッグ">
+        </div>
+        <p class="quiz-result-desc">ひとり時間に浸る午後の香り。思考を整えたい午後や、ゆっくりと楽しみたいときに。</p>
+        <div class="quiz-result-btns">
+          <a class="btn-primary" href="https://doublecoffee.official.ec/items/114817871" target="_blank" rel="noopener">ディップバッグを見る</a>
+        </div>
+        <button class="quiz-retry" onclick="scQuizReset()">もう一度診断する</button>
+      </div>
+
+      <!-- Result: Butter -->
+      <div class="quiz-result" id="sc-result-butter">
+        <span class="quiz-result-tag">RICH</span>
+        <p class="quiz-result-flavor">Butter</p>
+        <p class="quiz-result-flavor-jp">バター</p>
+        <div class="quiz-result-img">
+          <img src="images/butter-coffee-gift-flavored-coffee-dripcoffee.jpg" alt="バターディップバッグ">
+        </div>
+        <p class="quiz-result-desc">夜、深い余韻に浸るための香り。じんわりと気持ちを満たしてくれる、贅沢な一杯で夜を締めくくる。</p>
+        <div class="quiz-result-btns">
+          <a class="btn-primary" href="https://doublecoffee.official.ec/items/114821502" target="_blank" rel="noopener">ディップバッグを見る</a>
+        </div>
+        <button class="quiz-retry" onclick="scQuizReset()">もう一度診断する</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 <!-- ====== FOOTER ====== -->
 <footer>
@@ -1014,6 +1189,8 @@
   var filterBtns = document.querySelectorAll('.filter-btn');
   var groups = document.querySelectorAll('.flavor-group[data-flavor]');
   var countLabel = document.getElementById('countLabel');
+  var productsSection = document.querySelector('.products-section');
+  var quizPanel = document.getElementById('quizPanel');
 
   var categoryToFilter = {
     'pure':       'nonflavor',
@@ -1038,6 +1215,16 @@
       filterBtns.forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
       var f = btn.dataset.filter;
+
+      if (f === 'quiz') {
+        productsSection.style.display = 'none';
+        quizPanel.classList.add('active');
+        return;
+      }
+
+      productsSection.style.display = '';
+      quizPanel.classList.remove('active');
+
       var count = 0;
       groups.forEach(function(g) {
         if (f === 'all' || g.dataset.flavor === f) {
@@ -1050,6 +1237,26 @@
       countLabel.textContent = count + '点';
     });
   });
+
+  function scQuizNext(questionId) {
+    document.querySelectorAll('#quizPanel .quiz-question').forEach(function(q) { q.classList.remove('active'); });
+    document.getElementById(questionId).classList.add('active');
+    document.getElementById('sc-qdot2').classList.add('active');
+  }
+
+  function scQuizResult(resultId) {
+    document.querySelectorAll('#quizPanel .quiz-question, #quizPanel .quiz-result').forEach(function(el) { el.classList.remove('active'); });
+    document.getElementById(resultId).classList.add('active');
+    document.getElementById('sc-qdot2').classList.add('active');
+    document.getElementById('sc-qdot3').classList.add('active');
+  }
+
+  function scQuizReset() {
+    document.querySelectorAll('#quizPanel .quiz-question, #quizPanel .quiz-result').forEach(function(el) { el.classList.remove('active'); });
+    document.getElementById('sc-q1').classList.add('active');
+    document.getElementById('sc-qdot2').classList.remove('active');
+    document.getElementById('sc-qdot3').classList.remove('active');
+  }
 
   // URL parameter → auto-select tab
   (function() {
