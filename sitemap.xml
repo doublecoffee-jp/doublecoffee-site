@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ホーム -->
+  <url>
+    <loc>https://doublecoffee-jp.netlify.app/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- はじめての方へ -->
+  <url>
+    <loc>https://doublecoffee-jp.netlify.app/first-time.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 香りを選ぶ（商品一覧） -->
+  <url>
+    <loc>https://doublecoffee-jp.netlify.app/select-coffee.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 定期便 -->
+  <url>
+    <loc>https://doublecoffee-jp.netlify.app/subscription.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About us -->
+  <url>
+    <loc>https://doublecoffee-jp.netlify.app/about.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 会社概要 -->
+  <url>
+    <loc>https://doublecoffee-jp.netlify.app/company.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>

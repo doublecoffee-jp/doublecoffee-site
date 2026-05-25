@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>コーヒーを選ぶ | DOUBLE COFFEE</title>
+  <title>DOUBLE COFFEE（ドゥーブルコーヒー） | 香りを選ぶ</title>
  
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VN669LYK7"></script>
@@ -193,11 +193,10 @@
     }
     .product-card:hover { box-shadow: 0 8px 32px rgba(28,36,56,0.1); transform: translateY(-3px); }
     .product-card-img {
-      aspect-ratio: 4/3;
-      overflow: hidden; background: #C0D4E0;
+      aspect-ratio: 1/1;
+      overflow: hidden; background: var(--cream);
     }
-    .product-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
-    .product-card:hover .product-card-img img { transform: scale(1.04); }
+    .product-card-img img { width: 100%; height: 100%; object-fit: contain; display: block; padding: 8px; }
     .product-card-body { padding: 20px 20px 24px; }
     .product-type-badge {
       display: inline-block;
@@ -418,11 +417,11 @@
 
 <div class="drawer-overlay" id="drawerOverlay"></div>
 <aside class="drawer-menu" id="drawerMenu" aria-hidden="true">
-  <p class="drawer-title">MENU</p>
+  <p class="drawer-title">メニュー</p>
   <ul class="drawer-nav">
     <li><a href="https://doublecoffee-jp.netlify.app/">Home</a></li>
     <li><a href="https://doublecoffee-jp.netlify.app/first-time.html">はじめての方へ</a></li>
-    <li><a href="https://doublecoffee-jp.netlify.app/select-coffee.html">コーヒーを選ぶ</a></li>
+    <li><a href="https://doublecoffee-jp.netlify.app/select-coffee.html">香りを選ぶ</a></li>
     <li><a href="https://doublecoffee-jp.netlify.app/subscription.html">定期便</a></li>
     <li><a href="https://doublecoffee-jp.netlify.app/about.html">About us</a></li>
   </ul>
@@ -435,14 +434,14 @@
 <section class="page-hero">
   <p class="section-label">SELECT COFFEE</p>
   <div class="divider"></div>
-  <h1 class="section-title">コーヒーを選ぶ</h1>
+  <h1 class="section-title">ドゥーブルコーヒーの香りを選ぶ</h1>
   <p>気分、フレーバー、スタイルから、あなたの一杯を。</p>
 </section>
 
 <div class="breadcrumb">
   <a href="./index.html">HOME</a>
   <span>›</span>
-  コーヒーを選ぶ
+  香りを選ぶ
 </div>
 
 
@@ -499,7 +498,7 @@
             <span class="recommend-no1-badge">★ 人気 No.1</span>
             <p class="product-card-name">Hazelnut</p>
             <p class="product-card-name-jp">ヘーゼルナッツ ディップバッグ</p>
-            <p class="product-card-desc">ひとり時間に浸る午後の香り。香ばしさとコーヒーの苦味が溶け合う一杯。</p>
+            <p class="product-card-desc">ドゥーブルコーヒーの定番。ひとり時間に浸る午後の香り。香ばしさとコーヒーの苦味が溶け合う一杯。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,250<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -508,7 +507,7 @@
         </a>
         <a class="product-card" href="https://doublecoffee.official.ec/items/144556526" target="_blank" rel="noopener">
           <div class="product-card-img gift-img">
-            <img src="images/summer-coffee-dip-gift-package.jpg" alt="DoubleCoffee夏ギフトセット">
+            <img src="images/summer-coffee-dip-gift-package.png" alt="DoubleCoffee夏ギフトセット">
           </div>
           <div class="product-card-body">
             <span class="product-type-badge assort">期間限定 GIFT</span>
@@ -523,13 +522,13 @@
         </a>
         <a class="product-card" href="https://doublecoffee.official.ec/items/144555180" target="_blank" rel="noopener">
           <div class="product-card-img gift-img">
-            <img src="images/flavored-coffee-dip-gift-package.jpg" alt="DoubleCoffeedipstyleギフトセット">
+            <img src="images/flavored-coffee-dip-gift-package.png" alt="DoubleCoffeedipstyleギフトセット">
           </div>
           <div class="product-card-body">
             <span class="product-type-badge assort">GIFT</span>
             <p class="product-card-name">Gift Set</p>
             <p class="product-card-name-jp">ディップスタイル ギフトセット</p>
-            <p class="product-card-desc">大切な人に、香りの時間を贈る。ヘーゼルナッツ、バニラ、ココナッツ——3つの香りが、それぞれ違う旅へ連れていきます。</p>
+            <p class="product-card-desc">大切な人に、香りの時間を贈る。ヘーゼルナッツ、バニラ、ココナッツ——3つの香りが、それぞれ違う旅に連れていきます。</p>
             <div class="product-card-footer">
               <p class="product-price">¥4,080<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -678,7 +677,7 @@
             <span class="product-type-badge dip">DIP BAG · 5袋入り</span>
             <p class="product-card-name">Hazelnut</p>
             <p class="product-card-name-jp">ヘーゼルナッツ ディップバッグ</p>
-            <p class="product-card-desc">ひとり時間に浸る午後の香り。香ばしさとコーヒーの苦味が溶け合う一杯。</p>
+            <p class="product-card-desc">ドゥーブルコーヒーの定番。ひとり時間に浸る午後の香り。香ばしさとコーヒーの苦味が溶け合う一杯。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,250<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -693,7 +692,7 @@
             <span class="product-type-badge">コーヒー豆 · 粉</span>
             <p class="product-card-name">Hazelnut</p>
             <p class="product-card-name-jp">ヘーゼルナッツ コーヒー豆/粉</p>
-            <p class="product-card-desc">ひとり時間に浸る午後の香り。お好みのコーヒー器具で淹れる、豆・粉タイプ。静かな集中時間に寄り添う一杯。</p>
+            <p class="product-card-desc">ドゥーブルコーヒーの定番。ひとり時間に浸る午後の香り。お好みのコーヒー器具で淹れる、豆・粉タイプ。静かな集中時間に寄り添う一杯。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,980<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -780,7 +779,7 @@
       <div class="flavor-group-cards">
         <a class="product-card" href="https://doublecoffee.official.ec/items/144556526" target="_blank" rel="noopener">
           <div class="product-card-img">
-            <img src="images/summer-coffee-dip-gift-package.jpg" alt="DoubleCoffee夏ギフトセット">
+            <img src="images/summer-coffee-dip-gift-package.png" alt="DoubleCoffee夏ギフトセット">
           </div>
           <div class="product-card-body">
             <span class="product-type-badge assort">GIFT</span>
@@ -795,7 +794,7 @@
         </a>
         <a class="product-card" href="https://doublecoffee.official.ec/items/144555180" target="_blank" rel="noopener">
           <div class="product-card-img">
-            <img src="images/flavored-coffee-dip-gift-package.jpg" alt="DoubleCoffeedipstyleギフトセット">
+            <img src="images/flavored-coffee-dip-gift-package.png" alt="DoubleCoffeedipstyleギフトセット">
           </div>
           <div class="product-card-body">
             <span class="product-type-badge assort">GIFT</span>
@@ -810,7 +809,7 @@
         </a>
         <a class="product-card" href="https://doublecoffee.official.ec/items/126550760" target="_blank" rel="noopener">
           <div class="product-card-img">
-            <img src="images/flavored-coffee-gift-package.JPG" alt="DoubleCoffeeギフトセット">
+            <img src="images/flavored-coffee-gift-package.png" alt="DoubleCoffeeギフトセット">
           </div>
           <div class="product-card-body">
             <span class="product-type-badge assort">GIFT</span>
@@ -842,7 +841,7 @@
             <span class="product-type-badge">TOOLS</span>
             <p class="product-card-name">コーヒーフィルター&カップ</p>
             <p class="product-card-name-jp">コーヒーのある暮らし</p>
-            <p class="product-card-desc">DOUBLE COFFEEが厳選した、ベトナム名物バッチャン焼きによるフィルターとカップ。</p>
+            <p class="product-card-desc">ドゥーブルコーヒーが厳選した、ベトナム名物バッチャン焼きによるフィルターとカップ。</p>
             <div class="product-card-footer">
               <p class="product-price">¥2,640<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -924,7 +923,7 @@
           <p class="assort-card-jp">5種フレーバーアソートセット</p>
           <p class="assort-card-desc">
             Hazelnut · Vanilla · Coconut · Butter · Non Flavor<br>
-            5種のフレーバーがすべて揃ったアソートセット。<br>
+            5種のフレーバーがすべて揃ったドゥーブルコーヒーアソートセット。<br>
             どれが「自分の一杯」か、試しながら見つけられます。
           </p>
           <p class="assort-price">¥1,250<span>（税込・送料別）</span></p>
@@ -958,7 +957,7 @@
 
       <!-- Q1 -->
       <div class="quiz-question active" id="sc-q1">
-        <p class="quiz-q-label">Q1</p>
+        <p class="quiz-q-label">1</p>
         <p class="quiz-q-text">今の気分に近いのは？</p>
         <div class="quiz-options">
           <button class="quiz-option" onclick="scQuizNext('sc-q2a')">
@@ -975,7 +974,7 @@
 
       <!-- Q2-A -->
       <div class="quiz-question" id="sc-q2a">
-        <p class="quiz-q-label">Q2</p>
+        <p class="quiz-q-label">2</p>
         <p class="quiz-q-text">どんな香りが今の気分に合いますか？</p>
         <div class="quiz-options">
           <button class="quiz-option" onclick="scQuizResult('sc-result-nonflavor')">
@@ -989,7 +988,7 @@
 
       <!-- Q2-B -->
       <div class="quiz-question" id="sc-q2b">
-        <p class="quiz-q-label">Q2</p>
+        <p class="quiz-q-label">2</p>
         <p class="quiz-q-text">どんな香りが今の気分に合いますか？</p>
         <div class="quiz-options">
           <button class="quiz-option" onclick="scQuizResult('sc-result-vanilla')">
@@ -1093,7 +1092,8 @@
         <p class="footer-tagline">
           一杯で、日常が旅になる。<br>
           香りで気持ちを整える、<br>
-          フレーバーコーヒーブランド。
+          フレーバーコーヒーブランド。<br>
+          Double Coffee（ドゥーブルコーヒー）
         </p>
         <div class="footer-sns">
           <a href="https://www.instagram.com/doublecoffee_online/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -1110,7 +1110,7 @@
         <ul class="footer-nav-list">
           <li><a href="https://doublecoffee-jp.netlify.app/">Home</a></li>
           <li><a href="https://doublecoffee-jp.netlify.app/first-time.html">はじめての方へ</a></li>
-          <li><a href="https://doublecoffee-jp.netlify.app/select-coffee.html">コーヒーを選ぶ</a></li>
+          <li><a href="https://doublecoffee-jp.netlify.app/select-coffee.html">香りを選ぶ</a></li>
           <li><a href="https://doublecoffee-jp.netlify.app/subscription.html">定期便</a></li>
           <li><a href="https://doublecoffee-jp.netlify.app/about.html">About us</a></li>
        </ul>
