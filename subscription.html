@@ -16,17 +16,17 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Shippori+Mincho:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Zen+Old+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; scroll-behavior: smooth; }
-    body { font-family: 'Shippori Mincho', sans-serif; font-weight: 300; color: #1C2438; background: #F7FBFD; line-height: 1.8; }
+    body { font-family: 'Noto Sans JP', sans-serif; font-weight: 300; color: #1C1A14; background: #FFFFFF; line-height: 1.8; }
     a { text-decoration: none; color: inherit; }
     img { display: block; width: 100%; object-fit: cover; }
     body.menu-open { overflow: hidden; }
     :root {
-      --cream: #F4F0E8; --ivory: #F7FBFD; --mocha: #1C2438; --coffee: #3C4858;
-      --caramel: #B87830; --gold: #BFA040; --sage: #7A9EA4; --pale-green: #E6F0F5; --border: #D4E0E8;
+      --cream: #FDF1ED; --ivory: #FFFFFF; --mocha: #1C1A14; --coffee: #5C4F3A;
+      --caramel: #D07818; --gold: #C4A050; --sage: #A89888; --pale-green: #F2DDD6; --border: #EAD8D2;
     }
 
     /* ===== HEADER ===== */
@@ -43,7 +43,7 @@
     .nav-cart svg { width: 22px; height: 22px; fill: currentColor; stroke: none; }
     .nav-logo { grid-column: 2; display: flex; flex-direction: column; align-items: center; gap: 4px; }
     .nav-logo-img { height: 28px; width: auto; display: block; object-fit: contain; mix-blend-mode: multiply; }
-    .nav-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.65rem; color: var(--caramel); letter-spacing: 0.3em; }
+    .nav-logo span { font-family: 'Cinzel', 'Zen Old Mincho', serif; font-style: italic; font-size: 0.65rem; color: var(--caramel); letter-spacing: 0.3em; }
     .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; position: relative; z-index: 140; }
     .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--mocha); transition: transform 0.25s ease, opacity 0.25s ease; }
     .hamburger.is-active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
@@ -84,7 +84,7 @@
       text-transform: uppercase; margin-bottom: 24px; position: relative;
     }
     .hero-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: clamp(1.8rem, 4.5vw, 3.2rem);
       font-weight: 400; color: #fff; line-height: 1.4;
       margin-bottom: 24px; position: relative;
@@ -116,7 +116,7 @@
       font-weight: 400; text-transform: uppercase; margin-bottom: 20px;
     }
     .why-quote {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-style: italic;
       font-size: clamp(1.15rem, 2.5vw, 1.5rem);
       font-weight: 400; color: var(--mocha);
@@ -133,7 +133,7 @@
       text-align: center;
     }
     .section-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: clamp(1.3rem, 2.5vw, 1.9rem);
       font-weight: 400; color: var(--mocha);
       line-height: 1.35; margin-bottom: 12px;
@@ -155,7 +155,7 @@
       text-transform: uppercase; margin-bottom: 12px;
     }
     .season-headline {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: 1.05rem; font-weight: 400; color: var(--mocha);
       margin-bottom: 10px;
     }
@@ -185,7 +185,7 @@
       padding: 4px 14px; border-radius: 0 0 6px 6px;
     }
     .plan-num {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: 3.6rem; font-weight: 400;
       color: var(--mocha); line-height: 1; margin-bottom: 4px;
     }
@@ -265,7 +265,7 @@
       animation: ticker 30s linear infinite; white-space: nowrap;
     }
     .ticker-track span {
-      font-family: 'Playfair Display', serif; font-style: italic;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif; font-style: italic;
       font-size: 0.8rem; color: rgba(255,255,255,0.4);
       letter-spacing: 0.25em; padding: 0 32px;
     }
@@ -286,7 +286,7 @@
       pointer-events: none;
     }
     .closing-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: clamp(1.4rem, 3.5vw, 2.4rem);
       font-weight: 400; color: #fff;
       line-height: 1.5; margin-bottom: 12px; position: relative;
@@ -301,14 +301,14 @@
     }
     .closing-link {
       display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: 0.95rem; letter-spacing: 0.08em;
       color: #fff; transition: gap 0.2s;
     }
     .closing-link:hover { gap: 14px; }
     .closing-link .arrow { font-style: normal; opacity: 0.6; }
     .closing-link.sub {
-      font-family: 'Shippori Mincho', sans-serif;
+      font-family: 'Noto Sans JP', sans-serif;
       font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.1em;
     }
     .closing-link.sub:hover { color: rgba(255,255,255,0.7); }
@@ -319,7 +319,7 @@
     .footer-brand .nav-logo { margin-bottom: 20px; display: flex; }
     .footer-brand .nav-logo span { color: var(--gold); }
     .footer-logo-img { filter: brightness(0) invert(1); opacity: 0.85; height: 24px; }
-    .footer-tagline { font-family: 'Shippori Mincho', serif; font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 2.2; margin-bottom: 28px; }
+    .footer-tagline { font-family: 'Noto Sans JP', serif; font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 2.2; margin-bottom: 28px; }
     .footer-sns { display: flex; gap: 16px; }
     .footer-sns a { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; transition: border-color 0.2s; }
     .footer-sns a:hover { border-color: var(--gold); }

@@ -16,17 +16,17 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Shippori+Mincho:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Zen+Old+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* ========== RESET & BASE ========== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; scroll-behavior: smooth; }
     body {
-      font-family: 'Shippori Mincho', sans-serif;
+      font-family: 'Noto Sans JP', sans-serif;
       font-weight: 300;
-      color: #1C2438;
-      background: #F7FBFD;
+      color: #1C1A14;
+      background: #FFFFFF;
       line-height: 1.8;
     }
     a { text-decoration: none; color: inherit; }
@@ -35,30 +35,30 @@
 
     /* ========== COLOR VARIABLES ========== */
     :root {
-      --cream:         #F4F0E8;   /* 朝のミルクコーヒー */
-      --ivory:         #F7FBFD;   /* 澄んだ空気の白 */
-      --mocha:         #1C2438;   /* 夜明け前の空の深さ */
-      --coffee:        #3C4858;   /* 空気感のある深み */
-      --caramel:       #B87830;   /* 琥珀・朝の光 */
-      --gold:          #BFA040;   /* 陽光ゴールド */
-      --sky:           #6BA4C4;   /* 空の青 */
+      --cream:         #FDF1ED;   /* バニラクリームピンク */
+      --ivory:         #FFFFFF;   /* 純白 */
+      --mocha:         #1C1A14;   /* 温かみのある黒 */
+      --coffee:        #5C4F3A;   /* 温かみのあるブラウン */
+      --caramel:       #D07818;   /* モーニングコーヒーオレンジ */
+      --gold:          #C4A050;   /* パッケージ箔ゴールド */
+      --sky:           #C4A050;
       --logo-silver:   #9A9AA2;
-      --rose:          #C07868;
-      --sage:          #7A9EA4;   /* 地平線の青緑 */
-      --khaki:         #B0BEC8;   /* 霞・光の色 */
-      --pale-green:    #E6F0F5;   /* 薄い空色 */
-      --pale-rose:     #F5EEEB;
-      --border:        #D4E0E8;   /* 朝霞の境界線 */
+      --rose:          #F2DDD6;   /* ソフトコーラル */
+      --sage:          #A89888;   /* ウォームトープ */
+      --khaki:         #A8A098;   /* ウォームグレー */
+      --pale-green:    #F2DDD6;   /* ソフトコーラル */
+      --pale-rose:     #FDF1ED;   /* バニラクリームピンク */
+      --border:        #EAD8D2;   /* 温かみのあるボーダー */
     }
 
     /* ========== TYPOGRAPHY ========== */
     .serif-en {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-weight: 300;
       letter-spacing: 0.05em;
     }
     .serif-jp {
-      font-family: 'Shippori Mincho', serif;
+      font-family: 'Noto Sans JP', serif;
       font-weight: 300;
     }
 
@@ -124,7 +124,7 @@
       mix-blend-mode: multiply;
     }
     .nav-logo span {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-style: italic;
       font-weight: 300;
       font-size: 0.65rem;
@@ -272,7 +272,7 @@
       color: var(--caramel);
     }
     .hero-subtitle {
-      font-family: 'Shippori Mincho', serif;
+      font-family: 'Noto Sans JP', serif;
       font-size: 1rem;
       font-weight: 300;
       color: var(--coffee);
@@ -344,7 +344,7 @@
       text-transform: uppercase;
     }
     .section-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: clamp(2rem, 3vw, 3rem);
       font-weight: 300;
       color: var(--mocha);
@@ -352,7 +352,7 @@
       margin-bottom: 20px;
     }
     .section-desc {
-      font-family: 'Shippori Mincho', serif;
+      font-family: 'Noto Sans JP', serif;
       font-size: 0.875rem;
       font-weight: 300;
       color: var(--coffee);
@@ -368,37 +368,6 @@
       height: 1px;
       background: var(--gold);
       margin-bottom: 24px;
-    }
-
-    /* ========== CONCEPT BAND ========== */
-    .concept-band {
-      background: var(--mocha);
-      padding: 14px 0;
-      overflow: hidden;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .concept-ticker {
-      display: flex;
-      gap: 56px;
-      white-space: nowrap;
-      animation: ticker 20s linear infinite;
-    }
-    .concept-ticker span {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.78rem;
-      font-style: italic;
-      letter-spacing: 0.22em;
-      color: rgba(255,255,255,0.38);
-      flex-shrink: 0;
-    }
-    .concept-ticker span.hl {
-      color: var(--gold);
-      opacity: 0.85;
-    }
-    @keyframes ticker {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
     }
 
     /* ========== MOOD SECTION ========== */
@@ -450,7 +419,7 @@
       background: linear-gradient(to top, rgba(44, 31, 20, 0.92) 0%, rgba(44, 31, 20, 0.15) 60%);
     }
     .mood-card-num {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: 0.75rem;
       font-style: italic;
       color: var(--gold);
@@ -458,7 +427,7 @@
       margin-bottom: 6px;
     }
     .mood-card-name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: 1.3rem;
       font-weight: 300;
       color: white;
@@ -518,7 +487,7 @@
     }
     .concept-text-inner { max-width: 460px; }
     .concept-quote {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: clamp(1.5rem, 2.2vw, 2.2rem);
       font-style: italic;
       color: var(--coffee);
@@ -603,7 +572,7 @@
       font-weight: 400;
     }
     .product-name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: 1.15rem;
       font-weight: 400;
       color: var(--mocha);
@@ -622,14 +591,14 @@
       margin-bottom: 8px;
     }
     .product-price {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: 1.1rem;
       color: var(--mocha);
       letter-spacing: 0.1em;
     }
     .product-price span {
       font-size: 0.7rem;
-      font-family: 'Shippori Mincho', sans-serif;
+      font-family: 'Noto Sans JP', sans-serif;
       color: var(--khaki);
     }
 
@@ -640,7 +609,7 @@
       letter-spacing: 0.15em;
       color: var(--mocha);
       font-weight: 400;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       margin-top: 40px;
       margin-bottom: 14px;
     }
@@ -760,7 +729,7 @@
       align-items: flex-start;
     }
     .brew-step-num {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: 2rem;
       font-style: italic;
       color: rgba(255,255,255,0.25);
@@ -768,7 +737,7 @@
       margin-bottom: 2px;
     }
     .brew-step-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: 1.1rem;
       color: white;
       letter-spacing: 0.1em;
@@ -862,7 +831,7 @@
       font-weight: 500;
     }
     .sub-plan-name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: 1.6rem;
       color: var(--mocha);
       letter-spacing: 0.1em;
@@ -876,7 +845,7 @@
       margin-bottom: 28px;
     }
     .sub-price {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: 2.4rem;
       color: var(--mocha);
       line-height: 1;
@@ -1021,7 +990,7 @@
     }
     .footer-brand .nav-logo span { color: var(--gold); }
     .footer-tagline {
-      font-family: 'Shippori Mincho', serif;
+      font-family: 'Noto Sans JP', serif;
       font-size: 0.78rem;
       color: rgba(255,255,255,0.45);
       line-height: 2.2;
@@ -1233,7 +1202,8 @@
       /* --- Mood --- */
       .mood-section { padding: 28px 0 36px; }
       .mood-header { margin-bottom: 16px; }
-      .mood-card { flex: 0 0 70vw; }
+      .mood-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; overflow-x: visible; scroll-snap-type: none; }
+      .mood-card { flex: none; }
       .mood-card-overlay { padding: 16px 14px; }
       .mood-card-name { font-size: 1rem; }
       .mood-card-jp { font-size: 0.64rem; }
@@ -1247,7 +1217,8 @@
       /* --- Products --- */
       .products-section { padding: 28px 0 32px; }
       .products-header { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 18px; }
-      .product-card { flex: 0 0 70vw; flex-direction: column; }
+      .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; overflow-x: visible; scroll-snap-type: none; }
+      .product-card { flex: none; flex-direction: column; }
       .product-image { width: 100%; aspect-ratio: 4/3; min-height: auto; }
       .product-info { padding: 12px 14px 16px; }
       .product-name { font-size: 1rem; margin-bottom: 2px; }
@@ -1376,122 +1347,14 @@
 </section>
 
 
-<!-- ====== CONCEPT TICKER ====== -->
-<div class="concept-band">
-  <div class="concept-ticker" style="display:flex;gap:64px;white-space:nowrap;animation:ticker 24s linear infinite;">
-    <span class="hl"><a href="https://doublecoffee.official.ec/items/114822849" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">NEW — 唐辛子コーヒー 新発売</a></span>
-    <span>·</span>
-    <span class="hl">香りで旅するコーヒー</span>
-    <span>·</span>
-    <span>AROMATIC VIETNAMESE COFFEE</span>
-    <span>·</span>
-    <span class="hl"><a href="https://doublecoffee.official.ec/items/114822849" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">NEW — 唐辛子コーヒー 新発売</a></span>
-    <span>·</span>
-    <span class="hl">Non Flavor · Vanilla · Coconut · Hazelnut · Butter</span>
-    <span>·</span>
-    <span>DIP STYLE · EASY BREW</span>
-    <span>·</span>
-    <span class="hl"><a href="https://doublecoffee.official.ec/items/114822849" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">NEW — 唐辛子コーヒー 新発売</a></span>
-    <span>·</span>
-    <span class="hl">Relax. Comfort. Refresh. Rich. Pure.</span>
-    <span>·</span>
-    <span class="hl"><a href="https://doublecoffee.official.ec/items/114822849" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">NEW — 唐辛子コーヒー 新発売</a></span>
-    <span>·</span>
-    <span class="hl">香りで旅するコーヒー</span>
-    <span>·</span>
-    <span>AROMATIC VIETNAMESE COFFEE</span>
-    <span>·</span>
-    <span class="hl"><a href="https://doublecoffee.official.ec/items/114822849" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">NEW — 唐辛子コーヒー 新発売</a></span>
-    <span>·</span>
-    <span class="hl">Non Flavor · Vanilla · Coconut · Hazelnut · Butter</span>
-    <span>·</span>
-    <span>DIP STYLE · EASY BREW</span>
-    <span>·</span>
-    <span class="hl"><a href="https://doublecoffee.official.ec/items/114822849" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">NEW — 唐辛子コーヒー 新発売</a></span>
-    <span>·</span>
-    <span class="hl">Relax. Comfort. Refresh. Rich. Pure.</span>
-    <span>·</span>
-    <span class="hl"><a href="https://doublecoffee.official.ec/items/114822849" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">NEW — 唐辛子コーヒー 新発売</a></span>
-    <span>·</span>
-  </div>
-</div>
-
-<!-- ====== PRODUCTS SECTION ====== -->
-<section class="products-section">
-  <div class="container">
-    <div class="products-header">
-      <div>
-        <p class="section-label">LINEUP</p>
-        <div class="divider"></div>
-        <h2 class="section-title">人気のアイテム</h2>
-      </div>
-      <a class="btn-secondary" href="https://doublecoffee-jp.netlify.app/select-coffee.html">すべて見る →</a>
-    </div>
-
-    <div class="product-grid">
-      <!-- Product 1: ヘーゼルナッツの香り -->
-      <a class="product-card" href="https://doublecoffee.official.ec/items/114817871" target="_blank" rel="noopener" style="display:block;color:inherit;">
-        <div class="product-image">
-          <img src="images/hazelnut-dip-style-coffee-bag-gift-set.png" alt="ヘーゼルナッツの香り" style="width:100%;height:100%;object-fit:cover;">
-          <span class="product-tag">BEST SELLER</span>
-        </div>
-        <div class="product-info">
-          <p class="product-category">DIP STYLE · 5袋入り</p>
-          <p class="product-name">Hazelnut</p>
-          <p class="product-desc">
-            ひとり時間に浸る午後の香り。<br>
-            静かに思考を整える一杯。<br>
-            砂糖・甘味料不使用。
-          </p>
-          <p class="product-price">¥1,250<span>（税込）</span></p>
-        </div>
-      </a>
-
-      <!-- Product 2: バターの香り -->
-      <a class="product-card" href="https://doublecoffee.official.ec/items/114821502" target="_blank" rel="noopener" style="display:block;color:inherit;">
-        <div class="product-image">
-          <img src="images/butter-dip-style-coffee-bag-gift-set.png" alt="バターの香り" style="width:100%;height:100%;object-fit:cover;">
-        </div>
-        <div class="product-info">
-          <p class="product-category">DIP STYLE · 5袋入り</p>
-          <p class="product-name">Butter</p>
-          <p class="product-desc">
-            夜、深い余韻に浸るための香り。<br>
-            じんわりと気持ちを満たしてくれる贅沢な一杯。<br>
-            砂糖・甘味料不使用。
-          </p>
-          <p class="product-price">¥1,250<span>（税込）</span></p>
-        </div>
-      </a>
-
-      <!-- Product 3: グッドモーニングコーヒー -->
-      <a class="product-card" href="https://doublecoffee.official.ec/items/114822849" target="_blank" rel="noopener" style="display:block;color:inherit;">
-        <div class="product-image">
-          <img src="images/non-flavor-dip-style-coffee-bag-gift-set.png" alt="グッドモーニングコーヒー" style="width:100%;height:100%;object-fit:cover;">
-        </div>
-        <div class="product-info">
-          <p class="product-category">DIP STYLE · 5袋入り</p>
-          <p class="product-name">Non Flavor</p>
-          <p class="product-desc">
-            まっさらな朝のはじまりの香り。<br>
-            豆本来のクリーンな香りと澄んだ後味。<br>
-            一日の始まりに寄り添う一杯。
-          </p>
-          <p class="product-price">¥1,250<span>（税込）</span></p>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- ====== MOOD SECTION ====== -->
 <section class="mood-section">
   <div class="container">
     <div class="mood-header">
       <p class="section-label">CHOOSE BY MOOD</p>
       <div class="divider" style="margin: 0 auto 20px;"></div>
-      <h2 class="section-title">今日の気分で、選ぶ。</h2>
-      <p class="section-desc">5つのフレーバーは、5つの感情。<br>あなたの今に合う一杯を。</p>
+      <h2 class="section-title">今の気分で選ぶ。</h2>
+      <p class="section-desc">あなたの今に合う一杯を選んでみてください。</p>
     </div>
 
     <div class="mood-grid">
@@ -1550,8 +1413,93 @@
         </div>
       </a>
     </div>
-    <div style="text-align:center;margin-top:28px;">
-      <a href="https://doublecoffee-jp.netlify.app/select-coffee" target="_blank" rel="noopener" class="btn-secondary">香りを選ぶ →</a>
+    <div style="text-align:center;margin-top:28px;display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <a href="https://doublecoffee-jp.netlify.app/select-coffee.html?category=quiz" class="btn-primary">コーヒー診断を試す →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PRODUCTS SECTION ====== -->
+<section class="products-section">
+  <div class="container">
+    <div class="products-header">
+      <div>
+        <p class="section-label">Recommend</p>
+        <div class="divider"></div>
+        <h2 class="section-title">おすすめの商品</h2>
+      </div>
+    </div>
+
+    <div class="product-grid">
+      <!-- Product 1: ヘーゼルナッツ ディップバッグ -->
+      <a class="product-card" href="https://doublecoffee.official.ec/items/114817871" target="_blank" rel="noopener" style="display:block;color:inherit;">
+        <div class="product-image">
+          <img src="images/hazelnut-dip-style-coffee-bag-gift-set.png" alt="ヘーゼルナッツ ディップバッグ" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">一番人気</span>
+        </div>
+        <div class="product-info">
+          <p class="product-category">DIP BAG · 5袋入り</p>
+          <p class="product-name">Hazelnut</p>
+          <p class="product-desc">
+            ひとり時間に浸る午後の香り。<br>
+            香ばしさとコーヒーの苦味が溶け合う一杯。
+          </p>
+          <p class="product-price">¥1,250<span>（税込）</span></p>
+        </div>
+      </a>
+
+      <!-- Product 2: 期間限定ギフト -->
+      <a class="product-card" href="https://doublecoffee.official.ec/items/144556526" target="_blank" rel="noopener" style="display:block;color:inherit;">
+        <div class="product-image">
+          <img src="images/summer-coffee-dip-gift-package.png" alt="期間限定ギフトセット" style="width:100%;height:100%;object-fit:cover;">
+          <span class="product-tag">期間限定</span>
+        </div>
+        <div class="product-info">
+          <p class="product-category">GIFT SET · 期間限定</p>
+          <p class="product-name">Summer Gift</p>
+          <p class="product-desc">
+            夏の朝・昼・夜に寄り添う<br>
+            3つの香りを詰め込んだ限定ギフト。
+          </p>
+          <p class="product-price">¥4,310<span>（税込）</span></p>
+        </div>
+      </a>
+
+      <!-- Product 3: 豆・粉の定番ギフト -->
+      <a class="product-card" href="https://doublecoffee.official.ec/items/126550760" target="_blank" rel="noopener" style="display:block;color:inherit;">
+        <div class="product-image">
+          <img src="images/flavored-coffee-gift-package.png" alt="豆・粉の定番ギフトセット" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="product-info">
+          <p class="product-category">GIFT SET · 豆 / 粉</p>
+          <p class="product-name">Gift Set</p>
+          <p class="product-desc">
+            大切な人へ贈る、定番ギフト。<br>
+            香りで旅する体験をプレゼントに。
+          </p>
+          <p class="product-price">¥6,270<span>（税込）</span></p>
+        </div>
+      </a>
+
+      <!-- Product 4: バニラ ディップバッグ -->
+      <a class="product-card" href="https://doublecoffee.official.ec/items/114822123" target="_blank" rel="noopener" style="display:block;color:inherit;">
+        <div class="product-image">
+          <img src="images/vanilla-dip-style-coffee-bag-gift-set.png" alt="バニラ ディップバッグ" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="product-info">
+          <p class="product-category">DIP BAG · 5袋入り</p>
+          <p class="product-name">Vanilla</p>
+          <p class="product-desc">
+            肩の力を抜きたいときの香り。<br>
+            やわらかな時間に寄り添う一杯。
+          </p>
+          <p class="product-price">¥1,250<span>（税込）</span></p>
+        </div>
+      </a>
+    </div>
+
+    <div style="text-align:center;margin-top:32px;">
+      <a href="https://doublecoffee-jp.netlify.app/select-coffee.html" class="btn-primary">もっと見る →</a>
     </div>
   </div>
 </section>
@@ -1565,10 +1513,11 @@
       <h2 class="section-title">香りで旅するコーヒー</h2>
       <p class="section-desc">
         ドゥーブルコーヒーのコーヒー豆は、すべてベトナム産。<br>
-        砂糖・甘味料は使用していません。<br>
-        その土地の空気、温度、農家の手仕事が<br>
+        厳選したアラビカ種とロブスタ種を独自のバランスでブレンドしています。<br>
+        フレーバーコーヒについては、砂糖・甘味料は使用していません。<br>
+        ベトナムの大地の空気、温度、農家の手仕事が<br>
         香りの中に宿っています。<br><br>
-        「一杯のコーヒーで、どこかへ行ける気がした」<br>
+        「一杯のコーヒーで、どこかへ行けるような気がした」<br>
         そんな体験を、お届けします。<br>
       </p>
       <a class="btn-secondary" href="https://doublecoffee-jp.netlify.app/about.html" target="_blank" rel="noopener" style="margin-top:32px;display:inline-block;">ストーリーを読む →</a>

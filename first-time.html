@@ -16,27 +16,27 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Shippori+Mincho:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Zen+Old+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; scroll-behavior: smooth; }
-    body { font-family: 'Shippori Mincho', sans-serif; font-weight: 300; color: #1C2438; background: #F7FBFD; line-height: 1.8; }
+    body { font-family: 'Noto Sans JP', sans-serif; font-weight: 300; color: #1C1A14; background: #FFFFFF; line-height: 1.8; }
     body.menu-open { overflow: hidden; }
     a { text-decoration: none; color: inherit; }
     img { display: block; width: 100%; object-fit: cover; }
 
     :root {
-      --cream:      #F4F0E8;
-      --ivory:      #F7FBFD;
-      --mocha:      #1C2438;
-      --coffee:     #3C4858;
-      --caramel:    #B87830;
-      --gold:       #BFA040;
-      --sage:       #7A9EA4;
-      --khaki:      #B0BEC8;
-      --pale-green: #E6F0F5;
-      --border:     #D4E0E8;
+      --cream:      #FDF1ED;
+      --ivory:      #FFFFFF;
+      --mocha:      #1C1A14;
+      --coffee:     #5C4F3A;
+      --caramel:    #D07818;
+      --gold:       #C4A050;
+      --sage:       #A89888;
+      --khaki:      #A8A098;
+      --pale-green: #F2DDD6;
+      --border:     #EAD8D2;
     }
 
     /* ===== HEADER ===== */
@@ -53,7 +53,7 @@
     .nav-cart svg { width: 22px; height: 22px; fill: currentColor; stroke: none; }
     .nav-logo { grid-column: 2; display: flex; flex-direction: column; align-items: center; gap: 4px; }
     .nav-logo-img { height: 28px; width: auto; display: block; object-fit: contain; mix-blend-mode: multiply; }
-    .nav-logo span { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.65rem; color: var(--caramel); letter-spacing: 0.3em; line-height: 1; }
+    .nav-logo span { font-family: 'Cinzel', 'Zen Old Mincho', serif; font-style: italic; font-size: 0.65rem; color: var(--caramel); letter-spacing: 0.3em; line-height: 1; }
     .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; position: relative; z-index: 140; }
     .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--mocha); transition: transform 0.25s ease, opacity 0.25s ease; }
     .hamburger.is-active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
@@ -94,8 +94,8 @@
 
     /* ===== COMMON ===== */
     .section-label { font-size: 0.65rem; letter-spacing: 0.4em; color: var(--caramel); font-weight: 400; margin-bottom: 16px; text-transform: uppercase; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: var(--mocha); line-height: 1.2; margin-bottom: 20px; }
-    .section-desc { font-family: 'Shippori Mincho', serif; font-size: 0.875rem; font-weight: 300; color: var(--coffee); line-height: 2.2; }
+    .section-title { font-family: 'Cinzel', 'Zen Old Mincho', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: var(--mocha); line-height: 1.2; margin-bottom: 20px; }
+    .section-desc { font-family: 'Noto Sans JP', serif; font-size: 0.875rem; font-weight: 300; color: var(--coffee); line-height: 2.2; }
     .divider { width: 40px; height: 1px; background: var(--gold); margin-bottom: 24px; }
     .container { max-width: 1060px; margin: 0 auto; padding: 0 40px; }
     .btn-primary { display: inline-block; padding: 16px 48px; background: var(--mocha); color: white; font-size: 0.75rem; letter-spacing: 0.25em; font-weight: 400; transition: background 0.25s; }
@@ -213,7 +213,7 @@
       font-weight: 400;
     }
     .flavor-name-en {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: 1.3rem; font-weight: 300; font-style: italic;
       color: var(--mocha); letter-spacing: 0.05em;
       margin-bottom: 2px;
@@ -264,11 +264,11 @@
     .flavor-table { width: 100%; }
     .flavor-row {
       display: grid;
-      grid-template-columns: 200px 1fr 1.6fr;
+      grid-template-columns: 220px 1fr 1.4fr;
       border-bottom: 1px solid var(--border);
-      padding: 18px 0;
+      padding: 20px 0;
       gap: 20px;
-      align-items: center;
+      align-items: start;
     }
     .flavor-row:first-child { border-top: 1px solid var(--border); }
     .ft-flavor {
@@ -278,7 +278,7 @@
     }
     .ft-flavor:hover { opacity: 0.72; }
     .ft-img {
-      width: 68px; height: 68px; flex-shrink: 0;
+      width: 96px; height: 96px; flex-shrink: 0;
       background: var(--cream); overflow: hidden;
     }
     .ft-img img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
@@ -289,14 +289,23 @@
       display: inline-block; align-self: flex-start;
     }
     .ft-name-en {
-      font-family: 'Playfair Display', serif; font-style: italic;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif; font-style: italic;
       font-size: 0.95rem; font-weight: 300; color: var(--mocha);
     }
     .ft-name-jp { font-size: 0.65rem; color: var(--caramel); letter-spacing: 0.12em; }
+    .ft-desc-col { padding-top: 2px; }
     .ft-main-desc {
       font-size: 0.85rem; color: var(--mocha); line-height: 1.8;
       border-left: 2px solid var(--gold); padding-left: 14px;
+      margin-bottom: 14px;
     }
+    .ft-scores { display: flex; flex-direction: column; gap: 7px; }
+    .ft-score-row { display: flex; align-items: center; gap: 8px; }
+    .ft-score-label { font-size: 0.58rem; color: var(--khaki); letter-spacing: 0.1em; width: 30px; flex-shrink: 0; }
+    .ft-score-bar-bg { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+    .ft-score-bar { height: 100%; background: var(--caramel); border-radius: 2px; }
+    .ft-score-num { font-size: 0.6rem; color: var(--coffee); width: 16px; text-align: right; flex-shrink: 0; }
+    .ft-occasions { padding-top: 2px; }
     .ft-occasions-label {
       font-size: 0.56rem; letter-spacing: 0.2em; color: var(--khaki);
       margin-bottom: 8px;
@@ -311,28 +320,22 @@
       .flavor-guide-section { padding: 40px 0; }
       .flavor-guide-header { margin-bottom: 24px; }
       .flavor-row {
-        grid-template-columns: 96px 1fr;
-        grid-template-rows: auto auto;
+        grid-template-columns: 1fr;
         grid-template-areas:
-          "desc    desc"
-          "flavor  occasions";
+          "flavor"
+          "desc"
+          "occasions";
         padding: 20px 0;
-        gap: 10px 14px;
+        gap: 12px;
         align-items: start;
       }
+      .ft-flavor { grid-area: flavor; flex-direction: row; align-items: center; gap: 12px; }
+      .ft-img { width: 80px; height: 80px; }
+      .ft-flavor > div { align-items: flex-start; }
       .ft-desc-col { grid-area: desc; }
-      .ft-main-desc { font-size: 0.78rem; padding-left: 10px; }
-      .ft-flavor {
-        grid-area: flavor;
-        flex-direction: column; align-items: center; gap: 8px;
-      }
-      .ft-img { width: 68px; height: 68px; }
-      .ft-flavor > div { align-items: center; }
-      .ft-name-en { font-size: 0.82rem; text-align: center; }
-      .ft-name-jp { text-align: center; }
+      .ft-main-desc { font-size: 0.78rem; padding-left: 10px; margin-bottom: 10px; }
       .ft-occasions { grid-area: occasions; }
       .ft-tag { font-size: 0.62rem; padding: 4px 8px; }
-      .ft-tag:nth-child(n+4) { display: none; }
     }
 
     /* ===== BREW SECTION ===== */
@@ -357,14 +360,14 @@
     }
     .brew-step:last-child { border-bottom: none; }
     .brew-step-num {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: 2.2rem; font-style: italic;
       color: rgba(255,255,255,0.15); line-height: 1;
       flex-shrink: 0; width: 40px;
     }
     .brew-step-content { flex: 1; }
     .brew-step-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', 'Zen Old Mincho', serif;
       font-size: 1.05rem; color: white;
       letter-spacing: 0.1em; margin-bottom: 6px;
     }
@@ -423,10 +426,10 @@
     .cta-product-img img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
     .cta-product-info { flex: 1; }
     .cta-product-label { font-size: 0.6rem; letter-spacing: 0.3em; color: var(--caramel); margin-bottom: 6px; }
-    .cta-product-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--mocha); margin-bottom: 4px; }
+    .cta-product-name { font-family: 'Cinzel', 'Zen Old Mincho', serif; font-size: 1.3rem; color: var(--mocha); margin-bottom: 4px; }
     .cta-product-name-jp { font-size: 0.78rem; color: var(--coffee); margin-bottom: 10px; }
-    .cta-product-price { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--mocha); }
-    .cta-product-price span { font-size: 0.7rem; font-family: 'Shippori Mincho', sans-serif; color: var(--khaki); }
+    .cta-product-price { font-family: 'Cinzel', 'Zen Old Mincho', serif; font-size: 1.4rem; color: var(--mocha); }
+    .cta-product-price span { font-size: 0.7rem; font-family: 'Noto Sans JP', sans-serif; color: var(--khaki); }
     .cta-btns { display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap; }
 
     /* ===== FOOTER ===== */
@@ -439,7 +442,7 @@
     }
     .footer-brand .nav-logo { margin-bottom: 20px; display: flex; }
     .footer-brand .nav-logo span { color: var(--gold); }
-    .footer-tagline { font-family: 'Shippori Mincho', serif; font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 2.2; margin-bottom: 28px; }
+    .footer-tagline { font-family: 'Noto Sans JP', serif; font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 2.2; margin-bottom: 28px; }
     .footer-sns { display: flex; gap: 16px; }
     .footer-sns a { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; transition: border-color 0.2s; }
     .footer-sns a:hover { border-color: var(--gold); }
@@ -567,8 +570,6 @@
   </ul>
 </aside>
 
-<div style="display:none;">{BASEMenuTag}{LogoTag}{ItemAttentionTag}</div>
-
 <!-- ====== PAGE HERO ====== -->
 <section class="page-hero">
   <div class="divider"></div>
@@ -591,17 +592,213 @@
   </div>
   <div class="brand-text">
     <div class="brand-text-inner">
-      <p class="section-label">WHAT IS DOUBLE COFFEE ?</p>
+      <p class="section-label">ドゥーブルコーヒーの3つのポイント</p>
       <div class="divider"></div>
       <p class="section-desc">
-        ベトナム産の豆が持つ、独特で豊かな香りを活かしたフレーバーコーヒーをお届けします。<br>5つのフレーバーで、気分に合う一杯を。
+        ベトナム産の厳選したアラビカ種とロブスタ種を独自ブレンド。<br>独特で豊かな香りを活かしたフレーバーコーヒーをお届けします。
       </p>
       <ul class="brand-points">
-        <li>5種のフレーバーはすべて「気分」から発想。<br>Pure · Comfort · Refresh · Relax · Rich <br>— 今日の自分に合う香りを。</li>
-        <li>ディップスタイルは、カップに入れてお湯を注ぐだけ。自宅でも、オフィスでも、旅先でも。</li>
-        <li>砂糖・甘味料不使用。<br>香りを楽しむ、大人のためのブラックコーヒー。</li>
+        <li>コーヒーを楽しみたい時の気分に合わせて選べるよう、ドゥーブルコーヒーのフレーバーはすべて「気分」から発想しています。</li>
+        <li>ディップスタイルは、カップに入れてお湯を注ぐだけ。自宅でも、オフィスでも、旅先でもお飲みいただけます。</li>
+        <li>すべて砂糖・甘味料は不使用。<br>純粋な香りを楽しむ、大人のためのブラックコーヒーです。</li>
       </ul>
     </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 2: フレーバーガイド ====== -->
+<section class="flavor-guide-section">
+  <div class="container">
+    <div class="flavor-guide-header">
+      <div class="divider"></div>
+      <h2 class="section-title">香りと気分で選ぶ</h2>
+      <p class="flavor-intro">ドフレーバーと、合わせたい場面をまとめました。<br>"気分で選ぶコーヒー診断"もぜひ試してみてください。</p>
+    </div>
+
+    <div class="flavor-table">
+
+      <!-- Non Flavor -->
+      <div class="flavor-row">
+        <a class="ft-flavor" href="./select-coffee.html?category=pure">
+          <div class="ft-img">
+            <img src="images/brend-coffee-gift-flavored-coffee-dripcoffee.png" alt="ノンフレーバー">
+          </div>
+          <div>
+            <span class="ft-mood">PURE</span>
+            <p class="ft-name-en">Non Flavor</p>
+            <p class="ft-name-jp">ノンフレーバー</p>
+          </div>
+        </a>
+        <div class="ft-desc-col">
+          <p class="ft-main-desc">まっさらな1日をはじめる香り</p>
+          <div class="ft-scores">
+            <div class="ft-score-row"><span class="ft-score-label">甘み</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:40%"></div></div><span class="ft-score-num">4</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">酸味</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:70%"></div></div><span class="ft-score-num">7</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">コク</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:50%"></div></div><span class="ft-score-num">5</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">苦味</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:20%"></div></div><span class="ft-score-num">2</span></div>
+          </div>
+        </div>
+        <div class="ft-occasions">
+          <p class="ft-occasions-label">こんな場面に</p>
+          <div class="ft-tags">
+            <span class="ft-tag">思考をクリアにしたい朝</span>
+            <span class="ft-tag">コーヒー本来の味を楽しみたい日</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vanilla -->
+      <div class="flavor-row">
+        <a class="ft-flavor" href="./select-coffee.html?category=comfort">
+          <div class="ft-img">
+            <img src="images/vanilla-coffee-gift-flavored-coffee-dripcoffee.png" alt="バニラ">
+          </div>
+          <div>
+            <span class="ft-mood">COMFORT</span>
+            <p class="ft-name-en">Vanilla</p>
+            <p class="ft-name-jp">バニラ</p>
+          </div>
+        </a>
+        <div class="ft-desc-col">
+          <p class="ft-main-desc">肩の力を抜きたいときの香り</p>
+          <div class="ft-scores">
+            <div class="ft-score-row"><span class="ft-score-label">香り</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:100%"></div></div><span class="ft-score-num">10</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">甘み</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:90%"></div></div><span class="ft-score-num">9</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">酸味</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:40%"></div></div><span class="ft-score-num">4</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">コク</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:70%"></div></div><span class="ft-score-num">7</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">苦味</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:40%"></div></div><span class="ft-score-num">4</span></div>
+          </div>
+        </div>
+        <div class="ft-occasions">
+          <p class="ft-occasions-label">こんな場面に</p>
+          <div class="ft-tags">
+            <span class="ft-tag">ゆっくり朝をはじめたいとき</span>
+            <span class="ft-tag">静かな安心感に包まれたいとき</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coconut -->
+      <div class="flavor-row">
+        <a class="ft-flavor" href="./select-coffee.html?category=refresh">
+          <div class="ft-img">
+            <img src="images/coconut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ココナッツ">
+          </div>
+          <div>
+            <span class="ft-mood">REFRESH</span>
+            <p class="ft-name-en">Coconut</p>
+            <p class="ft-name-jp">ココナッツ</p>
+          </div>
+        </a>
+        <div class="ft-desc-col">
+          <p class="ft-main-desc">午後の空気を切り替える香り</p>
+          <div class="ft-scores">
+            <div class="ft-score-row"><span class="ft-score-label">香り</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:100%"></div></div><span class="ft-score-num">10</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">甘み</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:50%"></div></div><span class="ft-score-num">5</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">酸味</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:20%"></div></div><span class="ft-score-num">2</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">コク</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:20%"></div></div><span class="ft-score-num">2</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">苦味</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:30%"></div></div><span class="ft-score-num">3</span></div>
+          </div>
+        </div>
+        <div class="ft-occasions">
+          <p class="ft-occasions-label">こんな場面に</p>
+          <div class="ft-tags">
+            <span class="ft-tag">午後の気分を切り替えたいとき</span>
+            <span class="ft-tag">軽やかに気分転換したいとき</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hazelnut -->
+      <div class="flavor-row">
+        <a class="ft-flavor" href="./select-coffee.html?category=relax">
+          <div class="ft-img">
+            <img src="images/hazelnut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ヘーゼルナッツ">
+          </div>
+          <div>
+            <span class="ft-mood">RELAX</span>
+            <p class="ft-name-en">Hazelnut</p>
+            <p class="ft-name-jp">ヘーゼルナッツ</p>
+          </div>
+        </a>
+        <div class="ft-desc-col">
+          <p class="ft-main-desc">ひとり時間に浸る午後の香り</p>
+          <div class="ft-scores">
+            <div class="ft-score-row"><span class="ft-score-label">香り</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:100%"></div></div><span class="ft-score-num">10</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">甘み</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:70%"></div></div><span class="ft-score-num">7</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">酸味</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:50%"></div></div><span class="ft-score-num">5</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">コク</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:60%"></div></div><span class="ft-score-num">6</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">苦味</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:40%"></div></div><span class="ft-score-num">4</span></div>
+          </div>
+        </div>
+        <div class="ft-occasions">
+          <p class="ft-occasions-label">こんな場面に</p>
+          <div class="ft-tags">
+            <span class="ft-tag">集中したい午後のひとり時間</span>
+            <span class="ft-tag">深くリラックスしたいとき</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Butter -->
+      <div class="flavor-row">
+        <a class="ft-flavor" href="./select-coffee.html?category=rich">
+          <div class="ft-img">
+            <img src="images/butter-coffee-gift-flavored-coffee-dripcoffee.jpg" alt="バター">
+          </div>
+          <div>
+            <span class="ft-mood">RICH</span>
+            <p class="ft-name-en">Butter</p>
+            <p class="ft-name-jp">バター</p>
+          </div>
+        </a>
+        <div class="ft-desc-col">
+          <p class="ft-main-desc">夜、深い余韻に浸るための香り</p>
+          <div class="ft-scores">
+            <div class="ft-score-row"><span class="ft-score-label">香り</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:100%"></div></div><span class="ft-score-num">10</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">甘み</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:60%"></div></div><span class="ft-score-num">6</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">酸味</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:30%"></div></div><span class="ft-score-num">3</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">コク</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:100%"></div></div><span class="ft-score-num">10</span></div>
+            <div class="ft-score-row"><span class="ft-score-label">苦味</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:80%"></div></div><span class="ft-score-num">8</span></div>
+          </div>
+        </div>
+        <div class="ft-occasions">
+          <p class="ft-occasions-label">こんな場面に</p>
+          <div class="ft-tags">
+            <span class="ft-tag">静かな夜に深い余韻を楽しみたいとき</span>
+            <span class="ft-tag">照明を落としてゆっくり飲みたい夜</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chili -->
+      <div class="flavor-row">
+        <a class="ft-flavor" href="./select-coffee.html?category=inner-heat">
+          <div class="ft-img">
+            <img src="images/hot-chilli-dip-style-coffee-bag-gift-set.png" alt="唐辛子コーヒー">
+          </div>
+          <div>
+            <span class="ft-mood">INNER HEAT</span>
+            <p class="ft-name-en">Inner Heat</p>
+            <p class="ft-name-jp">唐辛子</p>
+          </div>
+        </a>
+        <div class="ft-desc-col">
+          <p class="ft-main-desc">静かな夜に刺激を添える香り</p>
+        </div>
+        <div class="ft-occasions">
+          <p class="ft-occasions-label">こんな場面に</p>
+          <div class="ft-tags">
+            <span class="ft-tag">いつもの夜に刺激を添えたいとき</span>
+            <span class="ft-tag">感覚を研ぎ澄ませたいとき</span>
+          </div>
+        </div>
+      </div>
+
+      </div>
+      <div class="cta-btns">
+        <a class="btn-secondary" href="https://doublecoffee-jp.netlify.app/select-coffee.html?category=quiz">気分で選ぶコーヒー診断を試す　→</a>
+      </div>
   </div>
 </section>
 
@@ -628,174 +825,7 @@
     </div>
   </a>
   <div class="cta-btns">
-    <a class="btn-primary" href="https://doublecoffee.official.ec/items/115376575" target="_blank" rel="noopener">アソートセットを購入する</a>
-  </div>
-</section>
-
-<!-- ====== SECTION 2: フレーバーガイド ====== -->
-<section class="flavor-guide-section">
-  <div class="container">
-    <div class="flavor-guide-header">
-      <div class="divider"></div>
-      <h2 class="section-title">香りと気分で選ぶ</h2>
-      <p class="flavor-intro">ドゥーブルコーヒーの<br>それぞれのフレーバーが持つ空気感と、<br>合わせたい場面をまとめました。</p>
-    </div>
-
-    <div class="flavor-table">
-
-      <!-- Non Flavor -->
-      <div class="flavor-row">
-        <a class="ft-flavor" href="./select-coffee.html?category=pure">
-          <div class="ft-img">
-            <img src="images/brend-coffee-gift-flavored-coffee-dripcoffee.png" alt="ノンフレーバー">
-          </div>
-          <div>
-            <span class="ft-mood">PURE</span>
-            <p class="ft-name-en">Non Flavor</p>
-            <p class="ft-name-jp">ノンフレーバー</p>
-          </div>
-        </a>
-        <div class="ft-desc-col">
-          <p class="ft-main-desc">まっさらな1日をはじめる香り</p>
-        </div>
-        <div class="ft-occasions">
-          <p class="ft-occasions-label">こんな場面に</p>
-          <div class="ft-tags">
-            <span class="ft-tag">朝の空気を整える香り</span>
-            <span class="ft-tag">思考をクリアにしたい朝の香り</span>
-            <span class="ft-tag">ベトナムコーヒーの豆本来の味わいを楽しむ香り</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Vanilla -->
-      <div class="flavor-row">
-        <a class="ft-flavor" href="./select-coffee.html?category=comfort">
-          <div class="ft-img">
-            <img src="images/vanilla-coffee-gift-flavored-coffee-dripcoffee.png" alt="バニラ">
-          </div>
-          <div>
-            <span class="ft-mood">COMFORT</span>
-            <p class="ft-name-en">Vanilla</p>
-            <p class="ft-name-jp">バニラ</p>
-          </div>
-        </a>
-        <div class="ft-desc-col">
-          <p class="ft-main-desc">肩の力を抜きたいときの香り</p>
-        </div>
-        <div class="ft-occasions">
-          <p class="ft-occasions-label">こんな場面に</p>
-          <div class="ft-tags">
-            <span class="ft-tag">ゆっくりと朝をはじめる香り</span>
-            <span class="ft-tag">やさしい余韻に包まれる香り</span>
-            <span class="ft-tag">静かな安心感に包まれる香り</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Coconut -->
-      <div class="flavor-row">
-        <a class="ft-flavor" href="./select-coffee.html?category=refresh">
-          <div class="ft-img">
-            <img src="images/coconut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ココナッツ">
-          </div>
-          <div>
-            <span class="ft-mood">REFRESH</span>
-            <p class="ft-name-en">Coconut</p>
-            <p class="ft-name-jp">ココナッツ</p>
-          </div>
-        </a>
-        <div class="ft-desc-col">
-          <p class="ft-main-desc">午後の空気を切り替える香り</p>
-        </div>
-        <div class="ft-occasions">
-          <p class="ft-occasions-label">こんな場面に</p>
-          <div class="ft-tags">
-            <span class="ft-tag">午後、気分を軽くほどく香り</span>
-            <span class="ft-tag">気持ちを南国へ運ぶ香り</span>
-            <span class="ft-tag">日常から少し遠くへ連れいていく香り</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Hazelnut -->
-      <div class="flavor-row">
-        <a class="ft-flavor" href="./select-coffee.html?category=relax">
-          <div class="ft-img">
-            <img src="images/hazelnut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ヘーゼルナッツ">
-          </div>
-          <div>
-            <span class="ft-mood">RELAX</span>
-            <p class="ft-name-en">Hazelnut</p>
-            <p class="ft-name-jp">ヘーゼルナッツ</p>
-          </div>
-        </a>
-        <div class="ft-desc-col">
-          <p class="ft-main-desc">ひとり時間に浸る午後の香り</p>
-        </div>
-        <div class="ft-occasions">
-          <p class="ft-occasions-label">こんな場面に</p>
-          <div class="ft-tags">
-            <span class="ft-tag">深く落ち着きたい午後の香り</span>
-            <span class="ft-tag">午後、思考を整える香り</span>
-            <span class="ft-tag">静かな集中時間の香り</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Butter -->
-      <div class="flavor-row">
-        <a class="ft-flavor" href="./select-coffee.html?category=rich">
-          <div class="ft-img">
-            <img src="images/butter-coffee-gift-flavored-coffee-dripcoffee.jpg" alt="バター">
-          </div>
-          <div>
-            <span class="ft-mood">RICH</span>
-            <p class="ft-name-en">Butter</p>
-            <p class="ft-name-jp">バター</p>
-          </div>
-        </a>
-        <div class="ft-desc-col">
-          <p class="ft-main-desc">夜、深い余韻に浸るための香り</p>
-        </div>
-        <div class="ft-occasions">
-          <p class="ft-occasions-label">こんな場面に</p>
-          <div class="ft-tags">
-            <span class="ft-tag">静かな夜に浸る香り</span>
-            <span class="ft-tag">夜、照明を落として飲みたい香り</span>
-            <span class="ft-tag">余韻を楽しむ夜の香り</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Chili -->
-      <div class="flavor-row">
-        <a class="ft-flavor" href="./select-coffee.html?category=inner-heat">
-          <div class="ft-img">
-            <img src="images/hot-chilli-dip-style-coffee-bag-gift-set.png" alt="唐辛子コーヒー">
-          </div>
-          <div>
-            <span class="ft-mood">INNER HEAT</span>
-            <p class="ft-name-en">Inner Heat</p>
-            <p class="ft-name-jp">唐辛子</p>
-          </div>
-        </a>
-        <div class="ft-desc-col">
-          <p class="ft-main-desc">静かな夜に刺激を添える香り</p>
-        </div>
-        <div class="ft-occasions">
-          <p class="ft-occasions-label">こんな場面に</p>
-          <div class="ft-tags">
-            <span class="ft-tag">感覚を少し刺激したい夜の香り</span>
-            <span class="ft-tag">余韻にスパイスを加える香り</span>
-            <span class="ft-tag">いつもの夜を少し変える香り</span>
-          </div>
-        </div>
-      </div>
-      </div>
-      <div class="cta-btns">
-        <a class="btn-secondary" href="https://doublecoffee-jp.netlify.app/select-coffee.html">すべての商品を見る　→　</a>
-     </div>
+    <a class="btn-primary" href="https://doublecoffee.official.ec/items/115376575" target="_blank" rel="noopener">アソートセットを見る</a>
   </div>
 </section>
 
