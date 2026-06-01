@@ -323,48 +323,52 @@
     .flavor-table { width: 100%; }
     .flavor-row {
       display: grid;
-      grid-template-columns: 220px 1fr 1.4fr;
+      grid-template-columns: 220px 1fr 1.8fr;
       border-bottom: 1px solid var(--border);
-      padding: 20px 0;
-      gap: 20px;
+      padding: 24px 0;
+      gap: 24px;
       align-items: start;
     }
     .flavor-row:first-child { border-top: 1px solid var(--border); }
     .ft-flavor {
-      display: flex; flex-direction: row; align-items: center; gap: 14px;
+      display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
       text-decoration: none; color: inherit;
       transition: opacity 0.2s;
     }
     .ft-flavor:hover { opacity: 0.72; }
     .ft-img {
-      width: 96px; height: 96px; flex-shrink: 0;
+      width: 100%; aspect-ratio: 1/1;
       background: var(--cream); overflow: hidden;
     }
-    .ft-img img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
-    .ft-flavor > div { display: flex; flex-direction: column; gap: 4px; }
+    .ft-img img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
+    .ft-flavor > div {
+      display: flex; flex-direction: row; align-items: center;
+      gap: 6px; flex-wrap: wrap;
+    }
     .ft-mood {
       font-size: 0.52rem; letter-spacing: 0.2em; color: white;
       background: var(--mocha); padding: 2px 8px;
-      display: inline-block; align-self: flex-start;
+      display: inline-block;
     }
     .ft-name-en {
       font-family: 'Cinzel', 'Zen Old Mincho', serif; font-style: italic;
-      font-size: 0.95rem; font-weight: 300; color: var(--mocha);
+      font-size: 0.82rem; font-weight: 300; color: var(--mocha);
     }
     .ft-name-jp { font-size: 0.65rem; color: var(--caramel); letter-spacing: 0.12em; }
-    .ft-desc-col { padding-top: 2px; }
+    .ft-chart-col { padding-top: 2px; }
+    .ft-story-col { padding-top: 2px; }
     .ft-main-desc {
       font-size: 0.85rem; color: var(--mocha); line-height: 1.8;
       border-left: 2px solid var(--gold); padding-left: 14px;
       margin-bottom: 14px;
     }
-    .ft-scores { display: flex; flex-direction: column; gap: 7px; }
+    .ft-scores { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
     .ft-score-row { display: flex; align-items: center; gap: 8px; }
     .ft-score-label { font-size: 0.58rem; color: var(--khaki); letter-spacing: 0.1em; width: 30px; flex-shrink: 0; }
     .ft-score-bar-bg { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
     .ft-score-bar { height: 100%; background: var(--caramel); border-radius: 2px; }
     .ft-score-num { font-size: 0.6rem; color: var(--coffee); width: 16px; text-align: right; flex-shrink: 0; }
-    .ft-occasions { padding-top: 2px; }
+    .ft-occasions { padding-top: 14px; border-top: 1px solid var(--border); margin-top: 2px; }
     .ft-occasions-label {
       font-size: 0.56rem; letter-spacing: 0.2em; color: var(--khaki);
       margin-bottom: 8px;
@@ -372,29 +376,43 @@
     .ft-tags { display: flex; flex-wrap: wrap; gap: 6px; }
     .ft-tag {
       font-size: 0.65rem; color: var(--coffee); letter-spacing: 0.04em;
-      border: 1px solid var(--border); padding: 4px 10px;
-      line-height: 1.4; background: white;
+      border: 1px solid var(--border); padding: 4px 12px;
+      line-height: 1.4; background: white; border-radius: 20px;
     }
+    /* ===== FLAVOR TABS (mobile only) ===== */
+    .flavor-tabs { display: none; }
     @media (max-width: 640px) {
-      .flavor-guide-section { padding: 40px 0; }
-      .flavor-guide-header { margin-bottom: 24px; }
+      .flavor-guide-section { padding: 32px 0; }
+      .flavor-guide-header { margin-bottom: 20px; }
+      .flavor-tabs {
+        display: flex; overflow-x: auto; gap: 8px;
+        padding: 0 20px 16px; scrollbar-width: none;
+      }
+      .flavor-tabs::-webkit-scrollbar { display: none; }
+      .flavor-tab {
+        flex-shrink: 0; padding: 7px 14px;
+        border: 1px solid var(--border); border-radius: 20px;
+        background: white; font-size: 0.68rem; color: var(--coffee);
+        cursor: pointer; white-space: nowrap;
+        font-family: 'Noto Sans JP', sans-serif;
+        -webkit-tap-highlight-color: transparent;
+        transition: background 0.2s, color 0.2s, border-color 0.2s;
+      }
+      .flavor-tab.active { background: var(--mocha); color: white; border-color: var(--mocha); }
+      .flavor-row.tab-hidden { display: none; }
       .flavor-row {
         grid-template-columns: 1fr;
-        grid-template-areas:
-          "flavor"
-          "desc"
-          "occasions";
-        padding: 20px 0;
-        gap: 12px;
-        align-items: start;
+        grid-template-areas: "flavor" "story" "chart";
+        padding: 20px 0; gap: 14px; align-items: start;
       }
       .ft-flavor { grid-area: flavor; flex-direction: row; align-items: center; gap: 12px; }
-      .ft-img { width: 80px; height: 80px; }
+      .ft-img { width: 72px; height: 72px; aspect-ratio: unset; }
+      .ft-flavor > div { flex-direction: column; align-items: flex-start; gap: 4px; }
       .ft-flavor > div { align-items: flex-start; }
-      .ft-desc-col { grid-area: desc; }
-      .ft-main-desc { font-size: 0.78rem; padding-left: 10px; margin-bottom: 10px; }
-      .ft-occasions { grid-area: occasions; }
-      .ft-tag { font-size: 0.62rem; padding: 4px 8px; }
+      .ft-chart-col { grid-area: chart; }
+      .ft-story-col { grid-area: story; }
+      .ft-main-desc { font-size: 0.78rem; padding-left: 10px; margin-bottom: 8px; }
+      .ft-tag { font-size: 0.62rem; padding: 4px 10px; }
     }
 
     /* ===== BREW SECTION ===== */
@@ -635,6 +653,15 @@
       .faq-answer p { font-size: 0.78rem; line-height: 1.85; }
     }
 
+    /* ===== FLAVOR STORY ===== */
+    .ft-story-headline { font-size: 0.82rem; color: var(--mocha); line-height: 1.9; margin: 10px 0 14px; font-weight: 400; }
+    .ft-story-divider { width: 100%; height: 1px; background: var(--border); margin: 14px 0; }
+    .ft-story-body { font-size: 0.78rem; color: var(--coffee); line-height: 2.1; margin-top: 10px; }
+    @media (max-width: 640px) {
+      .ft-story-headline { font-size: 0.78rem; }
+      .ft-story-body { font-size: 0.74rem; line-height: 1.9; }
+    }
+
     /* ===== REVEAL ANIMATION ===== */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .reveal.revealed { opacity: 1; transform: translateY(0); }
@@ -713,10 +740,20 @@
       <p class="flavor-intro">フレーバーと、合わせたい場面をまとめました。<br>"気分で選ぶコーヒー診断"もぜひ試してみてください。</p>
     </div>
 
+    <!-- Flavor Tabs (mobile) -->
+    <div class="flavor-tabs" id="flavorTabs">
+      <button class="flavor-tab active" data-flavor="flavor-non">ノンフレーバー</button>
+      <button class="flavor-tab" data-flavor="flavor-vanilla">バニラ</button>
+      <button class="flavor-tab" data-flavor="flavor-coconut">ココナッツ</button>
+      <button class="flavor-tab" data-flavor="flavor-hazelnut">ヘーゼルナッツ</button>
+      <button class="flavor-tab" data-flavor="flavor-butter">バター</button>
+      <button class="flavor-tab" data-flavor="flavor-chili">唐辛子</button>
+    </div>
+
     <div class="flavor-table">
 
       <!-- Non Flavor -->
-      <div class="flavor-row">
+      <div class="flavor-row" id="flavor-non">
         <a class="ft-flavor" href="./select-coffee.html?category=pure">
           <div class="ft-img">
             <img src="images/brend-coffee-gift-flavored-coffee-dripcoffee.png" alt="ノンフレーバー">
@@ -727,7 +764,7 @@
             <p class="ft-name-jp">ノンフレーバー</p>
           </div>
         </a>
-        <div class="ft-desc-col">
+        <div class="ft-chart-col">
           <p class="ft-main-desc">まっさらな1日をはじめる香り</p>
           <div class="ft-scores">
             <div class="ft-score-row"><span class="ft-score-label">甘み</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:40%"></div></div><span class="ft-score-num">4</span></div>
@@ -735,18 +772,25 @@
             <div class="ft-score-row"><span class="ft-score-label">コク</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:50%"></div></div><span class="ft-score-num">5</span></div>
             <div class="ft-score-row"><span class="ft-score-label">苦味</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:20%"></div></div><span class="ft-score-num">2</span></div>
           </div>
-        </div>
-        <div class="ft-occasions">
-          <p class="ft-occasions-label">こんな場面に</p>
-          <div class="ft-tags">
-            <span class="ft-tag">思考をクリアにしたい朝</span>
-            <span class="ft-tag">コーヒー本来の味を楽しみたい日</span>
+          <div class="ft-occasions">
+            <p class="ft-occasions-label">こんな場面に</p>
+            <div class="ft-tags">
+              <span class="ft-tag">朝の支度前</span>
+              <span class="ft-tag">思考をクリアにしたいとき</span>
+              <span class="ft-tag">新しいことを始める日</span>
+            </div>
           </div>
+        </div>
+        <div class="ft-story-col">
+          <p class="ft-story-headline">朝の空気を整える香り。<br>何も足さない、コーヒーそのものの一杯。</p>
+          <div class="ft-story-divider"></div>
+          <p class="ft-story-body">今日をどんな日にしたいか、まだ決まっていなくていい。カップを持つ両手の温もりと、静かに立ち上る香りが、少しずつ思考を整えてくれる。余計なものを一切足さない、コーヒー本来の深い香り。それだけで、十分な朝がある。</p>
+          <p class="ft-story-body">アラビカ種を高配合した中煎りの豆が生み出す、華やかでやわらかな酸味と、すっきりとした透明感のある一杯。重さはなく、飲んだあとに残るのはシンプルな余韻だけ。まっさらな気持ちで一日を始めたいとき、この一杯を。</p>
         </div>
       </div>
 
       <!-- Vanilla -->
-      <div class="flavor-row">
+      <div class="flavor-row" id="flavor-vanilla">
         <a class="ft-flavor" href="./select-coffee.html?category=comfort">
           <div class="ft-img">
             <img src="images/vanilla-coffee-gift-flavored-coffee-dripcoffee.png" alt="バニラ">
@@ -757,7 +801,7 @@
             <p class="ft-name-jp">バニラ</p>
           </div>
         </a>
-        <div class="ft-desc-col">
+        <div class="ft-chart-col">
           <p class="ft-main-desc">肩の力を抜きたいときの香り</p>
           <div class="ft-scores">
             <div class="ft-score-row"><span class="ft-score-label">香り</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:100%"></div></div><span class="ft-score-num">10</span></div>
@@ -766,18 +810,25 @@
             <div class="ft-score-row"><span class="ft-score-label">コク</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:70%"></div></div><span class="ft-score-num">7</span></div>
             <div class="ft-score-row"><span class="ft-score-label">苦味</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:40%"></div></div><span class="ft-score-num">4</span></div>
           </div>
-        </div>
-        <div class="ft-occasions">
-          <p class="ft-occasions-label">こんな場面に</p>
-          <div class="ft-tags">
-            <span class="ft-tag">ゆっくり朝をはじめたいとき</span>
-            <span class="ft-tag">静かな安心感に包まれたいとき</span>
+          <div class="ft-occasions">
+            <p class="ft-occasions-label">こんな場面に</p>
+            <div class="ft-tags">
+              <span class="ft-tag">ゆっくり起きた休日の朝</span>
+              <span class="ft-tag">午後の息抜き</span>
+              <span class="ft-tag">誰かと過ごす穏やかな時間</span>
+            </div>
           </div>
+        </div>
+        <div class="ft-story-col">
+          <p class="ft-story-headline">やさしい余韻に包まれる、やわらかな時間。<br>急がなくていい朝に、この一杯を。</p>
+          <div class="ft-story-divider"></div>
+          <p class="ft-story-body">甘くやわらかなバニラの香りが、ゆっくりと広がる。急がなくていい。特別なことをしなくていい。ただカップを手に持って、香りを感じていればいい。そんな許しを与えてくれるような一杯。</p>
+          <p class="ft-story-body">バニラの香りには、緊張をほどき、気持ちを静かに落ち着かせる力がある。朝でも、午後でも。肩に力が入りすぎていると気づいたとき、静かな安心感に包まれたいとき。やわらかな時間を贈る一杯。</p>
         </div>
       </div>
 
       <!-- Coconut -->
-      <div class="flavor-row">
+      <div class="flavor-row" id="flavor-coconut">
         <a class="ft-flavor" href="./select-coffee.html?category=refresh">
           <div class="ft-img">
             <img src="images/coconut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ココナッツ">
@@ -788,7 +839,7 @@
             <p class="ft-name-jp">ココナッツ</p>
           </div>
         </a>
-        <div class="ft-desc-col">
+        <div class="ft-chart-col">
           <p class="ft-main-desc">午後の空気を切り替える香り</p>
           <div class="ft-scores">
             <div class="ft-score-row"><span class="ft-score-label">香り</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:100%"></div></div><span class="ft-score-num">10</span></div>
@@ -797,18 +848,25 @@
             <div class="ft-score-row"><span class="ft-score-label">コク</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:20%"></div></div><span class="ft-score-num">2</span></div>
             <div class="ft-score-row"><span class="ft-score-label">苦味</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:30%"></div></div><span class="ft-score-num">3</span></div>
           </div>
-        </div>
-        <div class="ft-occasions">
-          <p class="ft-occasions-label">こんな場面に</p>
-          <div class="ft-tags">
-            <span class="ft-tag">午後の気分を切り替えたいとき</span>
-            <span class="ft-tag">軽やかに気分転換したいとき</span>
+          <div class="ft-occasions">
+            <p class="ft-occasions-label">こんな場面に</p>
+            <div class="ft-tags">
+              <span class="ft-tag">午後の気分転換</span>
+              <span class="ft-tag">仕事の合間のひと息</span>
+              <span class="ft-tag">気持ちを切り替えたいとき</span>
+            </div>
           </div>
+        </div>
+        <div class="ft-story-col">
+          <p class="ft-story-headline">気持ちを、少し遠くへ連れていく香り。<br>いつもの午後を、旅の午後に変える一杯。</p>
+          <div class="ft-story-divider"></div>
+          <p class="ft-story-body">家事の手を止めて、ひと息つく午後。やりかけのことを少しだけ横に置いて、この一杯を。ふわりと広がるココナッツの香りは、南国の風のようにやさしく、今いる場所からほんの少し遠くへ連れていってくれる。</p>
+          <p class="ft-story-body">仕事でも、家事でも、育児でも。何かの合間にある、自分だけの小さな隙間時間。その数分を、気持ちよく切り替えるための一杯。日常を離れたくなる午後に、いつもの場所を旅の途中に変えてしまうような香りを。</p>
         </div>
       </div>
 
       <!-- Hazelnut -->
-      <div class="flavor-row">
+      <div class="flavor-row" id="flavor-hazelnut">
         <a class="ft-flavor" href="./select-coffee.html?category=relax">
           <div class="ft-img">
             <img src="images/hazelnut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ヘーゼルナッツ">
@@ -819,7 +877,7 @@
             <p class="ft-name-jp">ヘーゼルナッツ</p>
           </div>
         </a>
-        <div class="ft-desc-col">
+        <div class="ft-chart-col">
           <p class="ft-main-desc">ひとり時間に浸る午後の香り</p>
           <div class="ft-scores">
             <div class="ft-score-row"><span class="ft-score-label">香り</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:100%"></div></div><span class="ft-score-num">10</span></div>
@@ -828,18 +886,25 @@
             <div class="ft-score-row"><span class="ft-score-label">コク</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:60%"></div></div><span class="ft-score-num">6</span></div>
             <div class="ft-score-row"><span class="ft-score-label">苦味</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:40%"></div></div><span class="ft-score-num">4</span></div>
           </div>
-        </div>
-        <div class="ft-occasions">
-          <p class="ft-occasions-label">こんな場面に</p>
-          <div class="ft-tags">
-            <span class="ft-tag">集中したい午後のひとり時間</span>
-            <span class="ft-tag">深くリラックスしたいとき</span>
+          <div class="ft-occasions">
+            <p class="ft-occasions-label">こんな場面に</p>
+            <div class="ft-tags">
+              <span class="ft-tag">読書のお供に</span>
+              <span class="ft-tag">静かな集中時間</span>
+              <span class="ft-tag">ひとりの午後</span>
+            </div>
           </div>
+        </div>
+        <div class="ft-story-col">
+          <p class="ft-story-headline">深く落ち着きたい午後に。<br>ドゥーブルコーヒーの原点となった、最初の一杯。</p>
+          <div class="ft-story-divider"></div>
+          <p class="ft-story-body">ドゥーブルコーヒーの始まりは、ベトナムで口にしたヘーゼルナッツのフレーバーコーヒーだった。深く香ばしい香りに、慌ただしかった気持ちがふっと静かになる。この感覚を、日本にいる誰かにも届けたい。その一杯が、ドゥーブルコーヒーの原点。</p>
+          <p class="ft-story-body">ヘーゼルナッツの香りは、静かに思考を整えてくれる。本を開くそばに、深く息を吸いたい午後に。集中を妨げるのではなく、そっと寄り添うように漂い続ける。ひとりの時間をもっと豊かにしたいとき、この一杯を。</p>
         </div>
       </div>
 
       <!-- Butter -->
-      <div class="flavor-row">
+      <div class="flavor-row" id="flavor-butter">
         <a class="ft-flavor" href="./select-coffee.html?category=rich">
           <div class="ft-img">
             <img src="images/butter-coffee-gift-flavored-coffee-dripcoffee.jpg" alt="バター">
@@ -850,7 +915,7 @@
             <p class="ft-name-jp">バター</p>
           </div>
         </a>
-        <div class="ft-desc-col">
+        <div class="ft-chart-col">
           <p class="ft-main-desc">夜、深い余韻に浸るための香り</p>
           <div class="ft-scores">
             <div class="ft-score-row"><span class="ft-score-label">香り</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:100%"></div></div><span class="ft-score-num">10</span></div>
@@ -859,18 +924,25 @@
             <div class="ft-score-row"><span class="ft-score-label">コク</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:100%"></div></div><span class="ft-score-num">10</span></div>
             <div class="ft-score-row"><span class="ft-score-label">苦味</span><div class="ft-score-bar-bg"><div class="ft-score-bar" style="width:80%"></div></div><span class="ft-score-num">8</span></div>
           </div>
-        </div>
-        <div class="ft-occasions">
-          <p class="ft-occasions-label">こんな場面に</p>
-          <div class="ft-tags">
-            <span class="ft-tag">静かな夜に深い余韻を楽しみたいとき</span>
-            <span class="ft-tag">照明を落としてゆっくり飲みたい夜</span>
+          <div class="ft-occasions">
+            <p class="ft-occasions-label">こんな場面に</p>
+            <div class="ft-tags">
+              <span class="ft-tag">夜のひとり時間</span>
+              <span class="ft-tag">一日の終わりに</span>
+              <span class="ft-tag">余韻をゆっくり楽しむ夜</span>
+            </div>
           </div>
+        </div>
+        <div class="ft-story-col">
+          <p class="ft-story-headline">夜をゆっくりほどく、深くリッチな一杯。<br>照明を落として、余韻を楽しむ時間のために。</p>
+          <div class="ft-story-divider"></div>
+          <p class="ft-story-body">バターのなめらかなコクが、コーヒーの深みに溶け込んでいる。口に含むたびに広がる、重厚でやわらかな余韻。今日一日を振り返りながら、ゆっくりと夜の静けさに沈んでいく。そんな時間のための一杯。</p>
+          <p class="ft-story-body">慌ただしかった一日の終わりに、少しだけ自分を甘やかしたいとき。照明を落とした部屋で、この香りをゆっくり楽しんでほしい。夜の深さに似た、リッチな余韻が待っている。</p>
         </div>
       </div>
 
       <!-- Chili -->
-      <div class="flavor-row">
+      <div class="flavor-row" id="flavor-chili">
         <a class="ft-flavor" href="./select-coffee.html?category=inner-heat">
           <div class="ft-img">
             <img src="images/hot-chilli-dip-style-coffee-bag-gift-set.png" alt="唐辛子コーヒー">
@@ -881,15 +953,22 @@
             <p class="ft-name-jp">唐辛子</p>
           </div>
         </a>
-        <div class="ft-desc-col">
+        <div class="ft-chart-col">
           <p class="ft-main-desc">静かな夜に刺激を添える香り</p>
-        </div>
-        <div class="ft-occasions">
-          <p class="ft-occasions-label">こんな場面に</p>
-          <div class="ft-tags">
-            <span class="ft-tag">いつもの夜に刺激を添えたいとき</span>
-            <span class="ft-tag">感覚を研ぎ澄ませたいとき</span>
+          <div class="ft-occasions">
+            <p class="ft-occasions-label">こんな場面に</p>
+            <div class="ft-tags">
+              <span class="ft-tag">いつもと違う夜に</span>
+              <span class="ft-tag">感覚を目覚めさせたいとき</span>
+              <span class="ft-tag">夜の小さな冒険</span>
+            </div>
           </div>
+        </div>
+        <div class="ft-story-col">
+          <p class="ft-story-headline">いつもの夜を、少し変える一杯。<br>感覚をほどよく揺さぶる、スパイスの余韻。</p>
+          <div class="ft-story-divider"></div>
+          <p class="ft-story-body">穏やかに流れていた夜の空気が、ひと口でかすかに変わる。唐辛子のじんわりとした刺激が、コーヒーの深みとともにゆっくりと広がっていく。痛みではなく、目覚めのような感覚。内側からじんわりと温まっていく、不思議な余韻。</p>
+          <p class="ft-story-body">いつもと違う夜を過ごしたい。感覚を少し揺さぶって、自分の輪郭を確かめたい。そんな夜に選んでほしい一杯。静かな夜にほどよいスパイスを添えてくれる。ドゥーブルコーヒーの中で、最も個性的な香りが待っている。</p>
         </div>
       </div>
 
@@ -1163,6 +1242,56 @@
       closeMenu();
     }
   });
+
+  // Flavor tabs
+  (function() {
+    var tabsContainer = document.getElementById('flavorTabs');
+    var tabs = tabsContainer.querySelectorAll('.flavor-tab');
+    var rows = Array.from(document.querySelectorAll('.flavor-row[id]'));
+
+    // タブバーがCSSで表示されているか（モバイルか）を判定
+    function tabsShown() {
+      return window.getComputedStyle(tabsContainer).display !== 'none';
+    }
+
+    function activateTab(activeTab) {
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      activeTab.classList.add('active');
+      var targetId = activeTab.dataset.flavor;
+      rows.forEach(function(row) {
+        if (row.id === targetId) {
+          row.style.display = '';
+          row.classList.add('revealed');
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    function showAll() {
+      rows.forEach(function(row) { row.style.removeProperty('display'); });
+    }
+
+    function init() {
+      if (tabsShown()) {
+        var hash = window.location.hash.replace('#', '');
+        var initTab = (hash && tabsContainer.querySelector('[data-flavor="' + hash + '"]')) || tabs[0];
+        if (initTab) activateTab(initTab);
+      } else {
+        showAll();
+      }
+    }
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() { activateTab(tab); });
+    });
+
+    init();
+
+    window.addEventListener('resize', function() {
+      if (!tabsShown()) showAll();
+    });
+  })();
 
   (function() {
     var sel = '.flavor-row, .flavor-card, .cta-product, .brew-step, .brand-section, .cta-btns';
