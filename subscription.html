@@ -21,13 +21,13 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; scroll-behavior: smooth; }
-    body { font-family: 'Noto Sans JP', sans-serif; font-weight: 300; color: #1C1A14; background: #FFFFFF; line-height: 1.8; }
+    body { font-family: 'Noto Sans JP', sans-serif; font-weight: 400; color: #1C1A14; background: #FFFFFF; line-height: 1.8; }
     a { text-decoration: none; color: inherit; }
     img { display: block; width: 100%; object-fit: cover; }
     body.menu-open { overflow: hidden; }
     :root {
-      --cream: #FDF1ED; --ivory: #FFFFFF; --mocha: #1C1A14; --coffee: #5C4F3A;
-      --caramel: #D07818; --gold: #C4A050; --sage: #A89888; --pale-green: #F2DDD6; --border: #EAD8D2;
+      --cream: #F5F5F5; --ivory: #FFFFFF; --mocha: #1C1A14; --coffee: #1C1A14;
+      --caramel: #D07818; --gold: #C4A050; --sage: #A89888; --pale-green: #EFEFED; --border: #EAD8D2;
     }
 
     /* ===== HEADER ===== */
@@ -100,7 +100,7 @@
       font-size: 0.75rem; letter-spacing: 0.18em;
       padding: 14px 40px;
       background: #fff; color: var(--mocha);
-      border: 1px solid #fff; border-radius: 2px;
+      border: 1px solid #fff; border-radius: 6px;
       transition: all 0.2s; position: relative;
     }
     .hero-cta:hover { background: transparent; color: #fff; }
@@ -197,7 +197,7 @@
     .plan-desc { font-size: 0.78rem; color: var(--coffee); line-height: 2; margin-bottom: 24px; }
     .plan-cta {
       display: block; font-size: 0.72rem; letter-spacing: 0.12em;
-      padding: 12px 20px; border-radius: 2px;
+      padding: 12px 20px; border-radius: 6px;
       transition: all 0.2s;
     }
     .plan-card.featured .plan-cta {
@@ -361,7 +361,9 @@
       .request-section, .peace-section { padding: 72px 24px; }
       .closing-section { padding: 56px 24px 40px; }
       .season-grid { grid-template-columns: 1fr; }
-      .plans-grid { grid-template-columns: 1fr; }
+      .plans-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .plan-card { padding: 28px 14px 20px; }
+      .plan-num { font-size: 2.8rem; }
       .peace-grid { grid-template-columns: 1fr; }
       .sp { display: block; }
       .hero-title { font-size: 1.35rem; }
@@ -370,6 +372,24 @@
       .why-body { font-size: 0.85rem; }
       .section-body { font-size: 0.83rem; }
     }
+    /* ===== PEACE FAQ ===== */
+    .peace-faq-list { max-width: 560px; margin: 32px auto 0; text-align: left; }
+    details.peace-faq-item { border-bottom: 1px solid var(--border); }
+    details.peace-faq-item:first-child { border-top: 1px solid var(--border); }
+    summary.peace-faq-q {
+      list-style: none; display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 0; cursor: pointer; font-size: 0.9rem; color: var(--mocha);
+      font-weight: 400; letter-spacing: 0.04em; line-height: 1.6; gap: 16px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    summary.peace-faq-q::-webkit-details-marker { display: none; }
+    summary.peace-faq-q::marker { display: none; }
+    .peace-faq-icon { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.25s ease; font-weight: 300; line-height: 1; }
+    details.peace-faq-item[open] .peace-faq-icon { transform: rotate(45deg); }
+    .peace-faq-a { padding: 0 0 20px 14px; font-size: 0.84rem; color: var(--coffee); line-height: 2; border-left: 2px solid var(--gold); }
+    @keyframes peaceFaqIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+    details.peace-faq-item[open] .peace-faq-a { animation: peaceFaqIn 0.2s ease; }
+
     /* ===== REVEAL ANIMATION ===== */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .reveal.revealed { opacity: 1; transform: translateY(0); }
@@ -422,11 +442,11 @@
       でも、毎朝選ぶのは少し疲れる日もある。
     </blockquote>
     <p class="why-body">
-      Double Coffeeの定期便は、その月の季節と空気感を見て、<br>
+      Double Coffeeの定期便は、<br class="sp">その月の季節と空気感を見て、<br>
       5種の香りをベストな配合でお届けします。<br><br>
       配合を決めるのは、カレンダーではなく季節感です。<br class="sp">
       気温、湿度、その時期に飲みたくなる香りの重さ——<br>
-      それを毎月見ながら、5種の比率を決めています。
+      毎月見ながら、5種の比率を決めています。
     </p>
     <div class="section-divider" style="margin: 32px auto;"></div>
     <div class="season-grid" style="margin: 0 auto;">
@@ -458,7 +478,7 @@
       <div class="plan-num">20</div>
       <div class="plan-unit">袋 / 月</div>
       <div class="plan-name">Light</div>
-      <a href="https://doublecoffee.official.ec/items/137320692" target="_blank" rel="noopener" class="plan-cta">20袋プランを見る</a>
+      <a href="https://doublecoffee.official.ec/items/137320692" target="_blank" rel="noopener" class="plan-cta">このプランを見る</a>
     </div>
     <div class="plan-card featured">
       <div class="plan-badge">人気</div>
@@ -468,7 +488,7 @@
       <div class="plan-num">50</div>
       <div class="plan-unit">袋 / 月</div>
       <div class="plan-name">Rich</div>
-      <a href="https://doublecoffee.official.ec/items/114789281" target="_blank" rel="noopener" class="plan-cta">50袋プランを見る</a>
+      <a href="https://doublecoffee.official.ec/items/114789281" target="_blank" rel="noopener" class="plan-cta">このプランを見る</a>
     </div>
   </div>
 </section>
@@ -479,7 +499,7 @@
     <div class="request-tag">Request welcome</div>
     <h2 class="section-title">お任せしながら、<br>少し口を出せる。</h2>
     <div class="section-divider"></div>
-    <p class="section-body">「最近Hazelnutが好きで」「Coconutを多めにしてほしい」——<br class="sp">そんなリクエストも受け付けています。<br class="sp">お任せだけど、声は聞いてもらえる。<br class="sp">そのくらいの距離感がちょうどいいと思っています。</p>
+    <p class="section-body">「最近Hazelnutが好きで」<br class="sp">「Coconutを多めにしてほしい」——<br class="sp">そんなリクエストも受け付けています。<br class="sp">お任せだけど、声は聞いてもらえる。<br class="sp">そのくらいの距離感がちょうどいい。</p>
     <div class="request-chips">
       <span class="request-chip">「Hazelnutを多めで」</span>
       <span class="request-chip">「Coconutを増やしてほしい」</span>
@@ -493,36 +513,41 @@
 <section class="peace-section">
   <p class="section-eyebrow">安心して始めるために</p>
   <div class="section-divider"></div>
-  <h2 class="section-title">よくある、不安のこと。</h2>
-  <div class="peace-grid">
-    <div class="peace-item">
-      <div class="peace-icon">🔄</div>
-      <div>
-        <div class="peace-item-title">いつでも停止・解約できる</div>
-        <div class="peace-item-desc">縛りはありません。合わなければ、いつでも止められます。</div>
-      </div>
-    </div>
-    <div class="peace-item">
-      <div class="peace-icon">📦</div>
-      <div>
-        <div class="peace-item-title">毎月自動でお届け</div>
-        <div class="peace-item-desc">更新の手間なし。切らす心配もありません。</div>
-      </div>
-    </div>
-    <div class="peace-item">
-      <div class="peace-icon">🌿</div>
-      <div>
-        <div class="peace-item-title">砂糖・甘味料不使用</div>
-        <div class="peace-item-desc">甘さは香りだけ。ブラックでそのまま飲めます。</div>
-      </div>
-    </div>
-    <div class="peace-item">
-      <div class="peace-icon">✉️</div>
-      <div>
-        <div class="peace-item-title">リクエストを受け付けている</div>
-        <div class="peace-item-desc">お任せだけど、好みを伝えることができます。</div>
-      </div>
-    </div>
+  <h2 class="section-title">よくある、ご質問。</h2>
+  <div class="peace-faq-list">
+
+    <details class="peace-faq-item">
+      <summary class="peace-faq-q">
+        <span>期間の縛りはありますか？</span>
+        <span class="peace-faq-icon">+</span>
+      </summary>
+      <div class="peace-faq-a">いいえ、期間の縛りはございません。<br class="sp">合わなければ、いつでも解約可能です。</div>
+    </details>
+
+    <details class="peace-faq-item">
+      <summary class="peace-faq-q">
+        <span>毎月の更新手続きが必要ですか？</span>
+        <span class="peace-faq-icon">+</span>
+      </summary>
+      <div class="peace-faq-a">いえ、更新の手間なく自動でお届けします。<br class="sp">切らす心配もありません。</div>
+    </details>
+
+    <details class="peace-faq-item">
+      <summary class="peace-faq-q">
+        <span>砂糖や甘味料は入っていますか？</span>
+        <span class="peace-faq-icon">+</span>
+      </summary>
+      <div class="peace-faq-a">砂糖・甘味料は一切不使用です。甘さは香りだけ。<br class="sp">ブラックでそのままお楽しみいただけます。</div>
+    </details>
+
+    <details class="peace-faq-item">
+      <summary class="peace-faq-q">
+        <span>届く香りの配合を指定できますか？</span>
+        <span class="peace-faq-icon">+</span>
+      </summary>
+      <div class="peace-faq-a">はい。お届けするフレーバーに関してのリクエストも受け付けています。<br class="sp">完全お任せでも、一部だけお任せでも大丈夫です。</div>
+    </details>
+
   </div>
 </section>
 

@@ -80,21 +80,21 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; scroll-behavior: smooth; }
-    body { font-family: 'Noto Sans JP', sans-serif; font-weight: 300; color: #1C1A14; background: #FFFFFF; line-height: 1.8; }
+    body { font-family: 'Noto Sans JP', sans-serif; font-weight: 400; color: #1C1A14; background: #FFFFFF; line-height: 1.8; }
     body.menu-open { overflow: hidden; }
     a { text-decoration: none; color: inherit; }
     img { display: block; width: 100%; object-fit: cover; }
 
     :root {
-      --cream:      #FDF1ED;
+      --cream:      #F5F5F5;
       --ivory:      #FFFFFF;
       --mocha:      #1C1A14;
-      --coffee:     #5C4F3A;
+      --coffee:     #1C1A14;
       --caramel:    #D07818;
       --gold:       #C4A050;
       --sage:       #A89888;
       --khaki:      #A8A098;
-      --pale-green: #F2DDD6;
+      --pale-green: #EFEFED;
       --border:     #EAD8D2;
     }
 
@@ -154,10 +154,10 @@
     /* ===== COMMON ===== */
     .section-label { font-size: 0.65rem; letter-spacing: 0.4em; color: var(--caramel); font-weight: 400; margin-bottom: 16px; text-transform: uppercase; }
     .section-title { font-family: 'Cinzel', 'Zen Old Mincho', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: var(--mocha); line-height: 1.2; margin-bottom: 20px; }
-    .section-desc { font-family: 'Noto Sans JP', serif; font-size: 0.875rem; font-weight: 300; color: var(--coffee); line-height: 2.2; }
+    .section-desc { font-family: 'Noto Sans JP', serif; font-size: 0.875rem; font-weight: 400; color: var(--coffee); line-height: 2.2; }
     .divider { width: 40px; height: 1px; background: var(--gold); margin-bottom: 24px; }
     .container { max-width: 1060px; margin: 0 auto; padding: 0 40px; }
-    .btn-primary { display: inline-block; padding: 16px 48px; background: var(--mocha); color: white; font-size: 0.75rem; letter-spacing: 0.25em; font-weight: 400; transition: background 0.25s; }
+    .btn-primary { display: inline-block; padding: 16px 48px; background: var(--mocha); color: white; font-size: 0.75rem; letter-spacing: 0.25em; font-weight: 400; transition: background 0.25s; border-radius: 6px; }
     .btn-primary:hover { background: var(--coffee); }
     .btn-secondary { display: inline-block; font-size: 0.75rem; letter-spacing: 0.2em; color: var(--caramel); border-bottom: 1px solid var(--caramel); padding-bottom: 2px; font-weight: 400; transition: opacity 0.2s; }
     .btn-secondary:hover { opacity: 0.7; }
@@ -693,12 +693,12 @@
       <p class="section-label">ドゥーブルコーヒーの3つのポイント</p>
       <div class="divider"></div>
       <p class="section-desc">
-        ベトナム産の厳選したアラビカ種とロブスタ種を独自ブレンド。<br>独特で豊かな香りを活かしたフレーバーコーヒーをお届けします。
+        ベトナム産の厳選したアラビカ種とロブスタ種を独自ブレンド<br>独特で豊かな香りを活かしたフレーバーコーヒーです
       </p>
       <ul class="brand-points">
-        <li>コーヒーを楽しみたい時の気分に合わせて選べるよう、ドゥーブルコーヒーのフレーバーはすべて「気分」から発想しています。</li>
-        <li>ディップスタイルは、カップに入れてお湯を注ぐだけ。自宅でも、オフィスでも、旅先でもお飲みいただけます。</li>
-        <li>すべて砂糖・甘味料は不使用。<br>純粋な香りを楽しむ、大人のためのブラックコーヒーです。</li>
+        <li>コーヒーを楽しむ時々で選べるよう、ドゥーブルコーヒーのフレーバーはすべて「気分」から発想しています。</li>
+        <li>ディップスタイルは、カップに入れてお湯を注ぐだけ。自宅でも、オフィスでも、旅先でも。</li>
+        <li>砂糖・甘味料は不使用。<br>純粋な香りを楽しむ、大人のためのブラックコーヒーです。</li>
       </ul>
     </div>
   </div>
@@ -916,7 +916,7 @@
           <span class="faq-icon">+</span>
         </summary>
         <div class="faq-answer">
-          <p>フレーバーコーヒーは、コーヒー豆や粉にナッツなどのフレーバーを加えたコーヒーのことです。<br class="sp-only">DOUBLE COFFEEでは「気分」をテーマに、バニラ・ヘーゼルナッツ・ココナッツなどの香りを楽しめます</p>
+          <p>フレーバーコーヒーは、コーヒー豆や粉にナッツなどのフレーバーを加えたコーヒーのことです。<br class="sp-only">ドゥーブルコーヒーでは「気分」をテーマに、バニラ・ヘーゼルナッツ・ココナッツなどの香りを楽しめます</p>
         </div>
       </details>
 
@@ -926,7 +926,7 @@
           <span class="faq-icon">+</span>
         </summary>
         <div class="faq-answer">
-          <p>ベトナムはロブスタ種の生産量が多いことで知られています。一般的なアラビカ種とは異なり、ベトナムで育ったロブスタ種は深いコクと独特の香りを持ちます。<br class="sp-only">DOUBLE COFFEEは、ロブスタ種による力強いボディと、アラビカ種の華やかな香りが両方楽しめるコーヒーをご用意しています。</p>
+          <p>ベトナムはロブスタ種の生産量が多いことで知られています。一般的なアラビカ種とは異なり、ベトナムで育ったロブスタ種は深いコクと独特の香りを持ちます。<br class="sp-only">ドゥーブルコーヒーは、ロブスタ種による力強いボディと、アラビカ種の華やかな香りが両方楽しめるコーヒーをご用意しています。</p>
         </div>
       </details>
 
@@ -946,7 +946,7 @@
           <span class="faq-icon">+</span>
         </summary>
         <div class="faq-answer">
-          <p>DOUBLE COFFEEでは砂糖・甘味料を一切使用していません。香料のみでフレーバーを表現した、純粋なブラックコーヒーです。<br class="sp-only">甘い香りの中にもすっきりとした後味をお楽しみいただけます。</p>
+          <p>ドゥーブルコーヒーは砂糖・甘味料を使用していません。香料のみでフレーバーを表現した、純粋なブラックコーヒーです。<br class="sp-only">甘い香りの中にもすっきりとした後味をお楽しみいただけます。</p>
         </div>
       </details>
 
@@ -966,7 +966,7 @@
           <span class="faq-icon">+</span>
         </summary>
         <div class="faq-answer">
-          <p>はい、DOUBLE COFFEEはギフトセットも充実しています。ヘーゼルナッツ・バニラ・ココナッツなど複数のフレーバーが楽しめます。<br class="sp-only">誕生日や記念日など、大切な方へのプレゼントにもご利用いただいています。</p>
+          <p>はい、ドゥーブルコーヒーはギフトセットも充実しています。ヘーゼルナッツ・バニラ・ココナッツなど複数のフレーバーが楽しめます。<br class="sp-only">誕生日や記念日など、大切な方へのプレゼントにもご利用いただいています。</p>
         </div>
       </details>
 

@@ -25,7 +25,7 @@
     html { font-size: 16px; scroll-behavior: smooth; }
     body {
       font-family: 'Noto Sans JP', sans-serif;
-      font-weight: 300;
+      font-weight: 400;
       color: #1C1A14;
       background: #FFFFFF;
       line-height: 1.8;
@@ -36,19 +36,19 @@
 
     /* ========== COLOR VARIABLES ========== */
     :root {
-      --cream:         #FDF1ED;   /* バニラクリームピンク */
+      --cream:         #F5F5F5;   /* バニラクリームピンク */
       --ivory:         #FFFFFF;   /* 純白 */
       --mocha:         #1C1A14;   /* 温かみのある黒 */
-      --coffee:        #5C4F3A;   /* 温かみのあるブラウン */
+      --coffee:        #1C1A14;
       --caramel:       #D07818;   /* モーニングコーヒーオレンジ */
       --gold:          #C4A050;   /* パッケージ箔ゴールド */
       --sky:           #C4A050;
       --logo-silver:   #9A9AA2;
-      --rose:          #F2DDD6;   /* ソフトコーラル */
+      --rose:          #EFEFED;   /* ソフトコーラル */
       --sage:          #A89888;   /* ウォームトープ */
       --khaki:         #A8A098;   /* ウォームグレー */
-      --pale-green:    #F2DDD6;   /* ソフトコーラル */
-      --pale-rose:     #FDF1ED;   /* バニラクリームピンク */
+      --pale-green:    #EFEFED;   /* ソフトコーラル */
+      --pale-rose:     #F5F5F5;   /* バニラクリームピンク */
       --border:        #EAD8D2;   /* 温かみのあるボーダー */
     }
 
@@ -296,6 +296,7 @@
       letter-spacing: 0.25em;
       font-weight: 400;
       transition: background 0.25s;
+      border-radius: 6px;
     }
     .btn-primary:hover { background: var(--coffee); }
     .btn-secondary {
@@ -1006,6 +1007,7 @@
       letter-spacing: 0.2em;
       font-weight: 400;
       transition: background 0.25s;
+      border-radius: 6px;
     }
     .btn-line:hover { background: #00A300; }
     .btn-line svg { width: 20px; height: 20px; fill: white; }
