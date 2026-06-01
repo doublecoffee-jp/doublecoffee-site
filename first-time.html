@@ -341,6 +341,15 @@
       background: var(--cream); overflow: hidden;
     }
     .ft-img img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+    .ft-col-1 { display: flex; flex-direction: column; gap: 8px; }
+    .ft-img-dip {
+      display: block; width: 100%; aspect-ratio: 1/1;
+      background: white; overflow: hidden;
+      border: 1px solid var(--border);
+      transition: opacity 0.2s;
+    }
+    .ft-img-dip:hover { opacity: 0.75; }
+    .ft-img-dip img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
     .ft-flavor > div {
       display: flex; flex-direction: row; align-items: center;
       gap: 6px; flex-wrap: wrap;
@@ -405,7 +414,8 @@
         grid-template-areas: "flavor" "story" "chart";
         padding: 20px 0; gap: 14px; align-items: start;
       }
-      .ft-flavor { grid-area: flavor; flex-direction: row; align-items: center; gap: 12px; }
+      .ft-col-1 { grid-area: flavor; }
+      .ft-flavor { flex-direction: row; align-items: center; gap: 12px; }
       .ft-img { width: 96px; height: 96px; aspect-ratio: unset; }
       .ft-img img { padding: 4px; }
       .ft-flavor > div { flex-direction: column; align-items: flex-start; gap: 4px; }
@@ -688,11 +698,11 @@
 <aside class="drawer-menu" id="drawerMenu" aria-hidden="true">
   <p class="drawer-title">メニュー</p>
   <ul class="drawer-nav">
-    <li><a href="https://doublecoffee-jp.netlify.app/">Home</a></li>
-    <li><a href="https://doublecoffee-jp.netlify.app/first-time.html">はじめての方へ</a></li>
-    <li><a href="https://doublecoffee-jp.netlify.app/select-coffee.html">香りを選ぶ</a></li>
-    <li><a href="https://doublecoffee-jp.netlify.app/subscription.html">定期便</a></li>
-    <li><a href="https://doublecoffee-jp.netlify.app/about.html">About us</a></li>
+    <li><a href="https://doublecoffee-jp.pages.dev/">Home</a></li>
+    <li><a href="https://doublecoffee-jp.pages.dev/first-time.html">はじめての方へ</a></li>
+    <li><a href="https://doublecoffee-jp.pages.dev/select-coffee.html">香りを選ぶ</a></li>
+    <li><a href="https://doublecoffee-jp.pages.dev/subscription.html">定期便</a></li>
+    <li><a href="https://doublecoffee-jp.pages.dev/about.html">About us</a></li>
   </ul>
 </aside>
 
@@ -755,16 +765,21 @@
 
       <!-- Non Flavor -->
       <div class="flavor-row" id="flavor-non">
-        <a class="ft-flavor" href="./select-coffee.html?category=pure">
-          <div class="ft-img">
-            <img src="images/brend-coffee-gift-flavored-coffee-dripcoffee.png" alt="ノンフレーバー">
-          </div>
-          <div>
-            <span class="ft-mood">PURE</span>
-            <p class="ft-name-en">Non Flavor</p>
-            <p class="ft-name-jp">ノンフレーバー</p>
-          </div>
-        </a>
+        <div class="ft-col-1">
+          <a class="ft-flavor" href="https://doublecoffee.official.ec/items/114816835">
+            <div class="ft-img">
+              <img src="images/brend-coffee-gift-flavored-coffee-dripcoffee.png" alt="ノンフレーバー">
+            </div>
+            <div>
+              <span class="ft-mood">PURE</span>
+              <p class="ft-name-en">Non Flavor</p>
+              <p class="ft-name-jp">ノンフレーバー</p>
+            </div>
+          </a>
+          <a class="ft-img-dip" href="https://doublecoffee.official.ec/items/114822849" target="_blank" rel="noopener">
+            <img src="images/non-flavor-dip-style-coffee-bag-gift-set.png" alt="ノンフレーバー ディップバッグ">
+          </a>
+        </div>
         <div class="ft-chart-col">
           <p class="ft-main-desc">まっさらな1日をはじめる香り</p>
           <div class="ft-scores">
@@ -792,16 +807,21 @@
 
       <!-- Vanilla -->
       <div class="flavor-row" id="flavor-vanilla">
-        <a class="ft-flavor" href="./select-coffee.html?category=comfort">
-          <div class="ft-img">
-            <img src="images/vanilla-coffee-gift-flavored-coffee-dripcoffee.png" alt="バニラ">
-          </div>
-          <div>
-            <span class="ft-mood">COMFORT</span>
-            <p class="ft-name-en">Vanilla</p>
-            <p class="ft-name-jp">バニラ</p>
-          </div>
-        </a>
+        <div class="ft-col-1">
+          <a class="ft-flavor" href="https://doublecoffee.official.ec/items/114816071">
+            <div class="ft-img">
+              <img src="images/vanilla-coffee-gift-flavored-coffee-dripcoffee.png" alt="バニラ">
+            </div>
+            <div>
+              <span class="ft-mood">COMFORT</span>
+              <p class="ft-name-en">Vanilla</p>
+              <p class="ft-name-jp">バニラ</p>
+            </div>
+          </a>
+          <a class="ft-img-dip" href="https://doublecoffee.official.ec/items/114822123" target="_blank" rel="noopener">
+            <img src="images/vanilla-dip-style-coffee-bag-gift-set.png" alt="バニラ ディップバッグ">
+          </a>
+        </div>
         <div class="ft-chart-col">
           <p class="ft-main-desc">肩の力を抜きたいときの香り</p>
           <div class="ft-scores">
@@ -830,16 +850,21 @@
 
       <!-- Coconut -->
       <div class="flavor-row" id="flavor-coconut">
-        <a class="ft-flavor" href="./select-coffee.html?category=refresh">
-          <div class="ft-img">
-            <img src="images/coconut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ココナッツ">
-          </div>
-          <div>
-            <span class="ft-mood">REFRESH</span>
-            <p class="ft-name-en">Coconut</p>
-            <p class="ft-name-jp">ココナッツ</p>
-          </div>
-        </a>
+        <div class="ft-col-1">
+          <a class="ft-flavor" href="https://doublecoffee.official.ec/items/114816486">
+            <div class="ft-img">
+              <img src="images/coconut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ココナッツ">
+            </div>
+            <div>
+              <span class="ft-mood">REFRESH</span>
+              <p class="ft-name-en">Coconut</p>
+              <p class="ft-name-jp">ココナッツ</p>
+            </div>
+          </a>
+          <a class="ft-img-dip" href="https://doublecoffee.official.ec/items/114822519" target="_blank" rel="noopener">
+            <img src="images/coconut-dip-style-coffee-bag-gift-set.png" alt="ココナッツ ディップバッグ">
+          </a>
+        </div>
         <div class="ft-chart-col">
           <p class="ft-main-desc">午後の空気を切り替える香り</p>
           <div class="ft-scores">
@@ -868,16 +893,21 @@
 
       <!-- Hazelnut -->
       <div class="flavor-row" id="flavor-hazelnut">
-        <a class="ft-flavor" href="./select-coffee.html?category=relax">
-          <div class="ft-img">
-            <img src="images/hazelnut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ヘーゼルナッツ">
-          </div>
-          <div>
-            <span class="ft-mood">RELAX</span>
-            <p class="ft-name-en">Hazelnut</p>
-            <p class="ft-name-jp">ヘーゼルナッツ</p>
-          </div>
-        </a>
+        <div class="ft-col-1">
+          <a class="ft-flavor" href="https://doublecoffee.official.ec/items/114815099">
+            <div class="ft-img">
+              <img src="images/hazelnut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ヘーゼルナッツ">
+            </div>
+            <div>
+              <span class="ft-mood">RELAX</span>
+              <p class="ft-name-en">Hazelnut</p>
+              <p class="ft-name-jp">ヘーゼルナッツ</p>
+            </div>
+          </a>
+          <a class="ft-img-dip" href="https://doublecoffee.official.ec/items/114817871" target="_blank" rel="noopener">
+            <img src="images/hazelnut-dip-style-coffee-bag-gift-set.png" alt="ヘーゼルナッツ ディップバッグ">
+          </a>
+        </div>
         <div class="ft-chart-col">
           <p class="ft-main-desc">ひとり時間に浸る午後の香り</p>
           <div class="ft-scores">
@@ -906,16 +936,21 @@
 
       <!-- Butter -->
       <div class="flavor-row" id="flavor-butter">
-        <a class="ft-flavor" href="./select-coffee.html?category=rich">
-          <div class="ft-img">
-            <img src="images/butter-coffee-gift-flavored-coffee-dripcoffee.jpg" alt="バター">
-          </div>
-          <div>
-            <span class="ft-mood">RICH</span>
-            <p class="ft-name-en">Butter</p>
-            <p class="ft-name-jp">バター</p>
-          </div>
-        </a>
+        <div class="ft-col-1">
+          <a class="ft-flavor" href="https://doublecoffee.official.ec/items/114815647">
+            <div class="ft-img">
+              <img src="images/butter-coffee-gift-flavored-coffee-dripcoffee.jpg" alt="バター">
+            </div>
+            <div>
+              <span class="ft-mood">RICH</span>
+              <p class="ft-name-en">Butter</p>
+              <p class="ft-name-jp">バター</p>
+            </div>
+          </a>
+          <a class="ft-img-dip" href="https://doublecoffee.official.ec/items/114821502" target="_blank" rel="noopener">
+            <img src="images/butter-dip-style-coffee-bag-gift-set.png" alt="バター ディップバッグ">
+          </a>
+        </div>
         <div class="ft-chart-col">
           <p class="ft-main-desc">夜、深い余韻に浸るための香り</p>
           <div class="ft-scores">
@@ -944,7 +979,7 @@
 
       <!-- Chili -->
       <div class="flavor-row" id="flavor-chili">
-        <a class="ft-flavor" href="./select-coffee.html?category=inner-heat">
+        <a class="ft-flavor" href="https://doublecoffee.official.ec/items/117325783">
           <div class="ft-img">
             <img src="images/hot-chilli-dip-style-coffee-bag-gift-set.png" alt="唐辛子コーヒー">
           </div>
@@ -975,7 +1010,7 @@
 
       </div>
       <div class="cta-btns">
-        <a class="btn-secondary" href="https://doublecoffee-jp.netlify.app/select-coffee.html?category=quiz">気分で選ぶコーヒー診断を試す　→</a>
+        <a class="btn-secondary" href="https://doublecoffee-jp.pages.dev/select-coffee.html?category=quiz">気分で選ぶコーヒー診断を試す　→</a>
       </div>
   </div>
 </section>
@@ -1169,11 +1204,11 @@
       <div>
         <p class="footer-nav-title">SHOP</p>
         <ul class="footer-nav-list">
-          <li><a href="https://doublecoffee-jp.netlify.app/">Home</a></li>
-    <li><a href="https://doublecoffee-jp.netlify.app/first-time.html">はじめての方へ</a></li>
-    <li><a href="https://doublecoffee-jp.netlify.app/select-coffee.html">香りを選ぶ</a></li>
-    <li><a href="https://doublecoffee-jp.netlify.app/subscription.html">定期便</a></li>
-    <li><a href="https://doublecoffee-jp.netlify.app/about.html">About us</a></li>
+          <li><a href="https://doublecoffee-jp.pages.dev/">Home</a></li>
+    <li><a href="https://doublecoffee-jp.pages.dev/first-time.html">はじめての方へ</a></li>
+    <li><a href="https://doublecoffee-jp.pages.dev/select-coffee.html">香りを選ぶ</a></li>
+    <li><a href="https://doublecoffee-jp.pages.dev/subscription.html">定期便</a></li>
+    <li><a href="https://doublecoffee-jp.pages.dev/about.html">About us</a></li>
   </ul>
       </div>
 
@@ -1182,7 +1217,7 @@
         <ul class="footer-nav-list">
           <li><a href="https://doublecoffee.official.ec/p/00003" target="_blank" rel="noopener">OEMと卸販売</a></li>
           <li><a href="https://thebase.com/inquiry/doublecoffee-official-ec?_gl=1*1d286ao*_gcl_au*MjE3MTY3ODA4LjE3NzcxODUwNjg.*_ga*MTQyNDQ3Mjc2Ny4xNzc3MTg1MDY4*_ga_574HL6KGKQ*czE3NzgzMTkxMTMkbzM0JGcxJHQxNzc4MzIxMzUzJGoxNiRsMCRoMA..">お問い合わせ</a></li>
-          <li><a href="https://doublecoffee-jp.netlify.app/company.html">会社概要</a></li>
+          <li><a href="https://doublecoffee-jp.pages.dev/company.html">会社概要</a></li>
           <li><a href="https://doublecoffee.official.ec/p/00005" target="_blank" rel="noopener">ご利用規約</a></li>
         </ul>
       </div>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://doublecoffee-jp.netlify.app/sitemap.xml
+Sitemap: https://doublecoffee-jp.pages.dev/sitemap.xml
