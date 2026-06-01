@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOUBLE COFFEE（ドゥーブルコーヒー） | ABOUT US</title>
+  <title>ベトナムコーヒーへのこだわり | ABOUT US | DOUBLE COFFEE</title>
+  <meta name="description" content="DOUBLE COFFEEはベトナム産コーヒー豆を使った砂糖不使用のフレーバーコーヒーブランド。ヘーゼルナッツやバニラ香るディップバッグで、香りで気持ちを整えるコーヒー体験を提案します。">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VN669LYK7"></script>
@@ -386,6 +387,9 @@
       footer { padding-top: 56px; }
       .drawer-menu { width: min(88vw, 320px); padding: 84px 24px 28px; }
     }
+    /* ===== REVEAL ANIMATION ===== */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body {BackgroundTag}>
@@ -436,11 +440,13 @@
       ある日、出会った一杯が<br>ドゥーブルコーヒーの始まりでした。
     </h2>
     <p class="origin-body">
-      深く香ばしい香り。ゆっくりほどけていく余韻。<br>
-      慌ただしかった気持ちが、<strong>ふっと静かになる感覚。</strong><br><br>
-      これまで知っていたコーヒーとは、<br class="br-sp">少し違っていました。<br>
-      一杯のベトナムコーヒーが、<br>
-      ドゥーブルコーヒーの始まりです。
+      ベトナムで口にした、ヘーゼルナッツのフレーバーコーヒー。<br>
+      深く香ばしいその香りに、慌ただしかった気持ちが、ふっと静かになりました。
+      これまで知っていたコーヒーとは違う、慌ただしかった気持ちが、<strong>ふっと静かになる感覚。</strong><br><br>
+      香りだけで、こんなに心が整うのかと。<br>
+      「この感覚を、日本にいる誰かにも届けたい。」<br>
+      その一杯が、ドゥーブルコーヒーの始まりです。<br>
+      ヘーゼルナッツから始まり、今は5つの香りへ。<br>
     </p>
   </div>
 </section>
@@ -465,7 +471,7 @@
     <p class="section-body">
       私たちが大切にしているのは、"香り"です。<br>
       コーヒーの香りには、気持ちをゆるめたり、心を整えたり、
-      日常に小さな余白をつくる力があると感じています。<br><br>
+      日常に小さな余白をつくる力があります。<br><br>
       香りを感じた瞬間、ふっと肩の力が抜ける。
       コーヒーを手にするその時間が、
       自分に還る小さな旅になりますように。<br>
@@ -549,10 +555,27 @@
       <span class="commitment-num">03</span>
       <p class="commitment-title">5つの感情に寄り添う香り</p>
       <p class="commitment-body">
-        気分で選ぶ、5種のフレーバー。
+        気分で選ぶ、5種の香り。
         今日の自分にぴったりの一杯が、きっとあります。
       </p>
     </div>
+  </div>
+</section>
+
+
+<!-- ===== GIFT & FLAVORS ===== -->
+<section class="text-section">
+  <div class="text-inner">
+    <span class="section-eyebrow">GIFT &amp; FLAVORS</span>
+    <div class="section-divider"></div>
+    <h2 class="section-title">フレーバーコーヒーをギフトとして贈る</h2>
+    <p class="section-body">
+      ドゥーブルコーヒーは、大切な方への贈りものとしてもご好評いただいています。<br>
+      ヘーゼルナッツ・バニラ・ココナッツなど、それぞれ異なる物語を持つフレーバーコーヒーをギフトセットにしました。<br><br>
+      ディップバッグスタイルは、コーヒー器具がなくてもすぐに楽しめます。お湯を注ぐだけでヘーゼルナッツの香ばしい香りや、バニラの甘くやわらかな香りが立ちのぼります。<br>
+      ディップバッグならではの手軽さが、贈り物としても選ばれている理由のひとつです。<br><br>
+      誕生日・内祝い・ちょっとしたお礼に。コーヒーギフトをお探しの方は、ドゥーブルコーヒーのギフトセットをぜひご覧ください。
+    </p>
   </div>
 </section>
 
@@ -708,6 +731,19 @@
       closeMenu();
     }
   });
+
+  (function() {
+    var sel = '.about-block, .value-item, .team-card, .brand-section, .section-title';
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll(sel).forEach(function(el) {
+      el.classList.add('reveal');
+      var idx = Array.from(el.parentElement.children).indexOf(el);
+      if (idx > 0) el.style.transitionDelay = Math.min(idx * 0.08, 0.32) + 's';
+      obs.observe(el);
+    });
+  })();
 </script>
 
 </body>

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOUBLE COFFEE（ドゥーブルコーヒー） | 定期便</title>
+  <title>フレーバーコーヒー 定期便 | 季節の香りを毎月お届け | DOUBLE COFFEE</title>
+  <meta name="description" content="フレーバーコーヒーの定期便サービス。ヘーゼルナッツ・バニラなど季節に合わせたベトナムコーヒー ディップバッグを毎月お届け。2つのプランからお選びいただけます。">
   
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VN669LYK7"></script>
@@ -191,6 +192,8 @@
     }
     .plan-unit { font-size: 0.78rem; color: var(--coffee); margin-bottom: 16px; }
     .plan-name { font-size: 0.88rem; font-weight: 400; color: var(--mocha); margin-bottom: 8px; }
+    .plan-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; margin-bottom: 20px; border-radius: 2px; }
+    .plan-img img { width: 100%; height: 100%; object-fit: cover; }
     .plan-desc { font-size: 0.78rem; color: var(--coffee); line-height: 2; margin-bottom: 24px; }
     .plan-cta {
       display: block; font-size: 0.72rem; letter-spacing: 0.12em;
@@ -367,6 +370,9 @@
       .why-body { font-size: 0.85rem; }
       .section-body { font-size: 0.83rem; }
     }
+    /* ===== REVEAL ANIMATION ===== */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body {BackgroundTag}>
@@ -446,18 +452,22 @@
   <p class="section-body">5種の香りを、その月のベストな配合で毎月お届けします。</p>
   <div class="plans-grid">
     <div class="plan-card">
+      <div class="plan-img">
+        <img src="images/double-coffee-subscriotion-light.png" alt="Light プラン 20袋">
+      </div>
       <div class="plan-num">20</div>
       <div class="plan-unit">袋 / 月</div>
       <div class="plan-name">Light</div>
-      <p class="plan-desc">ひとりで週5日飲むと、ちょうど1ヶ月分。気軽に始めたい方に。</p>
       <a href="https://doublecoffee.official.ec/items/137320692" target="_blank" rel="noopener" class="plan-cta">20袋プランを見る</a>
     </div>
     <div class="plan-card featured">
       <div class="plan-badge">人気</div>
+      <div class="plan-img">
+        <img src="images/double-coffee-subscriotion-rich.png" alt="Rich プラン 50袋">
+      </div>
       <div class="plan-num">50</div>
       <div class="plan-unit">袋 / 月</div>
       <div class="plan-name">Rich</div>
-      <p class="plan-desc">家族で飲む方や、職場にも置きたい方に。少し多めのほうが、生活に馴染む。</p>
       <a href="https://doublecoffee.official.ec/items/114789281" target="_blank" rel="noopener" class="plan-cta">50袋プランを見る</a>
     </div>
   </div>
@@ -613,6 +623,19 @@
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape' && drawerMenu.classList.contains('is-open')) { closeMenu(); }
   });
+
+  (function() {
+    var sel = '.plan-card, .season-card, .sub-card, .request-chip, .peace-item';
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll(sel).forEach(function(el) {
+      el.classList.add('reveal');
+      var idx = Array.from(el.parentElement.children).indexOf(el);
+      if (idx > 0) el.style.transitionDelay = Math.min(idx * 0.08, 0.32) + 's';
+      obs.observe(el);
+    });
+  })();
 </script>
 </body>
 </html>

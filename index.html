@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOUBLE COFFEE（ドゥーブルコーヒー） | 香りで旅するフレーバーコーヒーブランド</title>
+  <title>フレーバーコーヒー ディップバッグ専門店 | DOUBLE COFFEE（ドゥーブルコーヒー）</title>
+  <meta name="description" content="砂糖不使用のベトナムコーヒーをフレーバーディップバッグで。ヘーゼルナッツ・バニラ・ベトナムコーヒーギフトなど6種の香りから選べるフレーバーコーヒーブランド。自宅で本格的な香りをお楽しみください。">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VN669LYK7"></script>
@@ -368,6 +369,44 @@
       height: 1px;
       background: var(--gold);
       margin-bottom: 24px;
+    }
+
+    /* ========== CATEGORY NAV ========== */
+    .cat-nav {
+      background: var(--ivory);
+      padding: 32px 0 8px;
+    }
+    .cat-nav-inner {
+      display: flex; gap: 20px; justify-content: center;
+      overflow-x: auto; padding: 0 24px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .cat-nav-inner::-webkit-scrollbar { display: none; }
+    .cat-btn {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      text-decoration: none; flex-shrink: 0;
+      transition: opacity 0.2s;
+    }
+    .cat-btn:hover { opacity: 0.72; }
+    .cat-btn-icon {
+      width: 72px; height: 72px; border-radius: 18px;
+      background: var(--cream); overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .cat-btn-icon img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .cat-btn-label {
+      font-size: 0.62rem; color: var(--mocha);
+      letter-spacing: 0.06em; text-align: center;
+      font-family: 'Noto Sans JP', sans-serif; font-weight: 300;
+    }
+    @media (max-width: 640px) {
+      .cat-nav { padding: 24px 0 4px; }
+      .cat-nav-inner { justify-content: flex-start; gap: 16px; padding: 0 16px; }
+      .cat-btn-icon { width: 60px; height: 60px; border-radius: 14px; }
+      .cat-btn-label { font-size: 0.58rem; }
     }
 
     /* ========== MOOD SECTION ========== */
@@ -971,6 +1010,21 @@
     .btn-line:hover { background: #00A300; }
     .btn-line svg { width: 20px; height: 20px; fill: white; }
 
+    /* ========== REVEAL ANIMATION ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
     /* ========== FOOTER ========== */
     footer {
       background: var(--mocha);
@@ -1206,7 +1260,8 @@
       .mood-card { flex: none; }
       .mood-card-overlay { padding: 16px 14px; }
       .mood-card-name { font-size: 1rem; }
-      .mood-card-jp { font-size: 0.64rem; }
+      .mood-card-jp { display: none; }
+      .mood-card-num { display: none; }
       .mood-card-keyword { opacity: 1; transform: translateY(0); }
 
       /* --- Concept section --- */
@@ -1347,75 +1402,33 @@
 </section>
 
 
-<!-- ====== MOOD SECTION ====== -->
-<section class="mood-section">
-  <div class="container">
-    <div class="mood-header">
-      <p class="section-label">CHOOSE BY MOOD</p>
-      <div class="divider" style="margin: 0 auto 20px;"></div>
-      <h2 class="section-title">今の気分で選ぶ。</h2>
-      <p class="section-desc">あなたの今に合う一杯を選んでみてください。</p>
-    </div>
-
-    <div class="mood-grid">
-      <!-- Non Flavor -->
-      <a class="mood-card" href="https://doublecoffee.official.ec/items/114816835" target="_blank" rel="noopener">
-        <img src="images/brend-coffee-gift-flavored-coffee-dripcoffee.png" alt="ノンフレーバーコーヒー">
-        <div class="mood-card-overlay">
-          <span class="mood-card-num">Non Flavor</span>
-          <span class="mood-card-name">ノンフレーバー</span>
-          <span class="mood-card-jp">まっさらな朝のはじまりの香り</span>
-          <span class="mood-card-keyword">PURE — 豆本来の味わい</span>
-        </div>
-      </a>
-
-      <!-- Vanilla -->
-      <a class="mood-card" href="https://doublecoffee.official.ec/items/114816071" target="_blank" rel="noopener">
-        <img src="images/vanilla-coffee-gift-flavored-coffee-dripcoffee.png" alt="バニラコーヒー">
-        <div class="mood-card-overlay">
-          <span class="mood-card-num">Vanilla</span>
-          <span class="mood-card-name">バニラ</span>
-          <span class="mood-card-jp">肩の力を抜きたいときの香り</span>
-          <span class="mood-card-keyword">COMFORT — やわらかな甘い香り</span>
-        </div>
-      </a>
-
-      <!-- Coconut -->
-      <a class="mood-card" href="https://doublecoffee.official.ec/items/114816486" target="_blank" rel="noopener">
-        <img src="images/coconut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ココナッツアイランドコーヒー">
-        <div class="mood-card-overlay">
-          <span class="mood-card-num">Coconut</span>
-          <span class="mood-card-name">ココナッツ</span>
-          <span class="mood-card-jp">午後の空気を切り替える香り</span>
-          <span class="mood-card-keyword">REFRESH — 軽やかな抜け感</span>
-        </div>
-      </a>
-
-      <!-- Hazelnut -->
-      <a class="mood-card" href="https://doublecoffee.official.ec/items/114815099" target="_blank" rel="noopener">
-        <img src="images/hazelnut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ヘーゼルナッツコーヒー">
-        <div class="mood-card-overlay">
-          <span class="mood-card-num">Hazelnut</span>
-          <span class="mood-card-name">ヘーゼルナッツ</span>
-          <span class="mood-card-jp">ひとり時間に浸る午後の香り</span>
-          <span class="mood-card-keyword">RELAX — ほっとする香ばしさ</span>
-        </div>
-      </a>
-
-      <!-- Butter -->
-      <a class="mood-card" href="https://doublecoffee.official.ec/items/114815647" target="_blank" rel="noopener">
-        <img src="images/butter-coffee-gift-flavored-coffee-dripcoffee.jpg" alt="バターコーヒー">
-        <div class="mood-card-overlay">
-          <span class="mood-card-num">Butter</span>
-          <span class="mood-card-name">バター</span>
-          <span class="mood-card-jp">夜、深い余韻に浸るための香り</span>
-          <span class="mood-card-keyword">RICH — まろやかなコクと余韻</span>
-        </div>
-      </a>
-    </div>
-    <div style="text-align:center;margin-top:28px;display:flex;flex-direction:column;align-items:center;gap:16px;">
-      <a href="https://doublecoffee-jp.netlify.app/select-coffee.html?category=quiz" class="btn-primary">コーヒー診断を試す →</a>
-    </div>
+<!-- ====== CATEGORY NAV ====== -->
+<section class="cat-nav">
+  <div class="cat-nav-inner">
+    <a class="cat-btn" href="./select-coffee.html">
+      <div class="cat-btn-icon">
+        <img src="images/summer-coffee-dip-gift-package.png" alt="新商品">
+      </div>
+      <span class="cat-btn-label">新商品</span>
+    </a>
+    <a class="cat-btn" href="./select-coffee.html?category=beans">
+      <div class="cat-btn-icon">
+        <img src="images/hazelnut-coffee-gift-flavored-coffee-dripcoffee.png" alt="コーヒー豆・粉">
+      </div>
+      <span class="cat-btn-label">コーヒー豆/粉</span>
+    </a>
+    <a class="cat-btn" href="./select-coffee.html?category=dip">
+      <div class="cat-btn-icon">
+        <img src="images/vanilla-dip-style-coffee-bag-gift-set.png" alt="ディップバッグ">
+      </div>
+      <span class="cat-btn-label">ディップバッグ</span>
+    </a>
+    <a class="cat-btn" href="./select-coffee.html?category=gift">
+      <div class="cat-btn-icon">
+        <img src="images/flavored-coffee-dip-gift-package.png" alt="ギフト">
+      </div>
+      <span class="cat-btn-label">ギフト</span>
+    </a>
   </div>
 </section>
 
@@ -1432,7 +1445,7 @@
 
     <div class="product-grid">
       <!-- Product 1: ヘーゼルナッツ ディップバッグ -->
-      <a class="product-card" href="https://doublecoffee.official.ec/items/114817871" target="_blank" rel="noopener" style="display:block;color:inherit;">
+      <a class="product-card reveal reveal-delay-1" href="https://doublecoffee.official.ec/items/114817871" target="_blank" rel="noopener" style="display:block;color:inherit;">
         <div class="product-image">
           <img src="images/hazelnut-dip-style-coffee-bag-gift-set.png" alt="ヘーゼルナッツ ディップバッグ" style="width:100%;height:100%;object-fit:cover;">
           <span class="product-tag">一番人気</span>
@@ -1449,7 +1462,7 @@
       </a>
 
       <!-- Product 2: 期間限定ギフト -->
-      <a class="product-card" href="https://doublecoffee.official.ec/items/144556526" target="_blank" rel="noopener" style="display:block;color:inherit;">
+      <a class="product-card reveal reveal-delay-2" href="https://doublecoffee.official.ec/items/144556526" target="_blank" rel="noopener" style="display:block;color:inherit;">
         <div class="product-image">
           <img src="images/summer-coffee-dip-gift-package.png" alt="期間限定ギフトセット" style="width:100%;height:100%;object-fit:cover;">
           <span class="product-tag">期間限定</span>
@@ -1466,7 +1479,7 @@
       </a>
 
       <!-- Product 3: 豆・粉の定番ギフト -->
-      <a class="product-card" href="https://doublecoffee.official.ec/items/126550760" target="_blank" rel="noopener" style="display:block;color:inherit;">
+      <a class="product-card reveal reveal-delay-3" href="https://doublecoffee.official.ec/items/126550760" target="_blank" rel="noopener" style="display:block;color:inherit;">
         <div class="product-image">
           <img src="images/flavored-coffee-gift-package.png" alt="豆・粉の定番ギフトセット" style="width:100%;height:100%;object-fit:cover;">
         </div>
@@ -1482,7 +1495,7 @@
       </a>
 
       <!-- Product 4: バニラ ディップバッグ -->
-      <a class="product-card" href="https://doublecoffee.official.ec/items/114822123" target="_blank" rel="noopener" style="display:block;color:inherit;">
+      <a class="product-card reveal reveal-delay-4" href="https://doublecoffee.official.ec/items/114822123" target="_blank" rel="noopener" style="display:block;color:inherit;">
         <div class="product-image">
           <img src="images/vanilla-dip-style-coffee-bag-gift-set.png" alt="バニラ ディップバッグ" style="width:100%;height:100%;object-fit:cover;">
         </div>
@@ -1500,6 +1513,78 @@
 
     <div style="text-align:center;margin-top:32px;">
       <a href="https://doublecoffee-jp.netlify.app/select-coffee.html" class="btn-primary">もっと見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== MOOD SECTION ====== -->
+<section class="mood-section">
+  <div class="container">
+    <div class="mood-header">
+      <p class="section-label">CHOOSE BY MOOD</p>
+      <div class="divider" style="margin: 0 auto 20px;"></div>
+      <h2 class="section-title">Doubleのフレーバーコーヒー</h2>
+      <p class="section-desc">あなたの今に合う一杯を。</p>
+    </div>
+
+    <div class="mood-grid">
+      <!-- Non Flavor -->
+      <a class="mood-card reveal reveal-delay-1" href="https://doublecoffee.official.ec/items/114816835" target="_blank" rel="noopener">
+        <img src="images/brend-coffee-gift-flavored-coffee-dripcoffee.png" alt="ノンフレーバーコーヒー">
+        <div class="mood-card-overlay">
+          <span class="mood-card-num">Non Flavor</span>
+          <span class="mood-card-name">ノンフレーバー</span>
+          <span class="mood-card-jp">まっさらな朝のはじまりの香り</span>
+          <span class="mood-card-keyword">PURE — 豆本来の味わい</span>
+        </div>
+      </a>
+
+      <!-- Vanilla -->
+      <a class="mood-card reveal reveal-delay-2" href="https://doublecoffee.official.ec/items/114816071" target="_blank" rel="noopener">
+        <img src="images/vanilla-coffee-gift-flavored-coffee-dripcoffee.png" alt="バニラコーヒー">
+        <div class="mood-card-overlay">
+          <span class="mood-card-num">Vanilla</span>
+          <span class="mood-card-name">バニラ</span>
+          <span class="mood-card-jp">肩の力を抜きたいときの香り</span>
+          <span class="mood-card-keyword">COMFORT — やわらかな甘い香り</span>
+        </div>
+      </a>
+
+      <!-- Coconut -->
+      <a class="mood-card reveal reveal-delay-3" href="https://doublecoffee.official.ec/items/114816486" target="_blank" rel="noopener">
+        <img src="images/coconut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ココナッツアイランドコーヒー">
+        <div class="mood-card-overlay">
+          <span class="mood-card-num">Coconut</span>
+          <span class="mood-card-name">ココナッツ</span>
+          <span class="mood-card-jp">午後の空気を切り替える香り</span>
+          <span class="mood-card-keyword">REFRESH — 軽やかな抜け感</span>
+        </div>
+      </a>
+
+      <!-- Hazelnut -->
+      <a class="mood-card reveal reveal-delay-4" href="https://doublecoffee.official.ec/items/114815099" target="_blank" rel="noopener">
+        <img src="images/hazelnut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ヘーゼルナッツコーヒー">
+        <div class="mood-card-overlay">
+          <span class="mood-card-num">Hazelnut</span>
+          <span class="mood-card-name">ヘーゼルナッツ</span>
+          <span class="mood-card-jp">ひとり時間に浸る午後の香り</span>
+          <span class="mood-card-keyword">RELAX — ほっとする香ばしさ</span>
+        </div>
+      </a>
+
+      <!-- Butter -->
+      <a class="mood-card reveal" href="https://doublecoffee.official.ec/items/114815647" target="_blank" rel="noopener">
+        <img src="images/butter-coffee-gift-flavored-coffee-dripcoffee.jpg" alt="バターコーヒー">
+        <div class="mood-card-overlay">
+          <span class="mood-card-num">Butter</span>
+          <span class="mood-card-name">バター</span>
+          <span class="mood-card-jp">夜、深い余韻に浸るための香り</span>
+          <span class="mood-card-keyword">RICH — まろやかなコクと余韻</span>
+        </div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:28px;display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <a href="https://doublecoffee-jp.netlify.app/select-coffee.html?category=quiz" class="btn-primary">コーヒー診断を試す →</a>
     </div>
   </div>
 </section>
@@ -1720,6 +1805,23 @@
       el.addEventListener('mouseleave', start);
     }
     start();
+  })();
+
+  // Reveal on scroll
+  (function() {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    // Auto-target additional elements
+    var sel = '.cat-btn, .brew-step, .sub-card, .story-block';
+    document.querySelectorAll(sel).forEach(function(el) {
+      if (!el.classList.contains('reveal')) {
+        el.classList.add('reveal');
+        var idx = Array.from(el.parentElement.children).indexOf(el);
+        if (idx > 0) el.style.transitionDelay = Math.min(idx * 0.08, 0.32) + 's';
+      }
+    });
+    document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
   })();
 </script>
 

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOUBLE COFFEE（ドゥーブルコーヒー） | 企業概要</title>
+  <title>企業概要 | DOUBLE COFFEE（ドゥーブルコーヒー）</title>
+  <meta name="description" content="DOUBLE COFFEE（ドゥーブルコーヒー）の企業情報。ベトナムコーヒーをベースにしたフレーバーコーヒーブランドを展開するドゥーブル・アッシュ株式会社の会社概要ページです。">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VN669LYK7"></script>
@@ -192,6 +193,9 @@
       footer { padding-top: 56px; }
       .drawer-menu { width: min(88vw, 320px); padding: 84px 24px 28px; }
     }
+    /* ===== REVEAL ANIMATION ===== */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body {BackgroundTag}>
@@ -385,6 +389,19 @@
       closeMenu();
     }
   });
+
+  (function() {
+    var sel = '.company-row, .info-row, .section-title';
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll(sel).forEach(function(el) {
+      el.classList.add('reveal');
+      var idx = Array.from(el.parentElement.children).indexOf(el);
+      if (idx > 0) el.style.transitionDelay = Math.min(idx * 0.08, 0.32) + 's';
+      obs.observe(el);
+    });
+  })();
 </script>
 
 </body>
