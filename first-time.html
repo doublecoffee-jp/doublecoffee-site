@@ -326,34 +326,35 @@
       grid-template-columns: 220px 1fr 1.8fr;
       border-bottom: 1px solid var(--border);
       padding: 24px 0;
-      gap: 24px;
+      gap: 16px 24px;
       align-items: start;
     }
     .flavor-row:first-child { border-top: 1px solid var(--border); }
     .ft-flavor {
-      display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
+      display: block; width: 100%;
       text-decoration: none; color: inherit;
       transition: opacity 0.2s;
     }
     .ft-flavor:hover { opacity: 0.72; }
+    .ft-col-1-header {
+      grid-column: 1 / -1;
+      display: flex; flex-direction: row; align-items: center; gap: 12px; flex-wrap: wrap;
+      color: inherit; transition: opacity 0.2s;
+    }
+    .ft-col-1-header:hover { opacity: 0.72; }
     .ft-img {
       width: 100%; aspect-ratio: 1/1;
-      background: var(--cream); overflow: hidden;
+      overflow: hidden;
     }
     .ft-img img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
-    .ft-col-1 { display: flex; flex-direction: column; gap: 8px; }
+    .ft-col-1-images { display: flex; flex-direction: column; gap: 6px; }
     .ft-img-dip {
       display: block; width: 100%; aspect-ratio: 1/1;
-      background: white; overflow: hidden;
-      border: 1px solid var(--border);
+      overflow: hidden;
       transition: opacity 0.2s;
     }
     .ft-img-dip:hover { opacity: 0.75; }
-    .ft-img-dip img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
-    .ft-flavor > div {
-      display: flex; flex-direction: row; align-items: center;
-      gap: 6px; flex-wrap: wrap;
-    }
+    .ft-img-dip img { width: 100%; height: 100%; object-fit: contain; padding: 10px; mix-blend-mode: multiply; }
     .ft-mood {
       font-size: 0.52rem; letter-spacing: 0.2em; color: white;
       background: var(--mocha); padding: 2px 8px;
@@ -411,15 +412,14 @@
       .flavor-row.tab-hidden { display: none; }
       .flavor-row {
         grid-template-columns: 1fr;
-        grid-template-areas: "flavor" "story" "chart";
-        padding: 20px 0; gap: 14px; align-items: start;
+        grid-template-areas: "header" "images" "story" "chart";
+        padding: 20px 0; gap: 12px; align-items: start;
       }
-      .ft-col-1 { grid-area: flavor; }
-      .ft-flavor { flex-direction: row; align-items: center; gap: 12px; }
-      .ft-img { width: 96px; height: 96px; aspect-ratio: unset; }
+      .ft-col-1-header { grid-area: header; }
+      .ft-col-1-images { grid-area: images; flex-direction: row; gap: 8px; }
+      .ft-flavor { flex: 1; }
+      .ft-img-dip { flex: 1; }
       .ft-img img { padding: 4px; }
-      .ft-flavor > div { flex-direction: column; align-items: flex-start; gap: 4px; }
-      .ft-flavor > div { align-items: flex-start; }
       .ft-chart-col { grid-area: chart; }
       .ft-story-col { grid-area: story; }
       .ft-main-desc { font-size: 0.78rem; padding-left: 10px; margin-bottom: 8px; }
@@ -765,15 +765,15 @@
 
       <!-- Non Flavor -->
       <div class="flavor-row" id="flavor-non">
-        <div class="ft-col-1">
+        <a class="ft-col-1-header" href="https://doublecoffee.official.ec/items/114816835">
+          <span class="ft-mood">PURE</span>
+          <p class="ft-name-en">Non Flavor</p>
+          <p class="ft-name-jp">ノンフレーバー</p>
+        </a>
+        <div class="ft-col-1-images">
           <a class="ft-flavor" href="https://doublecoffee.official.ec/items/114816835">
             <div class="ft-img">
               <img src="images/brend-coffee-gift-flavored-coffee-dripcoffee.png" alt="ノンフレーバー">
-            </div>
-            <div>
-              <span class="ft-mood">PURE</span>
-              <p class="ft-name-en">Non Flavor</p>
-              <p class="ft-name-jp">ノンフレーバー</p>
             </div>
           </a>
           <a class="ft-img-dip" href="https://doublecoffee.official.ec/items/114822849" target="_blank" rel="noopener">
@@ -807,15 +807,15 @@
 
       <!-- Vanilla -->
       <div class="flavor-row" id="flavor-vanilla">
-        <div class="ft-col-1">
+        <a class="ft-col-1-header" href="https://doublecoffee.official.ec/items/114816071">
+          <span class="ft-mood">COMFORT</span>
+          <p class="ft-name-en">Vanilla</p>
+          <p class="ft-name-jp">バニラ</p>
+        </a>
+        <div class="ft-col-1-images">
           <a class="ft-flavor" href="https://doublecoffee.official.ec/items/114816071">
             <div class="ft-img">
               <img src="images/vanilla-coffee-gift-flavored-coffee-dripcoffee.png" alt="バニラ">
-            </div>
-            <div>
-              <span class="ft-mood">COMFORT</span>
-              <p class="ft-name-en">Vanilla</p>
-              <p class="ft-name-jp">バニラ</p>
             </div>
           </a>
           <a class="ft-img-dip" href="https://doublecoffee.official.ec/items/114822123" target="_blank" rel="noopener">
@@ -850,15 +850,15 @@
 
       <!-- Coconut -->
       <div class="flavor-row" id="flavor-coconut">
-        <div class="ft-col-1">
+        <a class="ft-col-1-header" href="https://doublecoffee.official.ec/items/114816486">
+          <span class="ft-mood">REFRESH</span>
+          <p class="ft-name-en">Coconut</p>
+          <p class="ft-name-jp">ココナッツ</p>
+        </a>
+        <div class="ft-col-1-images">
           <a class="ft-flavor" href="https://doublecoffee.official.ec/items/114816486">
             <div class="ft-img">
               <img src="images/coconut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ココナッツ">
-            </div>
-            <div>
-              <span class="ft-mood">REFRESH</span>
-              <p class="ft-name-en">Coconut</p>
-              <p class="ft-name-jp">ココナッツ</p>
             </div>
           </a>
           <a class="ft-img-dip" href="https://doublecoffee.official.ec/items/114822519" target="_blank" rel="noopener">
@@ -893,15 +893,15 @@
 
       <!-- Hazelnut -->
       <div class="flavor-row" id="flavor-hazelnut">
-        <div class="ft-col-1">
+        <a class="ft-col-1-header" href="https://doublecoffee.official.ec/items/114815099">
+          <span class="ft-mood">RELAX</span>
+          <p class="ft-name-en">Hazelnut</p>
+          <p class="ft-name-jp">ヘーゼルナッツ</p>
+        </a>
+        <div class="ft-col-1-images">
           <a class="ft-flavor" href="https://doublecoffee.official.ec/items/114815099">
             <div class="ft-img">
               <img src="images/hazelnut-coffee-gift-flavored-coffee-dripcoffee.png" alt="ヘーゼルナッツ">
-            </div>
-            <div>
-              <span class="ft-mood">RELAX</span>
-              <p class="ft-name-en">Hazelnut</p>
-              <p class="ft-name-jp">ヘーゼルナッツ</p>
             </div>
           </a>
           <a class="ft-img-dip" href="https://doublecoffee.official.ec/items/114817871" target="_blank" rel="noopener">
@@ -936,15 +936,15 @@
 
       <!-- Butter -->
       <div class="flavor-row" id="flavor-butter">
-        <div class="ft-col-1">
+        <a class="ft-col-1-header" href="https://doublecoffee.official.ec/items/114815647">
+          <span class="ft-mood">RICH</span>
+          <p class="ft-name-en">Butter</p>
+          <p class="ft-name-jp">バター</p>
+        </a>
+        <div class="ft-col-1-images">
           <a class="ft-flavor" href="https://doublecoffee.official.ec/items/114815647">
             <div class="ft-img">
               <img src="images/butter-coffee-gift-flavored-coffee-dripcoffee.jpg" alt="バター">
-            </div>
-            <div>
-              <span class="ft-mood">RICH</span>
-              <p class="ft-name-en">Butter</p>
-              <p class="ft-name-jp">バター</p>
             </div>
           </a>
           <a class="ft-img-dip" href="https://doublecoffee.official.ec/items/114821502" target="_blank" rel="noopener">
@@ -979,16 +979,18 @@
 
       <!-- Chili -->
       <div class="flavor-row" id="flavor-chili">
-        <a class="ft-flavor" href="https://doublecoffee.official.ec/items/117325783">
-          <div class="ft-img">
-            <img src="images/hot-chilli-dip-style-coffee-bag-gift-set.png" alt="唐辛子コーヒー">
-          </div>
-          <div>
-            <span class="ft-mood">INNER HEAT</span>
-            <p class="ft-name-en">Inner Heat</p>
-            <p class="ft-name-jp">唐辛子</p>
-          </div>
+        <a class="ft-col-1-header" href="https://doublecoffee.official.ec/items/117325783">
+          <span class="ft-mood">INNER HEAT</span>
+          <p class="ft-name-en">Inner Heat</p>
+          <p class="ft-name-jp">唐辛子</p>
         </a>
+        <div class="ft-col-1-images">
+          <a class="ft-flavor" href="https://doublecoffee.official.ec/items/117325783">
+            <div class="ft-img">
+              <img src="images/hot-chilli-dip-style-coffee-bag-gift-set.png" alt="唐辛子コーヒー">
+            </div>
+          </a>
+        </div>
         <div class="ft-chart-col">
           <p class="ft-main-desc">静かな夜に刺激を添える香り</p>
           <div class="ft-occasions">
