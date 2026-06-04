@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>フレーバーコーヒー ディップバッグ専門店 | DOUBLE COFFEE（ドゥーブルコーヒー）</title>
+  <title>フレーバーコーヒー・ベトナムコーヒー専門店 | DOUBLE COFFEE（ドゥーブルコーヒー）</title>
   <meta name="description" content="砂糖不使用のベトナムコーヒーをフレーバーディップバッグで。ヘーゼルナッツ・バニラ・ベトナムコーヒーギフトなど6種の香りから選べるフレーバーコーヒーブランド。自宅で本格的な香りをお楽しみください。">
 
   <!-- Google tag (gtag.js) - load after page load to avoid blocking render -->
@@ -178,7 +178,7 @@
     /* ========== HERO ========== */
     .hero {
       position: relative;
-      height: 504px;
+      height: 420px;
       overflow: hidden;
     }
     .hero-image {
@@ -542,6 +542,30 @@
     .concept-quote strong {
       color: var(--mocha);
       font-style: normal;
+    }
+
+    /* ========== BRAND POINTS SECTION ========== */
+    .brand-section { display: grid; grid-template-columns: 1fr 1fr; }
+    .brand-image { background: #A8BCCC; overflow: hidden; aspect-ratio: 4/3; align-self: start; }
+    .brand-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .brand-text { background: var(--pale-green); display: flex; align-items: center; padding: 56px 60px; }
+    .brand-text-inner { max-width: 460px; }
+    .brand-text .section-desc { line-height: 1.85; }
+    .brand-text .divider { margin-bottom: 16px; }
+    .brand-points { list-style: none; margin-top: 16px; }
+    .brand-points li { display: flex; align-items: flex-start; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.84rem; color: var(--coffee); line-height: 1.7; }
+    .brand-points li:last-child { border-bottom: none; }
+    .brand-points li::before { content: ''; flex-shrink: 0; width: 20px; height: 1px; background: var(--gold); margin-top: 10px; }
+    @media (max-width: 1024px) {
+      .brand-section { grid-template-columns: 1fr; }
+      .brand-image { aspect-ratio: 16/9; }
+      .brand-text { padding: 48px 40px; }
+    }
+    @media (max-width: 640px) {
+      .brand-text { padding: 32px 20px; }
+      .brand-points { margin-top: 14px; }
+      .brand-points li { font-size: 0.8rem; line-height: 1.75; gap: 12px; }
+      .brand-points-section { padding: 20px 0 !important; }
     }
 
     /* ========== PRODUCTS SECTION ========== */
@@ -1165,7 +1189,8 @@
     @media (min-width: 641px) {
       .product-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
         overflow-x: visible;
         scroll-snap-type: none;
       }
@@ -1175,9 +1200,14 @@
       }
       .product-image {
         width: 100%;
-        aspect-ratio: 4/3;
+        aspect-ratio: 1/1;
         min-height: auto;
       }
+      .product-name { font-size: 0.95rem; }
+      .product-name-jp { font-size: 0.68rem; margin-bottom: 4px; }
+      .product-desc { font-size: 0.7rem; margin-bottom: 4px; }
+      .product-price { font-size: 0.95rem; }
+      .product-info { padding: 12px 12px 14px; }
       .subscription-cards {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -1280,9 +1310,14 @@
       /* --- Products --- */
       .products-section { padding: 28px 0 32px; }
       .products-header { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 18px; }
-      .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; overflow-x: visible; scroll-snap-type: none; }
+      .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; overflow-x: visible; scroll-snap-type: none; }
       .product-card { flex: none; flex-direction: column; }
-      .product-image { width: 100%; aspect-ratio: 4/3; min-height: auto; }
+      .product-image { width: 100%; aspect-ratio: 1/1; min-height: auto; }
+      .product-name { font-size: 0.72rem; }
+      .product-name-jp { font-size: 0.6rem; margin-bottom: 3px; }
+      .product-desc { display: none; }
+      .product-price { font-size: 0.75rem; }
+      .product-info { padding: 8px 8px 10px; }
       .product-info { padding: 12px 14px 16px; }
       .product-name { font-size: 1rem; margin-bottom: 2px; }
       .product-desc { font-size: 0.72rem; line-height: 1.5; margin-bottom: 6px; }
@@ -1368,10 +1403,11 @@
   <p class="drawer-title">メニュー</p>
   <ul class="drawer-nav">
     <li><a href="https://doublecoffee-jp.pages.dev/">Home</a></li>
-    <li><a href="https://doublecoffee-jp.pages.dev/first-time.html">はじめての方へ</a></li>
-    <li><a href="https://doublecoffee-jp.pages.dev/select-coffee.html">香りを選ぶ</a></li>
+    <li><a href="https://doublecoffee-jp.pages.dev/first-time.html">フレーバーを選ぶ</a></li>
+    <li><a href="https://doublecoffee-jp.pages.dev/select-coffee.html">商品を見る</a></li>
     <li><a href="https://doublecoffee-jp.pages.dev/subscription.html">定期便</a></li>
     <li><a href="https://doublecoffee-jp.pages.dev/about.html">About us</a></li>
+    <li><a href="https://doublecoffee-jp.pages.dev/journal/">読みもの</a></li>
   </ul>
 </aside>
 
@@ -1440,12 +1476,32 @@
   </div>
 </section>
 
+<!-- ====== BRAND POINTS ====== -->
+<section class="brand-points-section" style="background:var(--pale-green);padding:56px 0;">
+  <div class="container">
+    <div style="max-width:600px;margin:0 auto;">
+      <p style="font-family:'Cinzel','Zen Old Mincho',serif;font-size:1.1rem;font-weight:400;letter-spacing:0.2em;color:var(--caramel);margin-bottom:20px;">What is DOUBLE COFFEE</p>
+      <p class="section-desc" style="line-height:2.2;">
+        ベトナム産コーヒーをベースにした、砂糖・甘味料不使用の<br>フレーバーコーヒーブランドです。<br>香りそのものの豊かさを大切に、味だけではなく気分や時間まで楽しむコーヒーをお届けしています。
+      </p>
+      <p class="section-desc" style="line-height:2.2;margin-top:24px;">
+        朝・午後・夜、それぞれの時間に寄り添う香りを、<br>豆・粉、手軽なディップスタイルで。
+      </p>
+      <p class="section-desc" style="line-height:2.2;margin-top:24px;">
+        売上の一部はベトナムの幼稚園や学校への支援に活用し、<br>一杯のコーヒーが未来につながる取り組みも行っています。
+      </p>
+      <div style="margin-top:16px;">
+        <a class="btn-secondary" href="https://doublecoffee-jp.pages.dev/first-time.html">フレーバーを選ぶ　→</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ====== PRODUCTS SECTION ====== -->
 <section class="products-section">
   <div class="container">
     <div class="products-header">
       <div>
-        <p class="section-label">Recommend</p>
         <div class="divider"></div>
         <h2 class="section-title">おすすめの商品</h2>
       </div>
@@ -1532,7 +1588,7 @@
       <p class="section-label">CHOOSE BY MOOD</p>
       <div class="divider" style="margin: 0 auto 20px;"></div>
       <h2 class="section-title">Doubleのフレーバーコーヒー</h2>
-      <p class="section-desc">あなたの今に合う一杯を。</p>
+      <p class="section-desc">フレーバーの詳細はこちらから</p>
     </div>
 
     <div class="mood-grid">
@@ -1605,9 +1661,10 @@
       <div class="divider" style="background:var(--sage);"></div>
       <h2 class="section-title">香りで旅するコーヒー</h2>
       <p class="section-desc">
-        ドゥーブルコーヒーのコーヒー豆は、すべてベトナム産。<br>
+        ドゥーブルコーヒーのフレーバーコーヒーは<br>焙煎後にフレーバーオイルで香り付け。<br>
+        コーヒー豆は、すべてベトナム産です。<br>
         厳選したアラビカ種とロブスタ種を独自のバランスでブレンドしています。<br>
-        フレーバーコーヒについては、砂糖・甘味料は使用していません。<br>
+        砂糖・甘味料不使用。<br>
         ベトナムの大地の空気、温度、農家の手仕事が<br>
         香りの中に宿っています。<br><br>
         「一杯のコーヒーで、どこかへ行けるような気がした」<br>
@@ -1751,10 +1808,11 @@
         <p class="footer-nav-title">SHOP</p>
         <ul class="footer-nav-list">
           <li><a href="https://doublecoffee-jp.pages.dev/">Home</a></li>
-    <li><a href="https://doublecoffee-jp.pages.dev/first-time.html">はじめての方へ</a></li>
-    <li><a href="https://doublecoffee-jp.pages.dev/select-coffee.html">香りを選ぶ</a></li>
+    <li><a href="https://doublecoffee-jp.pages.dev/first-time.html">フレーバーを選ぶ</a></li>
+    <li><a href="https://doublecoffee-jp.pages.dev/select-coffee.html">商品を見る</a></li>
     <li><a href="https://doublecoffee-jp.pages.dev/subscription.html">定期便</a></li>
     <li><a href="https://doublecoffee-jp.pages.dev/about.html">About us</a></li>
+    <li><a href="https://doublecoffee-jp.pages.dev/journal/">読みもの</a></li>
   </ul>
       </div>
 
