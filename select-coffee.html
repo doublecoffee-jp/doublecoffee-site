@@ -306,12 +306,17 @@
       margin-bottom: 20px; padding-bottom: 16px;
       border-bottom: 1px solid var(--border);
     }
-    .flavor-group-name {
-      font-family: 'Cinzel', 'Zen Old Mincho', serif;
-      font-size: 1.5rem; font-style: italic; font-weight: 300;
-      color: var(--mocha);
+    .flavor-group-jp {
+      font-family: 'Zen Old Mincho', 'Noto Sans JP', serif;
+      font-size: 1.4rem; font-weight: 400;
+      color: var(--mocha); letter-spacing: 0.06em;
     }
-    .flavor-group-jp { font-size: 0.78rem; color: var(--caramel); letter-spacing: 0.15em; }
+    .flavor-group-name {
+      font-family: 'Cinzel', serif; font-size: 0.72rem;
+      font-style: italic; font-weight: 300;
+      color: var(--caramel); letter-spacing: 0.22em;
+      align-self: flex-end; margin-bottom: 3px;
+    }
     .flavor-mood-tag {
       font-size: 0.58rem; letter-spacing: 0.25em;
       color: white; background: var(--mocha);
@@ -353,7 +358,7 @@
     .product-type-badge.dip { color: var(--sage); border-color: var(--sage); }
     .product-type-badge.assort { color: var(--gold); border-color: var(--gold); }
     .product-card-name {
-      font-family: 'Cinzel', 'Zen Old Mincho', serif;
+      font-family: 'Zen Old Mincho', 'Cinzel', 'Noto Sans JP', serif;
       font-size: 1.15rem; font-weight: 300;
       color: var(--mocha); margin-bottom: 4px;
     }
@@ -538,9 +543,13 @@
       .product-link { font-size: 0.58rem; }
       .assort-section { margin-top: 36px; padding-top: 28px; }
       .assort-card { grid-template-columns: 1fr; }
-      .assort-card-img { aspect-ratio: 16/9; }
-      .assort-card-body { padding: 20px 16px; }
-      .assort-card-desc { line-height: 1.7; margin-bottom: 16px; }
+      .assort-card-img { aspect-ratio: 1/1; }
+      .assort-card-body { padding: 8px 8px 10px; }
+      .assort-card-name { font-size: 0.72rem; margin-bottom: 2px; }
+      .assort-card-jp { font-size: 0.6rem; margin-bottom: 4px; }
+      .assort-card-desc { font-size: 0.65rem; line-height: 1.5; margin-bottom: 6px; display: none; }
+      .assort-price { font-size: 0.75rem; margin-bottom: 8px; }
+      .assort-section .btn-primary { padding: 8px 16px; font-size: 0.65rem; }
       footer { padding-top: 56px; }
       .drawer-menu { width: min(88vw, 320px); padding: 84px 24px 28px; }
     }
@@ -585,7 +594,7 @@
 <section class="page-hero">
   <p class="section-label">SELECT COFFEE</p>
   <div class="divider"></div>
-  <h1 class="section-title">ドゥーブルコーヒーの商品を見る</h1>
+  <h1 class="section-title">商品を見る</h1>
   <p>気分、フレーバー、スタイルから、あなたの一杯を。</p>
 </section>
 
@@ -630,9 +639,8 @@
     <!-- おすすめ (recommend only appears in "all" view) -->
     <div class="flavor-group" data-flavor="recommend" id="recommend">
       <div class="flavor-group-title">
-        <span class="flavor-group-name">Recommend</span>
         <span class="flavor-group-jp">おすすめ</span>
-        <span class="flavor-mood-tag" style="background:var(--gold);">RECOMMEND</span>
+        <span class="flavor-group-name">Recommend</span>
       </div>
       <div class="flavor-group-cards">
         <a class="product-card" href="https://doublecoffee.official.ec/items/114817871" target="_blank" rel="noopener">
@@ -641,9 +649,8 @@
           </div>
           <div class="product-card-body">
             <span class="recommend-no1-badge">★ 一番人気</span>
-            <p class="product-card-name">Hazelnut</p>
-            <p class="product-card-name-jp">ヘーゼルナッツ ディップバッグ</p>
-            <p class="product-card-desc">ドゥーブルコーヒーの定番。ひとり時間に浸る午後の香り。香ばしさとコーヒーの苦味が溶け合う一杯。</p>
+            <p class="product-card-name">ヘーゼルナッツ</p>
+            <p class="product-card-desc">ディップバッグ 5袋｜ドゥーブルコーヒーの定番。ひとり時間に浸る午後の香り。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,250<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -656,10 +663,9 @@
             <img src="images/summer-coffee-dip-gift-package.webp" alt="DoubleCoffee夏ギフトセット">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge assort">期間限定 GIFT</span>
-            <p class="product-card-name">Summer Limited Gift</p>
-            <p class="product-card-name-jp">【夏季限定】夏の香り旅、限定コーヒーギフト</p>
-            <p class="product-card-desc">夏の朝、昼、夜——それぞれの時間に寄り添う3つの香りを、期間限定でギフトにしました。</p>
+            <p class="product-card-name">【夏季限定】夏の香り旅ギフト</p>
+            <p class="product-card-name-jp">ディップスタイル15袋</p>
+            <p class="product-card-desc">夏の朝、昼、夜——それぞれの時間に寄り添うココナッツ・グッドモーニング・唐辛子入りコーヒー。</p>
             <div class="product-card-footer">
               <p class="product-price">¥4,310<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -672,9 +678,8 @@
             <img src="images/flavored-coffee-dip-gift-package.webp" alt="DoubleCoffeedipstyleギフトセット">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge assort">GIFT</span>
-            <p class="product-card-name">Dip Style Gift</p>
-            <p class="product-card-name-jp">【ディップバッグ】香りで旅するコーヒーギフト</p>
+            <p class="product-card-name">香りで旅するコーヒーギフト</p>
+            <p class="product-card-name-jp">ディップスタイル15袋</p>
             <p class="product-card-desc">大切な人に、香りの時間を贈る。ヘーゼルナッツ、バニラ、ココナッツ——3つの香りが、それぞれ違う旅に連れていきます。</p>
             <div class="product-card-footer">
               <p class="product-price">¥4,080<span>（税込）</span></p>
@@ -688,8 +693,8 @@
     <!-- ディップバッグ -->
     <div class="flavor-group" data-flavor="dip" id="dip">
       <div class="flavor-group-title">
-        <span class="flavor-group-name">Dip Bag</span>
         <span class="flavor-group-jp">ディップバッグ</span>
+        <span class="flavor-group-name">Dip Bag</span>
       </div>
       <div class="flavor-group-cards">
         <a class="product-card" href="https://doublecoffee.official.ec/items/115376575" target="_blank" rel="noopener">
@@ -697,9 +702,8 @@
             <img src="images/flavored-coffee-assortment-set-dip-style-coffee.webp" alt="5種アソートセット">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge assort">ASSORT · 5種</span>
-            <p class="product-card-name">5 Flavors Assort</p>
-            <p class="product-card-name-jp">5種フレーバーアソートセット</p>
+            <p class="product-card-name">5種アソートセット</p>
+            <p class="product-card-name-jp">ディップスタイル5袋</p>
             <p class="product-card-desc">はじめての方に。5種のフレーバーをすべて試せるアソートセット。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,250<span>（税込）</span></p>
@@ -712,9 +716,8 @@
             <img src="images/vanilla-dip-style-coffee-bag-gift-set.webp" alt="バニラ ディップバッグ">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge dip">DIP BAG · 5袋入り</span>
-            <p class="product-card-name">Vanilla</p>
-            <p class="product-card-name-jp">バニラ ディップバッグ</p>
+            <p class="product-card-name">バニラ</p>
+            <p class="product-card-name-jp">ディップスタイル5袋</p>
             <p class="product-card-desc">肩の力を抜きたいときの香り。やわらかな時間に寄り添う一杯。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,250<span>（税込）</span></p>
@@ -727,10 +730,9 @@
             <img src="images/coconut-dip-style-coffee-bag-gift-set.webp" alt="ココナッツ ディップバッグ">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge dip">DIP BAG · 5袋入り</span>
-            <p class="product-card-name">Coconut</p>
-            <p class="product-card-name-jp">ココナッツ ディップバッグ</p>
-            <p class="product-card-desc">午後の空気を切り替える香り。日常を少し離れたいとき。</p>
+            <p class="product-card-name">ココナッツ</p>
+            <p class="product-card-name-jp">ディップスタイル5袋</p>
+            <p class="product-card-desc">午後の空気を切り替える香り。日常を少し離れたいときに。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,250<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -742,9 +744,8 @@
             <img src="images/hazelnut-dip-style-coffee-bag-gift-set.webp" alt="ヘーゼルナッツ ディップバッグ">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge dip">DIP BAG · 5袋入り</span>
-            <p class="product-card-name">Hazelnut</p>
-            <p class="product-card-name-jp">ヘーゼルナッツ ディップバッグ</p>
+            <p class="product-card-name">ヘーゼルナッツ</p>
+            <p class="product-card-name-jp">ディップスタイル5袋</p>
             <p class="product-card-desc">ドゥーブルコーヒーの定番。香ばしさとコーヒーの苦味が溶け合う一杯。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,250<span>（税込）</span></p>
@@ -757,9 +758,8 @@
             <img src="images/butter-dip-style-coffee-bag-gift-set.webp" alt="バター ディップバッグ">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge dip">DIP BAG · 5袋入り</span>
-            <p class="product-card-name">Butter</p>
-            <p class="product-card-name-jp">バター ディップバッグ</p>
+            <p class="product-card-name">バター</p>
+            <p class="product-card-name-jp">ディップスタイル5袋</p>
             <p class="product-card-desc">夜、深い余韻に浸るための香り。じんわりと気持ちを満たす一杯。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,250<span>（税込）</span></p>
@@ -772,10 +772,9 @@
             <img src="images/non-flavor-dip-style-coffee-bag-gift-set.webp" alt="ノンフレーバー ディップバッグ">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge dip">DIP BAG · 5袋入り</span>
-            <p class="product-card-name">Non Flavor</p>
-            <p class="product-card-name-jp">ノンフレーバー ディップバッグ</p>
-            <p class="product-card-desc">豆本来のクリーンな香りと澄んだ後味。まっさらな朝の一杯に。</p>
+            <p class="product-card-name">グッドモーニング</p>
+            <p class="product-card-name-jp">ディップスタイル5袋</p>
+            <p class="product-card-desc">ノンフレーバーで豆本来の香りと澄んだ後味。まっさらな朝の一杯に。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,250<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -787,9 +786,8 @@
             <img src="images/hot-chilli-dip-style-coffee-bag-gift-set.webp" alt="唐辛子入りコーヒー">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge dip">NEW · SPICY</span>
-            <p class="product-card-name">Inner Heat</p>
-            <p class="product-card-name-jp">唐辛子入りコーヒー ディップバッグ</p>
+            <p class="product-card-name">INNER HEAT</p>
+            <p class="product-card-name-jp">ディップスタイル5袋</p>
             <p class="product-card-desc">ピリッとした刺激と深いコーヒーの香りが交差する、新感覚の一杯。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,250<span>（税込）</span></p>
@@ -803,8 +801,8 @@
     <!-- コーヒー豆・粉 -->
     <div class="flavor-group" data-flavor="beans" id="beans">
       <div class="flavor-group-title">
-        <span class="flavor-group-name">Coffee Beans &amp; Ground</span>
         <span class="flavor-group-jp">コーヒー豆・粉</span>
+        <span class="flavor-group-name">Coffee Beans &amp; Ground</span>
       </div>
       <div class="flavor-group-cards">
         <a class="product-card" href="https://doublecoffee.official.ec/items/114816071" target="_blank" rel="noopener">
@@ -812,10 +810,9 @@
             <img src="images/vanilla-coffee-gift-flavored-coffee-dripcoffee.webp" alt="バニラ コーヒー豆">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge">コーヒー豆 · 粉</span>
-            <p class="product-card-name">Vanilla</p>
-            <p class="product-card-name-jp">バニラ コーヒー豆/粉</p>
-            <p class="product-card-desc">バニラの香りをゆっくりと引き出す豆・粉タイプ。</p>
+            <p class="product-card-name">バニラ</p>
+            <p class="product-card-name-jp">コーヒー豆・粉（200g）</p>
+            <p class="product-card-desc">肩の力を抜きたいときの香り。やわらかな時間に寄り添う一杯。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,980<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -827,10 +824,9 @@
             <img src="images/coconut-coffee-gift-flavored-coffee-dripcoffee.webp" alt="ココナッツ コーヒー豆">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge">コーヒー豆 · 粉</span>
-            <p class="product-card-name">Coconut</p>
-            <p class="product-card-name-jp">ココナッツ コーヒー豆/粉</p>
-            <p class="product-card-desc">気持ちを南国へ運ぶ香り。お好みの器具で楽しめる豆・粉タイプ。</p>
+            <p class="product-card-name">ココナッツ</p>
+            <p class="product-card-name-jp">コーヒー豆・粉（200g）</p>
+            <p class="product-card-desc">午後の空気を切り替える香り。日常を少し離れたいときに。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,980<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -842,10 +838,9 @@
             <img src="images/hazelnut-coffee-gift-flavored-coffee-dripcoffee.webp" alt="ヘーゼルナッツ コーヒー豆">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge">コーヒー豆 · 粉</span>
-            <p class="product-card-name">Hazelnut</p>
-            <p class="product-card-name-jp">ヘーゼルナッツ コーヒー豆/粉</p>
-            <p class="product-card-desc">静かな集中時間に寄り添う一杯。お好みのコーヒー器具で淹れる豆・粉タイプ。</p>
+            <p class="product-card-name">ヘーゼルナッツ</p>
+            <p class="product-card-name-jp">コーヒー豆・粉（200g）</p>
+            <p class="product-card-desc">ドゥーブルコーヒーの定番。香ばしさとコーヒーの苦味が溶け合う一杯。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,980<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -857,10 +852,9 @@
             <img src="images/butter-coffee-gift-flavored-coffee-dripcoffee.webp" alt="バター コーヒー豆">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge">コーヒー豆 · 粉</span>
-            <p class="product-card-name">Butter</p>
-            <p class="product-card-name-jp">バター コーヒー豆/粉</p>
-            <p class="product-card-desc">ゆっくりと夜を締めくくる豆・粉タイプ。深い余韻をじっくり引き出して。</p>
+            <p class="product-card-name">バター</p>
+            <p class="product-card-name-jp">コーヒー豆・粉（200g）</p>
+            <p class="product-card-desc">夜、深い余韻に浸るための香り。じんわりと気持ちを満たす一杯。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,980<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -872,10 +866,9 @@
             <img src="images/brend-coffee-gift-flavored-coffee-dripcoffee.webp" alt="ノンフレーバー コーヒー豆">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge">コーヒー豆 · 粉</span>
-            <p class="product-card-name">Non Flavor</p>
-            <p class="product-card-name-jp">ノンフレーバー コーヒー豆/粉</p>
-            <p class="product-card-desc">余計な要素なし、豆の個性をピュアに引き出す一杯。お好みの器具で。</p>
+            <p class="product-card-name">グッドモーニング</p>
+            <p class="product-card-name-jp">コーヒー豆・粉（200g）</p>
+            <p class="product-card-desc">ノンフレーバーで豆本来の香りと澄んだ後味。まっさらな朝の一杯に。</p>
             <div class="product-card-footer">
               <p class="product-price">¥1,980<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -888,9 +881,8 @@
     <!-- ギフトセット -->
     <div class="flavor-group" data-flavor="gift" id="gift">
       <div class="flavor-group-title">
-        <span class="flavor-group-name">Gift Set</span>
         <span class="flavor-group-jp">ギフトセット</span>
-        <span class="flavor-mood-tag" style="background:var(--gold);">GIFT</span>
+        <span class="flavor-group-name">Gift Set</span>
       </div>
       <div class="flavor-group-cards">
         <a class="product-card" href="https://doublecoffee.official.ec/items/144556526" target="_blank" rel="noopener">
@@ -898,10 +890,9 @@
             <img src="images/summer-coffee-dip-gift-package.webp" alt="DoubleCoffee夏ギフトセット">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge assort">GIFT</span>
-            <p class="product-card-name">Summer Limited Gift</p>
-            <p class="product-card-name-jp">【夏季限定】夏の香り旅、限定コーヒーギフト</p>
-            <p class="product-card-desc">夏の朝、昼、夜——それぞれの時間に寄り添う3つの香りを、期間限定でギフトにしました。</p>
+            <p class="product-card-name">【夏季限定】夏の香り旅ギフト</p>
+            <p class="product-card-name-jp">ディップスタイル15袋</p>
+            <p class="product-card-desc">夏の朝、昼、夜——それぞれの時間に寄り添うココナッツ・グッドモーニング・唐辛子入りコーヒー。</p>
             <div class="product-card-footer">
               <p class="product-price">¥4,310<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -913,9 +904,8 @@
             <img src="images/flavored-coffee-dip-gift-package.webp" alt="DoubleCoffeedipstyleギフトセット">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge assort">GIFT</span>
-            <p class="product-card-name">Dip Style Gift</p>
-            <p class="product-card-name-jp">【ディップバッグ】香りで旅するコーヒーギフト</p>
+            <p class="product-card-name">香りで旅するコーヒーギフト</p>
+            <p class="product-card-name-jp">ディップスタイル15袋</p>
             <p class="product-card-desc">大切な人に、香りの時間を贈る。ヘーゼルナッツ、バニラ、ココナッツ——3つの香りが、それぞれ違う旅へ連れていきます。</p>
             <div class="product-card-footer">
               <p class="product-price">¥4,080<span>（税込）</span></p>
@@ -928,9 +918,8 @@
             <img src="images/flavored-coffee-gift-package.webp" alt="DoubleCoffeeギフトセット">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge assort">GIFT</span>
-            <p class="product-card-name">Beans &amp; Ground Gift</p>
-            <p class="product-card-name-jp">【豆/粉】香りで旅するコーヒーギフト</p>
+            <p class="product-card-name">香りで旅するコーヒーギフト</p>
+            <p class="product-card-name-jp">コーヒー豆・粉（200g×3袋）</p>
             <p class="product-card-desc">大切な人へ贈る、DOUBLE COFFEEの定番ギフトセット。香りで旅する体験をプレゼントに。</p>
             <div class="product-card-footer">
               <p class="product-price">¥6,270<span>（税込）</span></p>
@@ -944,20 +933,18 @@
     <!-- Coffee Lifestyle -->
     <div class="flavor-group" data-flavor="tools" id="tools">
       <div class="flavor-group-title">
-        <span class="flavor-group-name">Coffee Lifestyle</span>
         <span class="flavor-group-jp">コーヒーのある暮らし</span>
-        <span class="flavor-mood-tag">TOOLS</span>
+        <span class="flavor-group-name">Coffee Lifestyle</span>
       </div>
       <div class="flavor-group-cards">
-        <a class="product-card" href="https://doublecoffee.official.ec/categories/7332550" target="_blank" rel="noopener">
+        <a class="product-card" href="https://doublecoffee.official.ec/items/99315598" target="_blank" rel="noopener">
           <div class="product-card-img">
             <img src="images/vietnamese-filter-and-cup-brown.webp" alt="バッチャン焼きフィルター&カップ">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge">TOOLS</span>
             <p class="product-card-name">コーヒーフィルター&カップ</p>
             <p class="product-card-name-jp">コーヒーのある暮らし</p>
-            <p class="product-card-desc">ドゥーブルコーヒーが厳選した、ベトナム名物バッチャン焼きによるフィルターとカップ。</p>
+            <p class="product-card-desc">ベトナム名物バッチャン焼きによるフィルターとカップ。職人の手仕事による一点物。</p>
             <div class="product-card-footer">
               <p class="product-price">¥2,640<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -970,9 +957,7 @@
     <!-- まとめ買い -->
     <div class="flavor-group" data-flavor="bulk" id="bulk">
       <div class="flavor-group-title">
-        <span class="flavor-group-name">Bulk Set</span>
         <span class="flavor-group-jp">まとめ買い</span>
-        <span class="flavor-mood-tag" style="background:var(--coffee);">SAVE</span>
       </div>
       <div class="flavor-group-cards">
         <a class="product-card" href="https://doublecoffee.official.ec/items/121703133" target="_blank" rel="noopener">
@@ -980,10 +965,9 @@
             <img src="images/hazelnut-and-vanilla-flavored-coffee-200g.webp" alt="ヘーゼルナッツ+バニラ 2種セット">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge">コーヒー豆 · 粉 · 2種セット</span>
-            <p class="product-card-name">2 Flavors Set</p>
-            <p class="product-card-name-jp">ヘーゼルナッツ + バニラ コーヒー豆/粉</p>
-            <p class="product-card-desc">2種の香りをまとめて。Hazelnut・Vanilla 各200g、豆または粉から選択。</p>
+            <p class="product-card-name">ヘーゼルナッツ + バニラ</p>
+            <p class="product-card-name-jp">コーヒー豆・粉（200g×2袋） </p>
+            <p class="product-card-desc">香りの違いをゆっくりと楽しみたい方へ。少しお得にお届け。</p>
             <div class="product-card-footer">
               <p class="product-price">¥3,780<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -995,10 +979,9 @@
             <img src="images/hazelnut-flavored-coffee-4-packages.webp" alt="ヘーゼルナッツ 4袋セット">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge">コーヒー豆 · 粉 · 4袋セット</span>
-            <p class="product-card-name">Hazelnut × 4</p>
-            <p class="product-card-name-jp">ヘーゼルナッツ コーヒー豆/粉 200g × 4袋</p>
-            <p class="product-card-desc">香ばしいヘーゼルナッツの香りをたっぷりと。切らさずに続けたい方のための4袋セット。</p>
+            <p class="product-card-name">ヘーゼルナッツ</p>
+            <p class="product-card-name-jp">コーヒー豆/粉（200g×4袋）</p>
+            <p class="product-card-desc">香ばしいヘーゼルナッツの香りをたっぷりと。切らさずに楽しみたい方のために。</p>
             <div class="product-card-footer">
               <p class="product-price">¥7,480<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -1010,10 +993,9 @@
             <img src="images/vanilla-flavored-coffee-4-packages.webp" alt="バニラ 4袋セット">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge">コーヒー豆 · 粉 · 4袋セット</span>
-            <p class="product-card-name">Vanilla × 4</p>
-            <p class="product-card-name-jp">バニラ コーヒー豆/粉 200g × 4袋</p>
-            <p class="product-card-desc">やわらかい甘い香りを毎朝の習慣に。バニラフレーバー200gがたっぷり4袋入り。</p>
+            <p class="product-card-name">バニラ</p>
+            <p class="product-card-name-jp">コーヒー豆/粉（200g×4袋）</p>
+            <p class="product-card-desc">やわらかい甘い香りを毎朝の習慣に。</p>
             <div class="product-card-footer">
               <p class="product-price">¥7,480<span>（税込）</span></p>
               <span class="product-link">商品を見る →</span>
@@ -1026,8 +1008,8 @@
     <!-- 定期便 -->
     <div class="flavor-group" data-flavor="subscription" id="subscription">
       <div class="flavor-group-title">
-        <span class="flavor-group-name">Subscription</span>
         <span class="flavor-group-jp">定期便</span>
+        <span class="flavor-group-name">Subscription</span>
       </div>
       <div class="flavor-group-cards">
         <a class="product-card" href="https://doublecoffee.official.ec/items/137320692" target="_blank" rel="noopener">
@@ -1035,7 +1017,6 @@
             <img src="images/double-coffee-subscriotion-light.webp" alt="定期便 Light 20袋">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge">定期便 · 20袋 / 月</span>
             <p class="product-card-name">Light Plan</p>
             <p class="product-card-name-jp">定期便 20袋プラン</p>
             <p class="product-card-desc">5種の香りを、その月のベストな配合でお届け。気軽に始めたい方に。</p>
@@ -1049,10 +1030,9 @@
             <img src="images/double-coffee-subscriotion-rich.webp" alt="定期便 Rich 50袋">
           </div>
           <div class="product-card-body">
-            <span class="product-type-badge assort">人気 · 定期便 · 50袋 / 月</span>
             <p class="product-card-name">Rich Plan</p>
             <p class="product-card-name-jp">定期便 50袋プラン</p>
-            <p class="product-card-desc">家族で、職場で。まとめて届く安心感。少し多めのほうが、生活に馴染む。</p>
+            <p class="product-card-desc">家族で、職場で。まとめて届く安心感。少し多めのほうが、安心して楽しめる。</p>
             <div class="product-card-footer">
               <span class="product-link">プランを見る →</span>
             </div>
@@ -1072,12 +1052,10 @@
           <img src="images/flavored-coffee-assortment-set-dip-style-coffee.webp" alt="5種アソートセット">
         </div>
         <div class="assort-card-body">
-          <p class="section-label">ASSORT SET</p>
-          <p class="assort-card-name">5 Flavors Assort</p>
-          <p class="assort-card-jp">5種フレーバーアソートセット</p>
+          <p class="assort-card-name">5種アソートセット</p>
           <p class="assort-card-desc">
-            Hazelnut · Vanilla · Coconut · Butter · Non Flavor<br>
-            5種のフレーバーがすべて揃ったドゥーブルコーヒーアソートセット。<br>
+            ヘーゼルナッツ · バニラ · ココナッツ · バター · グッドモーニングコーヒー<br>
+            5種の香りがすべて揃ったドゥーブルコーヒーアソートセット。<br>
             どれが「自分の一杯」か、試しながら見つけられます。
           </p>
           <p class="assort-price">¥1,250<span>（税込・送料別）</span></p>
